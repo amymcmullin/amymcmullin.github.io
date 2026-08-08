@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>IT Pathway Diagnostic — iTECH</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#1C1A24; --ink2:#4A4553; --ink3:#7C7688;
+  --paper:#F4F2EF; --card:#FFFFFF; --rule:#DFDAD3; --rule2:#EDE9E4;
+  --accent:#A81B4F; --accent2:#E0447E; --soft:#FBEAF0;
+  --adult:#1B5FA8; --adult-tint:#EAF2FB; --adult-text:#154B85;
+  --de:#E0A800; --de-tint:#FDF5DF; --de-text:#7A5C00;
+  --both:#157F4C; --both-tint:#E6F5ED; --both-text:#0E5C37;
+  --display:"Space Grotesk",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  --body:"IBM Plex Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{
+  background:var(--paper); color:var(--ink); font-family:var(--body);
+  font-size:16px; line-height:1.55; -webkit-font-smoothing:antialiased;
+  padding:0 20px 80px;
+}
+.wrap{max-width:880px;margin:0 auto}
+.mono{font-family:var(--mono)}
+
+/* ---------- masthead ---------- */
+.masthead{
+  border-bottom:1.5px solid var(--ink); padding:22px 0 12px; margin-bottom:38px;
+  display:flex; align-items:baseline; justify-content:space-between; gap:16px; flex-wrap:wrap;
+}
+.eyebrow{
+  font-family:var(--mono); font-size:11px; letter-spacing:.16em; text-transform:uppercase;
+  color:var(--accent); font-weight:600;
+}
+.masthead .meta{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3)}
+
+h1{
+  font-family:var(--display); font-weight:700; font-size:clamp(34px,6.5vw,60px);
+  line-height:1.02; letter-spacing:-.03em; margin:0 0 18px;
+}
+h1 .thin{font-weight:500;color:var(--ink3);display:block}
+h2{font-family:var(--display);font-weight:600;font-size:clamp(21px,3.4vw,27px);letter-spacing:-.018em;line-height:1.18;margin:0 0 12px}
+h3{font-family:var(--display);font-weight:600;font-size:17px;letter-spacing:-.01em;margin:0 0 6px}
+p{margin:0 0 14px;max-width:64ch}
+a{color:var(--accent)}
+
+.lede{font-size:18px;line-height:1.6;color:var(--ink2);max-width:60ch}
+
+/* ---------- section label ---------- */
+.slabel{
+  font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--ink3);font-weight:600;display:flex;align-items:center;gap:12px;margin:0 0 14px;
+}
+.slabel::after{content:"";flex:1;height:1px;background:var(--rule)}
+
+/* ---------- cards ---------- */
+.card{background:var(--card);border:1px solid var(--rule);border-radius:3px;padding:24px}
+
+/* ---------- intro ---------- */
+.parts{display:grid;grid-template-columns:1fr 1fr;background:var(--rule);border:1px solid var(--rule);margin:26px 0;gap:1px}
+.part{background:var(--card);padding:20px 22px}
+.part .n{font-family:var(--mono);font-size:11px;letter-spacing:.14em;color:var(--accent);font-weight:600;text-transform:uppercase}
+.part p{font-size:14.5px;color:var(--ink2);margin:6px 0 0}
+@media(max-width:640px){.parts{grid-template-columns:1fr}}
+
+.namebar{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin:26px 0 8px}
+label.fl{font-family:var(--mono);font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:var(--ink3);font-weight:600}
+input[type=text]{
+  font-family:var(--body);font-size:16px;padding:10px 13px;border:1px solid var(--rule);
+  border-radius:2px;background:var(--card);color:var(--ink);min-width:300px;flex:1;max-width:400px;
+}
+input[type=text]:focus{outline:2px solid var(--accent);outline-offset:1px;border-color:var(--accent)}
+
+button{font-family:var(--body);font-size:15px;cursor:pointer;border:none;background:none;color:inherit}
+.btn{
+  background:var(--ink);color:#fff;padding:14px 26px;border-radius:2px;font-weight:600;
+  letter-spacing:.01em;transition:background .15s;
+}
+.btn:hover{background:var(--accent)}
+.btn:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.btn.ghost{background:none;color:var(--ink2);border:1px solid var(--rule);padding:11px 20px;font-weight:500}
+.btn.ghost:hover{border-color:var(--ink);color:var(--ink)}
+.btn.sm{padding:9px 16px;font-size:13.5px}
+.btn[disabled]{opacity:.35;cursor:not-allowed}
+
+.smallnote{font-size:13.5px;color:var(--ink3);max-width:58ch}
+
+/* ---------- assessment ---------- */
+#assess{display:none}
+.progwrap{position:sticky;top:0;z-index:20;background:var(--paper);padding:14px 0 12px;border-bottom:1px solid var(--rule);margin-bottom:34px}
+.progtop{display:flex;justify-content:space-between;align-items:baseline;font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink3);margin-bottom:8px}
+.progtop b{color:var(--accent);font-weight:600}
+.track{height:3px;background:var(--rule);position:relative;overflow:hidden}
+.fill{height:100%;background:var(--accent);width:0;transition:width .28s cubic-bezier(.4,0,.2,1)}
+.tick{position:absolute;top:0;width:1px;height:3px;background:var(--paper)}
+
+.qnum{font-family:var(--mono);font-size:12px;letter-spacing:.13em;color:var(--accent);font-weight:600;margin-bottom:10px}
+.qtext{font-family:var(--display);font-weight:500;font-size:clamp(21px,3.6vw,28px);line-height:1.3;letter-spacing:-.015em;margin-bottom:28px;max-width:26ch}
+.qtext.long{font-size:clamp(18px,2.9vw,23px);max-width:44ch;line-height:1.42}
+
+.opts{display:flex;flex-direction:column;gap:8px;max-width:640px}
+.opt{
+  display:flex;align-items:center;gap:14px;width:100%;text-align:left;
+  background:var(--card);border:1px solid var(--rule);border-radius:2px;
+  padding:15px 17px;font-size:15.5px;line-height:1.4;color:var(--ink);
+  transition:border-color .12s,background .12s,transform .08s;
+}
+.opt:hover{border-color:var(--accent);background:var(--soft)}
+.opt:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.opt.on{border-color:var(--accent);background:var(--soft);border-width:1.5px}
+.opt .key{
+  font-family:var(--mono);font-size:11px;font-weight:600;color:var(--ink3);
+  border:1px solid var(--rule);border-radius:2px;width:22px;height:22px;
+  display:flex;align-items:center;justify-content:center;flex:0 0 22px;
+}
+.opt:hover .key,.opt.on .key{border-color:var(--accent);color:var(--accent)}
+.scalehint{display:flex;justify-content:space-between;font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3);max-width:640px;margin-bottom:9px}
+
+.navrow{display:flex;gap:12px;align-items:center;margin-top:30px}
+.kbdhint{font-family:var(--mono);font-size:11px;color:var(--ink3);letter-spacing:.06em}
+
+/* ---------- interstitial ---------- */
+.inter{display:none;padding:40px 0}
+.inter .big{font-family:var(--display);font-size:clamp(28px,5vw,44px);font-weight:700;letter-spacing:-.03em;line-height:1.06;margin-bottom:14px}
+
+/* ---------- results ---------- */
+#results{display:none}
+.rhead{border-bottom:1.5px solid var(--ink);padding-bottom:16px;margin-bottom:36px}
+.rhead .who{font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink3);margin-top:8px}
+
+/* top paths */
+.podium{margin-bottom:44px}
+.pod{background:var(--card);padding:22px 24px;display:grid;grid-template-columns:44px 1fr auto;gap:18px;align-items:start;border:1px solid var(--rule);border-bottom:none}
+.pod:last-child{border-bottom:1px solid var(--rule)}
+.pod .rank{font-family:var(--display);font-size:34px;font-weight:700;color:var(--rule);line-height:.9;letter-spacing:-.04em}
+.pod.first .rank{color:var(--accent)}
+.pod h3{font-size:20px;margin-bottom:4px}
+.pod .blurb{font-size:14.5px;color:var(--ink2);margin:0 0 8px;max-width:56ch}
+.pod .roles{font-family:var(--mono);font-size:11.5px;letter-spacing:.05em;color:var(--ink3);line-height:1.6}
+.pod .fit{text-align:right}
+.pod .fitnum{font-family:var(--mono);font-size:27px;font-weight:600;letter-spacing:-.02em;line-height:1}
+.pod .fitlab{font-family:var(--mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink3);margin-top:4px}
+.tag{display:inline-block;font-family:var(--mono);font-size:10px;letter-spacing:.11em;text-transform:uppercase;font-weight:600;padding:3px 8px;border-radius:2px;background:var(--soft);color:var(--accent);margin-bottom:8px}
+@media(max-width:640px){.pod{grid-template-columns:34px 1fr;}.pod .fit{grid-column:2;text-align:left;display:flex;align-items:baseline;gap:8px}.pod .fitlab{margin:0}}
+
+/* SIGNATURE: dual-trace spectrum */
+.spechead{display:grid;grid-template-columns:172px 1fr 92px;gap:16px;font-family:var(--mono);font-size:9.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--ink3);padding-bottom:6px}
+.spechead span:last-child{text-align:right}
+@media(max-width:620px){.spechead{display:none}}
+.spectrum{border-top:1px solid var(--ink);border-bottom:1px solid var(--ink);padding:6px 0;margin-bottom:14px}
+.chan{display:grid;grid-template-columns:172px 1fr 92px;gap:16px;align-items:center;padding:11px 0;border-bottom:1px solid var(--rule2)}
+.chan:last-child{border-bottom:none}
+.chan .cname{font-family:var(--display);font-size:14.5px;font-weight:600;letter-spacing:-.005em}
+.chan .cname span{display:block;font-family:var(--mono);font-size:9.5px;letter-spacing:.13em;color:var(--ink3);font-weight:400;text-transform:uppercase}
+.traces{position:relative;height:26px}
+.trace{position:absolute;left:0;height:9px;border-radius:1px;width:0;transition:width .7s cubic-bezier(.2,.7,.3,1)}
+.trace.int{top:1px;background:var(--accent);opacity:.88}
+.trace.apt{top:15px;background:var(--ink);opacity:.5}
+.gridline{position:absolute;top:0;bottom:0;width:1px;background:var(--rule2)}
+.chan .cnum{font-family:var(--mono);font-size:12px;color:var(--ink2);text-align:right;letter-spacing:.02em}
+.chan .cnum b{color:var(--accent);font-weight:600}
+.speclegend{display:flex;gap:22px;font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3);margin-bottom:44px;flex-wrap:wrap}
+.speclegend i{display:inline-block;width:16px;height:8px;margin-right:6px;vertical-align:-1px;border-radius:1px}
+@media(max-width:620px){.chan{grid-template-columns:1fr;gap:5px;padding:13px 0}.chan .cnum{text-align:left}}
+
+/* quadrant */
+.quadwrap{margin-bottom:46px}
+.quad{width:100%;max-width:620px;height:auto;display:block;margin:0 auto}
+.qlab{font-family:var(--mono);font-size:8.5px;letter-spacing:.1em;text-transform:uppercase;fill:var(--ink3)}
+.qdot{fill:var(--accent);opacity:.85}
+.qdotlab{font-family:var(--mono);font-size:9.5px;font-weight:600;fill:var(--ink)}
+.qkey{display:grid;grid-template-columns:1fr 1fr;gap:10px 24px;margin:16px auto 0;max-width:620px}
+.qkey div{font-size:12.5px;line-height:1.4;border-top:1px solid var(--rule);padding-top:7px}
+.qkey b{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.09em;text-transform:uppercase;color:var(--ink);margin-bottom:2px}
+.qkey span{color:var(--ink3)}
+.qitems{display:flex;flex-wrap:wrap;gap:7px 16px;justify-content:center;max-width:620px;margin:14px auto 0}
+.qi{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;color:var(--ink2)}
+.qi i{font-family:var(--mono);font-style:normal;font-size:10px;font-weight:600;width:17px;height:17px;border-radius:50%;border:1px solid var(--ink3);color:var(--ink2);display:inline-flex;align-items:center;justify-content:center}
+.qi i.hi{background:var(--accent);border-color:var(--accent);color:#fff}
+.qfoot{font-size:12px;color:var(--ink3);text-align:center;max-width:52ch;margin:10px auto 20px}
+@media(max-width:600px){.qkey{grid-template-columns:1fr}}
+
+/* cert ladders */
+.pathblock{margin-bottom:52px;scroll-margin-top:80px}
+.pathblock .ph{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;border-bottom:1.5px solid var(--ink);padding-bottom:10px;margin-bottom:6px}
+.pathblock .ph h2{margin:0}
+.pathblock .ph .cnt{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3)}
+.covnote{background:var(--soft);border-left:2px solid var(--accent);padding:11px 15px;font-size:14px;color:var(--ink2);margin:16px 0 4px;max-width:66ch}
+
+.tier{margin-top:24px}
+.tierhead{display:flex;align-items:baseline;gap:11px;margin-bottom:11px}
+.tierno{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;color:#fff;background:var(--ink);padding:3px 7px;border-radius:2px}
+.tierhead h3{margin:0;font-size:15px}
+.tierhead .desc{font-size:13px;color:var(--ink3)}
+.certs{display:grid;gap:7px}
+.cert{
+  display:grid;grid-template-columns:1fr auto;gap:12px;align-items:center;
+  border:1px solid var(--rule);border-left-width:5px;border-radius:2px;
+  padding:12px 15px;background:var(--card);
+}
+.cert.adult{border-left-color:var(--adult);background:var(--adult-tint)}
+.cert.de{border-left-color:var(--de);background:var(--de-tint)}
+.cert.both{border-left-color:var(--both);background:var(--both-tint)}
+.cert .ct{font-size:15px;font-weight:500;line-height:1.32}
+.cert .ct a{text-decoration:none;color:inherit;border-bottom:1px solid rgba(0,0,0,.18)}
+.cert .ct a:hover{color:var(--accent);border-color:var(--accent)}
+.cert .cm{font-family:var(--mono);font-size:11px;color:var(--ink3);letter-spacing:.02em;margin-top:3px}
+.cert .right{text-align:right;display:flex;flex-direction:column;align-items:flex-end;gap:5px}
+.cost{font-family:var(--mono);font-size:14px;font-weight:600;letter-spacing:-.01em}
+.pill{font-family:var(--mono);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;font-weight:600;padding:3px 7px;border-radius:2px;white-space:nowrap;border:1px solid}
+.pill.adult{color:var(--adult-text);border-color:var(--adult);background:#fff}
+.pill.de{color:var(--de-text);border-color:var(--de);background:#fff}
+.pill.both{color:var(--both-text);border-color:var(--both);background:#fff}
+@media(max-width:560px){.cert{grid-template-columns:1fr}.cert .right{align-items:flex-start;flex-direction:row;text-align:left}}
+
+/* legend */
+.legend{border:1px solid var(--rule);background:var(--card);padding:18px 20px;margin-bottom:40px}
+.legend .lg{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:12px}
+.legend .li{display:flex;gap:10px;align-items:flex-start;font-size:13.5px;line-height:1.4}
+.legend .sw{width:5px;align-self:stretch;min-height:34px;border-radius:1px;flex:0 0 5px}
+.legend .sw.adult{background:var(--adult)}.legend .sw.de{background:var(--de)}.legend .sw.both{background:var(--both)}
+.legend b{display:block;font-size:13px}
+.legend span{color:var(--ink3);font-size:12.5px}
+@media(max-width:640px){.legend .lg{grid-template-columns:1fr}}
+
+/* all paths accordion */
+details.allpaths{border-top:1px solid var(--ink);padding-top:16px;margin-bottom:40px}
+details.allpaths summary{font-family:var(--display);font-size:17px;font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center}
+details.allpaths summary::-webkit-details-marker{display:none}
+details.allpaths summary::after{content:"+";font-family:var(--mono);color:var(--accent);font-size:20px}
+details.allpaths[open] summary::after{content:"−"}
+
+/* instructor box */
+.instr{border:1.5px solid var(--ink);padding:20px 22px;margin-bottom:36px;background:var(--card)}
+.instr .slabel{margin-bottom:10px}
+.instr p{font-size:14.5px;margin-bottom:0}
+
+.actions{display:flex;gap:12px;flex-wrap:wrap;padding-top:26px;border-top:1px solid var(--rule)}
+
+/* ---------- paper version ---------- */
+#paper{display:none}
+.pp{font-size:13px}
+.pp h2{page-break-after:avoid}
+.pitem{display:grid;grid-template-columns:26px 1fr;gap:8px;padding:5px 0;border-bottom:1px dotted var(--rule);page-break-inside:avoid}
+.pitem .pn{font-family:var(--mono);font-size:11px;color:var(--ink3);font-weight:600}
+.pitem .po{font-size:12px;color:var(--ink2);margin-top:3px;line-height:1.5}
+.gridsheet{width:100%;border-collapse:collapse;font-family:var(--mono);font-size:10.5px;page-break-inside:avoid}
+.gridsheet td,.gridsheet th{border:1px solid var(--ink3);padding:4px 5px;text-align:center}
+.gridsheet th{background:#eee;font-weight:600}
+.keytable{width:100%;border-collapse:collapse;font-family:var(--mono);font-size:11px;margin-bottom:18px;page-break-inside:avoid}
+.keytable td,.keytable th{border:1px solid var(--ink3);padding:5px 7px;text-align:left}
+.keytable th{background:#eee}
+
+@media print{
+  body{background:#fff;padding:0;font-size:11.5px}
+  .noprint{display:none!important}
+  .masthead{margin-bottom:20px}
+  .card,.cert,.legend,.instr,.pod{break-inside:avoid}
+  .pathblock{page-break-before:auto}
+  a{color:inherit;text-decoration:none}
+  .trace.int{background:#A81B4F!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .trace.apt{background:#1C1A24!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .cert.adult,.cert.de,.cert.both,.pill,.legend .sw{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  details.allpaths[open] summary::after{content:""}
+  .pagebreak{page-break-before:always}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<div class="masthead noprint">
+  <div class="eyebrow">Immokalee Technical College · Career Pathway Diagnostic</div>
+  <div class="meta" id="mastdate"></div>
+</div>
+
+<!-- ============ INTRO ============ -->
+<section id="intro">
+  <h1>Which part of IT<span class="thin">is actually yours?</span></h1>
+  <p class="lede">Information technology isn't one job — it's ten different kinds of work that happen to share a building. This diagnostic measures two things separately: what you're drawn to, and how you already reason. Then it names the certifications that turn your top paths into a credential.</p>
+
+  <div class="parts">
+    <div class="part">
+      <div class="n">Part 1 — Interest · 40 items</div>
+      <p>Statements about the kind of work you'd choose. There is no right answer. Rate how much each one sounds like you.</p>
+    </div>
+    <div class="part">
+      <div class="n">Part 2 — Reasoning · 40 items</div>
+      <p>Short problems, one correct answer each. You are not expected to know any IT yet — every item can be reasoned out from scratch.</p>
+    </div>
+  </div>
+
+  <div class="namebar">
+    <label class="fl" for="sname">Your name</label>
+    <input type="text" id="sname" placeholder="Optional — appears on your results" autocomplete="name">
+  </div>
+  <p class="smallnote">About 15–20 minutes. Nothing is saved or sent anywhere — your answers stay in this browser tab, so finish in one sitting and print or save the results at the end.</p>
+
+  <div class="navrow">
+    <button class="btn" id="start">Start Part 1</button>
+    <button class="btn ghost" id="topaper">Print the paper version</button>
+  </div>
+</section>
+
+<!-- ============ ASSESSMENT ============ -->
+<section id="assess">
+  <div class="progwrap noprint">
+    <div class="progtop">
+      <div id="ptitle">Part 1 — Interest</div>
+      <div><b id="pnum">1</b> / 80</div>
+    </div>
+    <div class="track"><div class="fill" id="pfill"></div><div class="tick" style="left:50%"></div></div>
+  </div>
+  <div id="qbox"></div>
+  <div class="navrow">
+    <button class="btn ghost sm" id="back">← Back</button>
+    <span class="kbdhint" id="kbd"></span>
+  </div>
+</section>
+
+<!-- ============ INTERSTITIAL ============ -->
+<section class="inter" id="inter">
+  <div class="tag">Part 1 complete</div>
+  <div class="big">Now the reasoning half.</div>
+  <p class="lede">Forty short problems. None of them require IT knowledge — they're about how you think through a problem you've never seen. Take a guess when you're unsure; a wrong answer costs you nothing but an unanswered one tells us less.</p>
+  <div class="navrow"><button class="btn" id="startp2">Start Part 2</button></div>
+</section>
+
+<!-- ============ RESULTS ============ -->
+<section id="results"></section>
+
+<!-- ============ PAPER ============ -->
+<section id="paper"></section>
+
+</div>
+
+<script>
+const CERTS = [{"code": "APPLE021","title": "Apple App Development with Swift Certified User","cost": 65,"org": "Apple, Inc.","url": "https://www.certiport.com/apple","src": "both","tier": 1,"domains": ["PRG"]},{"code": "AMAZN002","title": "AWS Certified Cloud Practitioner","cost": 99,"org": "Amazon","url": "https://aws.amazon.com/certification/","src": "both","tier": 1,"domains": ["CLD"]},{"code": "CERTI014","title": "Information Technology Specialist (ITS) - Cloud Computing","cost": 120,"org": "Certiport, A Pearson VUE Business","url": "https://certiport.pearsonvue.com/Certifications/ITSpecialist/Certification/Overview","src": "de","tier": 1,"domains": ["CLD"]},{"code": "CERTI003","title": "Information Technology Specialist (ITS) - Databases","cost": 120,"org": "Certiport, A Pearson VUE Business","url": "https://certiport.pearsonvue.com/Certifications/ITSpecialist/Certification/Overview","src": "de","tier": 1,"domains": ["DB"]},{"code": "CERTI009","title": "Information Technology Specialist (ITS) - Device Configuration and Management","cost": 120,"org": "Certiport, A Pearson VUE Business","url": "https://certiport.pearsonvue.com/Certifications/ITSpecialist/Certification/Overview","src": "de","tier": 1,"domains": ["SUP"]},{"code": "CERTI011","title": "Information Technology Specialist (ITS) - HTML and CSS","cost": 120,"org": "Certiport, A Pearson VUE Business","url": "https://certiport.pearsonvue.com/Certifications/ITSpecialist/Certification/Overview","src": "de","tier": 1,"domains": ["PRG"]},{"code": "CERTI007","title": "Information Technology Specialist (ITS) - Networking","cost": 120,"org": "Certiport, A Pearson VUE Business","url": "https://certiport.pearsonvue.com/Certifications/ITSpecialist/Certification/Overview","src": "de","tier": 1,"domains": ["NET"]},{"code": "CERTI016","title": "Information Technology Specialist (ITS) – Artificial Intelligence","cost": 120,"org": "Certiport, A Pearson VUE Business","url": "https://certiport.pearsonvue.com/Certifications/ITSpecialist/Certification/Overview","src": "de","tier": 1,"domains": ["AI"]},{"code": "CERTI017","title": "Information Technology Specialist (ITS) – Computational Thinking","cost": 120,"org": "Certiport, A Pearson VUE Business","url": "https://certiport.pearsonvue.com/Certifications/ITSpecialist/Certification/Overview","src": "de","tier": 1,"domains": ["PRG"]},{"code": "CERTI019","title": "Information Technology Specialist (ITS) – Cybersecurity","cost": 120,"org": "Certiport, A Pearson VUE Business","url": "https://certiport.pearsonvue.com/Certifications/ITSpecialist/Certification/Overview","src": "de","tier": 1,"domains": ["SEC"]},{"code": "CERTI018","title": "Information Technology Specialist (ITS) – Data Analytics","cost": 120,"org": "Certiport, A Pearson VUE Business","url": "https://certiport.pearsonvue.com/Certifications/ITSpecialist/Certification/Overview","src": "de","tier": 1,"domains": ["DAT"]},{"code": "CERTI006","title": "Information Technology Specialist (ITS) – Network Security","cost": 120,"org": "Certiport, A Pearson VUE Business","url": "https://certiport.pearsonvue.com/Certifications/ITSpecialist/Certification/Overview","src": "de","tier": 1,"domains": ["SEC"]},{"code": "CERTI004","title": "Information Technology Specialist (ITS) – Software Development","cost": 120,"org": "Certiport, A Pearson VUE Business","url": "https://certiport.pearsonvue.com/Certifications/ITSpecialist/Certification/Overview","src": "de","tier": 1,"domains": ["PRG"]},{"code": "KNOWL016","title": "C Coding Specialist","cost": 129,"org": "Knowledge Pillars Education Inc.","url": "https://knowledge-pillars.com/c-coding-specialist-cert/","src": "de","tier": 1,"domains": ["PRG"]},{"code": "KNOWL006","title": "C# Coding Apprentice","cost": 129,"org": "Knowledge Pillars Education Inc.","url": "https://knowledge-pillars.com/csharp-coding-apprentice-certification/","src": "de","tier": 1,"domains": ["PRG"]},{"code": "KNOWL017","title": "Coding-in-AI Specialist (CiAIS)","cost": 129,"org": "Knowledge Pillars Education Inc.","url": "https://knowledge-pillars.com/coding-in-ai-specialist/","src": "de","tier": 1,"domains": ["AI","PRG"]},{"code": "KNOWL003","title": "HTML/CSS Coding Specialist","cost": 129,"org": "Knowledge Pillars Education Inc.","url": "https://knowledge-pillars.com/html-and-css-coding-specialist-certification/","src": "adult","tier": 1,"domains": ["PRG"]},{"code": "KNOWL009","title": "SQL Coding Specialist","cost": 129,"org": "Knowledge Pillars Education Inc.","url": "https://knowledge-pillars.com/sql-coding-specialist-certification/","src": "de","tier": 1,"domains": ["DB","DAT"]},{"code": "KNOWL002","title": "Web Certified Editor – for the WordPress Platform","cost": 129,"org": "Knowledge Pillars Education Inc.","url": "https://knowledge-pillars.com/wordpress-certified-editor/","src": "both","tier": 1,"domains": ["PRG"]},{"code": "COMPT020","title": "CompTIA Cloud Essentials+","cost": 131,"org": "Computing Technology Industry Association (CompTIA)","url": "https://www.comptia.org","src": "both","tier": 1,"domains": ["CLD"]},{"code": "MICRO123","title": "Microsoft 365 Certified: Fundamentals","cost": 165,"org": "Microsoft Corporation","url": "https://certiport.pearsonvue.com/Certifications/Microsoft/MCF/Overview","src": "de","tier": 1,"domains": ["CLD"]},{"code": "LINPI001","title": "Linux Essentials 010","cost": 200,"org": "Linux Professional Institute","url": "https://www.lpi.org/our-certifications/linux-essentials-overview","src": "de","tier": 1,"domains": ["SUP","VIRT"]},{"code": "CISCO028","title": "Cisco Certified Support Technician (CCST) Cybersecurity","cost": 330,"org": "Cisco Systems, Inc.","url": "https://www.cisco.com","src": "de","tier": 1,"domains": ["SEC"]},{"code": "CISCO030","title": "Cisco Certified Support Technician (CCST) IT Support","cost": 330,"org": "Cisco Systems, Inc.","url": "https://www.cisco.com","src": "de","tier": 1,"domains": ["SUP"]},{"code": "CISCO029","title": "Cisco Certified Support Technician (CCST) Networking","cost": 330,"org": "Cisco Systems, Inc.","url": "https://www.cisco.com","src": "de","tier": 1,"domains": ["NET"]},{"code": "PROSO025","title": "Certified Internet Web (CIW) Web Security Associate","cost": 350,"org": "Certification Partners","url": "https://www.ciwcertified.com/ciw-certifications","src": "de","tier": 1,"domains": ["SEC"]},{"code": "GLIAC004","title": "GIAC Information Security Fundamentals (GISF)","cost": 395,"org": "Global Information Assurance Certification","url": "https://www.giac.org","src": "adult","tier": 1,"domains": ["SEC"]},{"code": "PRMIN004","title": "PMI Project Management Ready","cost": 555,"org": "Project Management Institute (PMI)","url": "https://www.pmi.org/certifications","src": "de","tier": 1,"domains": ["PM"]},{"code": "ICOEC010","title": "EC-Council Digital Forensics Essentials (DFE)","cost": 600,"org": "EC-Council","url": "https://www.eccouncil.org/","src": "de","tier": 1,"domains": ["SEC"]},{"code": "ICOEC011","title": "EC-Council Ethical Hacking Essentials (EHE)","cost": 700,"org": "EC-Council","url": "https://www.eccouncil.org/","src": "de","tier": 1,"domains": ["SEC"]},{"code": "ICOEC012","title": "EC-Council Network Defense Essentials (NDE)","cost": 800,"org": "EC-Council","url": "https://www.eccouncil.org/","src": "de","tier": 1,"domains": ["SEC"]},{"code": "MSSCN001","title": "MSSC Certified Production Technician (CPT)","cost": null,"org": "Manufacturing Skills Standards Council (MSSC)","url": "https://www.msscusa.org","src": "adult","tier": 1,"domains": ["SUP"]},{"code": "SALES001","title": "Salesforce Certified Administrator","cost": 0,"org": "Salesforce","url": "https://trailhead.salesforce.com/en/credentials/administratoroverview","src": "de","tier": 2,"domains": ["DB","PM"]},{"code": "ISOGR002","title": "TOSA® JavaScript Certified User - Advanced Level","cost": 50,"org": "Isograd Inc.","url": "https://tosa.org","src": "de","tier": 2,"domains": ["PRG"]},{"code": "ISOGR003","title": "TOSA® Python Certified User – Advanced Level","cost": 50,"org": "Isograd Inc.","url": "https://tosa.org","src": "de","tier": 2,"domains": ["PRG"]},{"code": "ISOGR004","title": "TOSA® Web Developer Certified User – Advanced Level","cost": 50,"org": "Isograd Inc.","url": "https://tosa.org","src": "de","tier": 2,"domains": ["PRG"]},{"code": "ISOGR005","title": "TOSA® WordPress Certified User – Advanced or Higher (Secondary)","cost": 50,"org": "Isograd Inc.","url": "https://tosa.org","src": "de","tier": 2,"domains": ["PRG"]},{"code": "CERTI008","title": "Information Technology Specialist (ITS) - HTML5 Application Development","cost": 120,"org": "Certiport, A Pearson VUE Business","url": "https://certiport.pearsonvue.com/Certifications/ITSpecialist/Certification/Overview","src": "de","tier": 2,"domains": ["PRG"]},{"code": "CERTI013","title": "Information Technology Specialist (ITS) - Java","cost": 120,"org": "Certiport, A Pearson VUE Business","url": "https://certiport.pearsonvue.com/Certifications/ITSpecialist/Certification/Overview","src": "de","tier": 2,"domains": ["PRG"]},{"code": "CERTI010","title": "Information Technology Specialist (ITS) - JavaScript","cost": 120,"org": "Certiport, A Pearson VUE Business","url": "https://certiport.pearsonvue.com/Certifications/ITSpecialist/Certification/Overview","src": "de","tier": 2,"domains": ["PRG"]},{"code": "CERTI012","title": "Information Technology Specialist (ITS) - Python","cost": 120,"org": "Certiport, A Pearson VUE Business","url": "https://certiport.pearsonvue.com/Certifications/ITSpecialist/Certification/Overview","src": "de","tier": 2,"domains": ["PRG"]},{"code": "KNOWL007","title": ".NET Coding Specialist","cost": 129,"org": "Knowledge Pillars Education Inc.","url": "https://knowledge-pillars.com/dotnet-coding-specialist-certification/","src": "de","tier": 2,"domains": ["PRG"]},{"code": "KNOWL005","title": "C# Coding Specialist","cost": 129,"org": "Knowledge Pillars Education Inc.","url": "https://knowledge-pillars.com/csharp-coding-specialist-certification/","src": "both","tier": 2,"domains": ["PRG"]},{"code": "KNOWL015","title": "C++ Coding Specialist","cost": 129,"org": "Knowledge Pillars Education Inc.","url": "https://knowledge-pillars.com/cpp-coding-specialist-certification/","src": "de","tier": 2,"domains": ["PRG"]},{"code": "KNOWL018","title": "Java Coding Specialist (JCS)","cost": 129,"org": "Knowledge Pillars Education Inc.","url": "https://knowledge-pillars.com/java-coding-specialist-certification/","src": "de","tier": 2,"domains": ["PRG"]},{"code": "KNOWL004","title": "JavaScript Coding Specialist","cost": 129,"org": "Knowledge Pillars Education Inc.","url": "https://knowledge-pillars.com/javascript-coding-specialist-certification/","src": "both","tier": 2,"domains": ["PRG"]},{"code": "KNOWL008","title": "PHP Coding Specialist","cost": 129,"org": "Knowledge Pillars Education Inc.","url": "https://knowledge-pillars.com/php-coding-specialist-cert/","src": "de","tier": 2,"domains": ["PRG"]},{"code": "KNOWL001","title": "Python Coding Specialist (PCS)","cost": 129,"org": "Knowledge Pillars Education Inc.","url": "https://knowledge-pillars.com/python-coding-apprentice-certification/","src": "both","tier": 2,"domains": ["PRG"]},{"code": "KNOWL010","title": "T-SQL Coding Specialist","cost": 129,"org": "Knowledge Pillars Education Inc.","url": "https://knowledge-pillars.com/t-sql-coding-specialist-certification/","src": "de","tier": 2,"domains": ["DB"]},{"code": "KNOWL014","title": "Web Certified Administrator – for the WordPress Platform","cost": 129,"org": "Knowledge Pillars Education Inc.","url": "https://knowledge-pillars.com/wp-certified-administrator/","src": "de","tier": 2,"domains": ["PRG"]},{"code": "KNOWL011","title": "Web Page Builder Specialist – focused on Elementor for the WordPress Platform","cost": 129,"org": "Knowledge Pillars Education Inc.","url": "https://knowledge-pillars.com/wp-elementor-specialist/","src": "de","tier": 2,"domains": ["PRG"]},{"code": "KNOWL012","title": "Web eCommerce Specialist – focused on WooCommerce for the WordPress Platform","cost": 129,"org": "Knowledge Pillars Education Inc.","url": "https://knowledge-pillars.com/wp-woocommerce-specialist/","src": "de","tier": 2,"domains": ["PRG"]},{"code": "KNOWL013","title": "WordPress Certified Developer – for the WordPress Platform","cost": 129,"org": "Knowledge Pillars Education Inc.","url": "https://knowledge-pillars.com/wp-certified-developer/","src": "de","tier": 2,"domains": ["PRG"]},{"code": "AMAZN001","title": "AWS Certified Solutions Architect - Associate","cost": 150,"org": "Amazon","url": "https://aws.amazon.com/certification/","src": "adult","tier": 2,"domains": ["CLD"]},{"code": "AMAZN008","title": "AWS Certified SysOps Administrator- Associate","cost": 150,"org": "Amazon","url": "https://aws.amazon.com/certification/","src": "adult","tier": 2,"domains": ["CLD","VIRT"]},{"code": "UNITY002","title": "Unity Certified User: Programmer","cost": 150,"org": "Unity Technologies","url": "https://certiport.pearsonvue.com/Certifications/Unity/Certified-User/Certify.aspx","src": "de","tier": 2,"domains": ["PRG"]},{"code": "MICRO120","title": "Microsoft Certified: Azure Administrator Associate","cost": 165,"org": "Microsoft Corporation","url": "https://www.microsoft.com/learning/en/us/default.aspx","src": "both","tier": 2,"domains": ["CLD","VIRT"]},{"code": "GOOGL001","title": "Google Associate Cloud Engineer","cost": 200,"org": "Google","url": "https://cloud.google.com/certification","src": "adult","tier": 2,"domains": ["CLD"]},{"code": "ORACL001","title": "Oracle Foundations Associate, Database","cost": 245,"org": "Oracle Corporation","url": "https://www.oracle.com","src": "adult","tier": 2,"domains": ["DB"]},{"code": "ORACL004","title": "Oracle Foundations Associate, Java","cost": 245,"org": "Oracle Corporation","url": "https://www.oracle.com","src": "both","tier": 2,"domains": ["PRG"]},{"code": "ETAIN009","title": "Data Cabling Installer Certification (DCIC)","cost": 300,"org": "Electronics Technician Association International","url": "https://www.eta-i.org","src": "adult","tier": 2,"domains": ["NET"]},{"code": "SASIN001","title": "SAS Base Programming Specialist","cost": 300,"org": "SAS","url": "https://www.sas.com/en_us/certification.html","src": "de","tier": 2,"domains": ["DAT"]},{"code": "COMPT001","title": "CompTIA A+","cost": 331,"org": "Computing Technology Industry Association (CompTIA)","url": "https://www.comptia.org","src": "both","tier": 2,"domains": ["SUP"]},{"code": "COMPT014","title": "CompTIA Cloud+","cost": 331,"org": "Computing Technology Industry Association (CompTIA)","url": "https://www.comptia.org","src": "both","tier": 2,"domains": ["CLD","VIRT"]},{"code": "COMPT006","title": "CompTIA Network+","cost": 331,"org": "Computing Technology Industry Association (CompTIA)","url": "https://www.comptia.org","src": "both","tier": 2,"domains": ["NET"]},{"code": "COMPT007","title": "CompTIA Project+","cost": 331,"org": "Computing Technology Industry Association (CompTIA)","url": "https://www.comptia.org","src": "both","tier": 2,"domains": ["PM"]},{"code": "COMPT021","title": "CompTIA Data+","cost": 338,"org": "Computing Technology Industry Association (CompTIA)","url": "https://www.comptia.org","src": "adult","tier": 2,"domains": ["DAT"]},{"code": "COMPT008","title": "CompTIA Security+","cost": 338,"org": "Computing Technology Industry Association (CompTIA)","url": "https://www.comptia.org","src": "both","tier": 2,"domains": ["SEC"]},{"code": "ETAIN008","title": "Associate Certified Electronics Technician (CETa)","cost": 350,"org": "Electronics Technician Association International","url": "https://www.eta-i.org","src": "adult","tier": 2,"domains": ["SUP"]},{"code": "PROSO027","title": "Certified Internet Web (CIW) Advanced HTML5 & CSS3 Specialist","cost": 350,"org": "Certification Partners","url": "https://www.ciwcertified.com","src": "both","tier": 2,"domains": ["PRG"]},{"code": "PROSO034","title": "Certified Internet Web (CIW) Artificial Intelligence Associate","cost": 350,"org": "Certification Partners","url": "https://www.ciwcertified.com/ciw-certifications/artificial-intelligence-series/AI-Associate","src": "de","tier": 2,"domains": ["AI"]},{"code": "PROSO006","title": "Certified Internet Web (CIW) Database Design Specialist","cost": 350,"org": "Certification Partners","url": "https://www.ciwcertified.com/ciw-certifications","src": "both","tier": 2,"domains": ["DB"]},{"code": "PROSO017","title": "Certified Internet Web (CIW) JavaScript Specialist","cost": 350,"org": "Certification Partners","url": "https://www.ciwcertified.com/ciw-certifications","src": "both","tier": 2,"domains": ["PRG"]},{"code": "PROSO032","title": "Certified Internet Web (CIW) User Interface Designer","cost": 350,"org": "Certification Partners","url": "https://www.ciwcertified.com/ciw-certifications","src": "de","tier": 2,"domains": ["PRG"]},{"code": "ETAIN002","title": "Fiber Optics Installer (FOI)","cost": 400,"org": "Electronics Technician Association International","url": "https://www.eta-i.org","src": "adult","tier": 2,"domains": ["NET"]},{"code": "ICOEC013","title": "EC-Council Certified Cybersecurity Technician (CCT)","cost": 600,"org": "EC-Council","url": "https://www.eccouncil.org/","src": "de","tier": 2,"domains": ["SEC"]},{"code": "GLIAC005","title": "GIAC Security Essentials (GSEC)","cost": 799,"org": "Global Information Assurance Certification","url": "https://www.giac.org","src": "adult","tier": 2,"domains": ["SEC"]},{"code": "ISOGR010","title": "TOSA® JavaScript Certified User – Expert Level","cost": 50,"org": "Isograd Inc.","url": "https://tosa.org","src": "both","tier": 3,"domains": ["PRG"]},{"code": "ISOGR011","title": "TOSA® Python Certified User – Expert Level","cost": 50,"org": "Isograd Inc.","url": "https://tosa.org","src": "both","tier": 3,"domains": ["PRG"]},{"code": "ISOGR009","title": "TOSA® Web Developer Certified User– Expert Level","cost": 50,"org": "Isograd Inc.","url": "https://tosa.org","src": "both","tier": 3,"domains": ["PRG"]},{"code": "APPLE022","title": "Apple App Development with Swift Associate","cost": 100,"org": "Apple, Inc.","url": "https://www.certiport.com/apple","src": "de","tier": 3,"domains": ["PRG"]},{"code": "AMAZN003","title": "AWS Certified Developer - Associate","cost": 150,"org": "Amazon","url": "https://aws.amazon.com/certification/","src": "adult","tier": 3,"domains": ["PRG","CLD"]},{"code": "UNITY004","title": "Unity Certified User: VR Developer","cost": 150,"org": "Unity Technologies","url": "https://certiport.pearsonvue.com/Certifications/Unity/Certified-User/Certify.aspx","src": "de","tier": 3,"domains": ["PRG"]},{"code": "MICRO117","title": "Microsoft 365 Certified: Enterprise Administrator Expert","cost": 165,"org": "Microsoft Corporation","url": "https://www.microsoft.com/learning/en/us/default.aspx","src": "adult","tier": 3,"domains": ["CLD"]},{"code": "MICRO121","title": "Microsoft Certified: Azure AI Engineer Associate","cost": 165,"org": "Microsoft Corporation","url": "https://learn.microsoft.com/en-us/certifications/","src": "adult","tier": 3,"domains": ["AI"]},{"code": "MICRO129","title": "Microsoft Certified: Azure Developer Associate","cost": 165,"org": "Microsoft Corporation","url": "https://www.microsoft.com/learning/en/us/default.aspx","src": "adult","tier": 3,"domains": ["PRG","CLD"]},{"code": "MICRO122","title": "Microsoft Certified: Power Platform Developer Associate","cost": 165,"org": "Microsoft Corporation","url": "https://www.microsoft.com/learning/en/us/default.aspx","src": "adult","tier": 3,"domains": ["PRG"]},{"code": "ORACL002","title": "Oracle Certified Professional (OCP): Database","cost": 245,"org": "Oracle Corporation","url": "https://www.oracle.com","src": "adult","tier": 3,"domains": ["DB"]},{"code": "ORACL005","title": "Oracle Certified Professional (OCP): Java Programmer","cost": 245,"org": "Oracle Corporation","url": "https://www.oracle.com","src": "both","tier": 3,"domains": ["PRG"]},{"code": "AMAZN006","title": "AWS Certified Machine Learning - Specialty","cost": 300,"org": "Amazon","url": "https://aws.amazon.com/certification/","src": "adult","tier": 3,"domains": ["AI","DAT"]},{"code": "AMAZN007","title": "AWS Certified Security - Specialty","cost": 300,"org": "Amazon","url": "https://aws.amazon.com/certification/","src": "both","tier": 3,"domains": ["SEC","CLD"]},{"code": "CISCO026","title": "Cisco Certified Network Associate (CCNA)","cost": 330,"org": "Cisco Systems, Inc.","url": "https://www.cisco.com","src": "both","tier": 3,"domains": ["NET"]},{"code": "COMPT009","title": "CompTIA Server+","cost": 331,"org": "Computing Technology Industry Association (CompTIA)","url": "https://www.comptia.org","src": "both","tier": 3,"domains": ["SUP","VIRT"]},{"code": "COMPT016","title": "CompTIA Cybersecurity Analyst (CySA+)","cost": 338,"org": "Computing Technology Industry Association (CompTIA)","url": "https://www.comptia.org","src": "both","tier": 3,"domains": ["SEC"]},{"code": "COMPT005","title": "CompTIA Linux+","cost": 338,"org": "Computing Technology Industry Association (CompTIA)","url": "https://www.comptia.org","src": "both","tier": 3,"domains": ["SUP","VIRT"]},{"code": "COMPT019","title": "CompTIA PenTest+","cost": 338,"org": "Computing Technology Industry Association (CompTIA)","url": "https://www.comptia.org","src": "adult","tier": 3,"domains": ["SEC"]},{"code": "PROSO030","title": "Certified Internet Web (CIW) Data Analyst Specialist","cost": 350,"org": "Certification Partners","url": "https://www.ciwcertified.com","src": "both","tier": 3,"domains": ["DAT"]},{"code": "PROSO023","title": "Certified Internet Web (CIW) Web Development Professional","cost": 350,"org": "Certification Partners","url": "https://www.ciwcertified.com","src": "both","tier": 3,"domains": ["PRG"]},{"code": "PROSO010","title": "Certified Internet Web (CIW) Web Security Professional","cost": 350,"org": "Certification Partners","url": "https://www.ciwcertified.com/ciw-certifications","src": "adult","tier": 3,"domains": ["SEC"]},{"code": "CWNPT001","title": "Certified Wireless Network Administrator (CWNA)","cost": 395,"org": "Certified Wireless Network Professionals (CWNP)","url": "https://www.cwnp.com","src": "adult","tier": 3,"domains": ["NET"]},{"code": "REDHT002","title": "Red Hat Certified System Administrator (RHCSA)","cost": 395,"org": "Red Hat","url": "https://www.redhat.com/","src": "both","tier": 3,"domains": ["SUP","VIRT"]},{"code": "ETAIN010","title": "Fiber Optics Technician (FOT)","cost": 400,"org": "Electronics Technician Association International","url": "https://www.eta-i.org","src": "adult","tier": 3,"domains": ["NET"]},{"code": "ETAIN011","title": "Fiber Optics Technician-Outside Plant (FOT-OSP)","cost": 400,"org": "Electronics Technician Association International","url": "https://www.eta-i.org","src": "adult","tier": 3,"domains": ["NET"]},{"code": "ICOEC007","title": "EC-Council Certified Incident Handler (ECIH)","cost": 500,"org": "EC-Council","url": "https://www.eccouncil.org/","src": "adult","tier": 3,"domains": ["SEC"]},{"code": "IECON001","title": "Field Service Engineer - Low Voltage Systems","cost": 500,"org": "Independent Electrical Contractors","url": "https://iecflorida.org/","src": "adult","tier": 3,"domains": ["SUP"]},{"code": "IECON002","title": "Field Service Engineer - Voice-Data-Video","cost": 500,"org": "Independent Electrical Contractors","url": "https://iecflorida.org/","src": "adult","tier": 3,"domains": ["NET"]},{"code": "ICOEC008","title": "EC-Council Certified Network Defender (CND)","cost": 700,"org": "EC-Council","url": "https://www.eccouncil.org/","src": "both","tier": 3,"domains": ["SEC"]},{"code": "IISSC002","title": "Systems Security Certified Practitioner (SSCP)","cost": 749,"org": "International Information Systems Security Certification Consortium, Inc.","url": "https://www.isc2.org","src": "adult","tier": 3,"domains": ["SEC"]},{"code": "ICOEC009","title": "EC-Council Certified Security Operations Center (SOC) Analyst (CSA)","cost": 800,"org": "EC-Council","url": "https://www.eccouncil.org/","src": "adult","tier": 3,"domains": ["SEC"]},{"code": "GLIAC009","title": "GIAC Certified Incident Handler (GCIH)","cost": 1999,"org": "Global Information Assurance Certification","url": "https://www.giac.org","src": "both","tier": 3,"domains": ["SEC"]},{"code": "GLIAC006","title": "GIAC Cloud Security Automation (GCSA)","cost": 1999,"org": "Global Information Assurance Certification","url": "https://www.giac.org","src": "adult","tier": 3,"domains": ["CLD","SEC"]},{"code": "GLIAC007","title": "GIAC Cloud Security Essentials (GCLD)","cost": 1999,"org": "Global Information Assurance Certification","url": "https://www.giac.org","src": "adult","tier": 3,"domains": ["CLD","SEC"]},{"code": "CPSTL001","title": "Check Point Certified Security Administrator (CCSA)","cost": 6000,"org": "Check Point Software Technologies Ltd.","url": "https://www.checkpoint.com","src": "adult","tier": 3,"domains": ["SEC","NET"]},{"code": "COMPT017","title": "CompTIA Security X","cost": 393,"org": "Computing Technology Industry Association (CompTIA)","url": "https://www.comptia.org","src": "both","tier": 4,"domains": ["SEC"]},{"code": "ORACL003","title": "Oracle Certified Master (OCM): Database","cost": 500,"org": "Oracle Corporation","url": "https://www.oracle.com","src": "adult","tier": 4,"domains": ["DB"]},{"code": "CISCO010","title": "Cisco Certified Design Expert (CCDE)","cost": 595,"org": "Cisco Systems, Inc.","url": "https://www.cisco.com","src": "adult","tier": 4,"domains": ["NET"]},{"code": "IISSC005","title": "Certified Cloud Security Professional (CCSP)","cost": 749,"org": "International Information Systems Security Certification Consortium, Inc.","url": "https://www.isc2.org","src": "both","tier": 4,"domains": ["CLD","SEC"]},{"code": "IISSC004","title": "Certified Information Systems Security Professional (CISSP)","cost": 749,"org": "International Information Systems Security Certification Consortium, Inc.","url": "https://www.isc2.org","src": "adult","tier": 4,"domains": ["SEC"]},{"code": "ICOEC002","title": "EC-Council Certified Ethical Hacker (CEH)","cost": 1000,"org": "EC-Council","url": "https://www.eccouncil.org/","src": "adult","tier": 4,"domains": ["SEC"]},{"code": "ICOEC003","title": "EC-Council Computer Hacking Forensic Investigator (CHFI)","cost": 1000,"org": "EC-Council","url": "https://www.eccouncil.org/","src": "adult","tier": 4,"domains": ["SEC"]},{"code": "GLIAC001","title": "GIAC Certified Forensic Analyst (GCFA)","cost": 2099,"org": "Global Information Assurance Certification","url": "https://www.giac.org","src": "adult","tier": 4,"domains": ["SEC"]},{"code": "GLIAC002","title": "GIAC Certified Forensic Examiner (GCFE)","cost": 2099,"org": "Global Information Assurance Certification","url": "https://www.giac.org","src": "adult","tier": 4,"domains": ["SEC"]},{"code": "GLIAC008","title": "GIAC Penetration Tester (GPEN)","cost": 2099,"org": "Global Information Assurance Certification","url": "https://www.giac.org","src": "both","tier": 4,"domains": ["SEC"]},{"code": "CPSTL002","title": "Check Point Certified Security Expert (CCSE)","cost": 7500,"org": "Check Point Software Technologies Ltd.","url": "https://www.checkpoint.com","src": "adult","tier": 4,"domains": ["SEC","NET"]}];
+
+/* ---------------- domains ---------------- */
+const DOM = {
+ SUP:{n:"Support & Hardware", s:"Support", blurb:"You keep people working. Support and hardware technicians diagnose failures, repair and image machines, and are the first call when something stops. It is hands-on, systematic, and the most common way into the field.", roles:"Help Desk Technician · Field Service Tech · Desktop Support · Bench Technician"},
+ PRG:{n:"Programming", s:"Programming", blurb:"You build the thing. Programmers turn a described need into instructions a machine follows exactly, then debug until it holds up. Expect long stretches of being wrong before being right.", roles:"Junior Developer · Web Developer · Application Support Analyst · QA Automation"},
+ NET:{n:"Networking", s:"Networking", blurb:"You move the data. Networking work is designing, wiring, configuring and troubleshooting the paths that connect devices — from patch panels and fiber up through routing and wireless.", roles:"Network Technician · NOC Technician · Fiber & Cabling Installer · Network Administrator"},
+ SEC:{n:"Security", s:"Security", blurb:"You think like the opponent. Security is anticipating how a system will be misused and closing the gap before someone else finds it. Equal parts technical depth and suspicion.", roles:"SOC Analyst · Security Technician · Incident Responder · Penetration Tester"},
+ DB:{n:"Database Design", s:"Database", blurb:"You decide where information lives. Database work is structure — modeling how records relate, keeping them accurate, and making millions of them retrievable in an instant.", roles:"Database Technician · SQL Developer · Data Steward · CRM Administrator"},
+ DAT:{n:"Data Analytics", s:"Analytics", blurb:"You turn data into a decision. Analytics is asking a sharp question, checking honestly whether the data can answer it, and making the result clear to people who won't read the spreadsheet.", roles:"Data Analyst · Reporting Analyst · Business Intelligence Technician"},
+ CLD:{n:"Cloud", s:"Cloud", blurb:"You build on infrastructure you rent instead of own. Cloud work is provisioning, scaling and paying for computing you will never physically touch — and knowing what it costs when traffic triples.", roles:"Cloud Support Associate · Cloud Administrator · Solutions Architect"},
+ VIRT:{n:"Virtualization", s:"Virtualization", blurb:"You get more out of less. Virtualization runs many logical machines on far fewer physical ones, and gives you a lab you can break and restore in seconds.", roles:"Systems Administrator · Virtualization Administrator · Datacenter Technician"},
+ AI:{n:"Artificial Intelligence", s:"AI", blurb:"You work with systems that learn from examples. The hard part is judgment — what data to train on, where the output can be trusted, and where a confident answer is simply wrong.", roles:"AI/ML Support Specialist · Automation Specialist · Machine Learning Engineer"},
+ PM:{n:"Project Management", s:"Project Mgmt", blurb:"You make the work land. Project management is scope, schedule and budget — and the honest conversation when one of the three has to give.", roles:"Project Coordinator · IT Project Manager · Scrum Master · Implementation Consultant"}
+};
+const ORDER = ["SUP","PRG","NET","SEC","DB","DAT","CLD","VIRT","AI","PM"];
+
+const COVNOTE = {
+ VIRT:"Florida's CAPE lists don't yet fund a virtualization-specific credential. The certifications below build the same skills through server, Linux and cloud platforms — that is the realistic route into this work today.",
+ PM:"Only two project-management credentials are CAPE-funded, so this path is strongest when you pair it with a technical certification from your second-highest area.",
+ AI:"AI credentials on the CAPE lists are still few and mostly entry-level. Programming and Data Analytics certifications give this path something to stand on.",
+ DAT:"Analytics credentials are thin on the CAPE lists. SQL and database certifications are the usual complement and appear under Database Design."
+};
+
+const TIERS = [
+ {n:"Tier 1", h:"Foundational", d:"No experience assumed — start here"},
+ {n:"Tier 2", h:"Core", d:"The credential employers screen for"},
+ {n:"Tier 3", h:"Professional", d:"Assumes working experience"},
+ {n:"Tier 4", h:"Expert & specialty", d:"Years in, usually employer-funded"}
+];
+
+/* ---------------- interest bank ---------------- */
+const INT = [
+["SUP","When something breaks, I want to open it up and see how it works inside."],
+["SUP","I like being the person other people come to when their phone or laptop stops working."],
+["SUP","Following a process step by step until I find the cause of a problem sounds satisfying."],
+["SUP","I'd rather fix a physical thing I can hold than something I can only see on a screen."],
+["PRG","I enjoy building something from nothing, even when it takes many tries to get right."],
+["PRG","I like puzzles where I have to work out the exact right order of steps."],
+["PRG","If a project mostly worked but had one small flaw, I'd keep going until I found it."],
+["PRG","Writing instructions that a machine follows exactly appeals to me."],
+["NET","I'm curious how a message gets from my phone to someone on the other side of the world."],
+["NET","I like drawing out how things connect — maps, diagrams, wiring, routes."],
+["NET","Setting up equipment until everything talks to each other sounds like a good day."],
+["NET","I'd enjoy a job that moves me between wiring closets, equipment racks and rooftops."],
+["SEC","I notice when something seems off, even when other people don't."],
+["SEC","I'd enjoy trying to break into a system on purpose to prove it isn't safe."],
+["SEC","I like the idea of protecting people from being scammed or robbed."],
+["SEC","Thinking like an opponent — \u201chow would someone get around this?\u201d — comes naturally to me."],
+["DB","I like taking messy information and sorting it into clean categories."],
+["DB","I'd enjoy designing the structure that holds all of a company's information."],
+["DB","Making sure records are accurate and nothing is duplicated feels important to me."],
+["DB","I'm comfortable thinking about how one list of things relates to another list."],
+["DAT","I like finding the story hidden inside a pile of numbers."],
+["DAT","When I see a chart, I want to know what it's leaving out."],
+["DAT","I'd rather answer a question with evidence than with an opinion."],
+["DAT","Spotting a pattern nobody else noticed would feel like a win."],
+["CLD","I like the idea of building something thousands of people use at the same time."],
+["CLD","Working out how to do the same job for less money interests me."],
+["CLD","Managing services I set up online, rather than machines I can touch, sounds fine to me."],
+["CLD","I want to know how big companies stay online when traffic suddenly spikes."],
+["VIRT","Running several separate computers on one physical machine sounds appealing."],
+["VIRT","I like squeezing the most out of limited resources."],
+["VIRT","I'd enjoy building a practice lab I can break and rebuild in seconds."],
+["VIRT","Looking after servers, and the room they live in, interests me."],
+["AI","I want to understand how tools like chatbots and image generators actually work."],
+["AI","I'd enjoy teaching a system to recognize things by showing it examples."],
+["AI","The question of when a computer's answer should be trusted interests me."],
+["AI","I'd like to build something that gets better the more data it sees."],
+["PM","In group work, I'm usually the one tracking what's due and who's doing it."],
+["PM","I like making a plan, then adjusting it when things change."],
+["PM","I'd enjoy being the person who talks to the client and translates for the tech team."],
+["PM","Keeping a project on schedule and on budget sounds satisfying to me."]
+];
+
+/* ---------------- aptitude bank ---------------- */
+const APT = [
+["SUP","A monitor is blank and its power light is off. Another monitor works fine on the same outlet with the same cable. What is the most logical next step?",
+ ["Reinstall the computer's operating system","Swap in the known-working monitor and see whether the problem follows it","Replace the wall outlet","Replace the computer"],1],
+["SUP","Four laptops in one room lose Wi-Fi at the same moment. Everything else in the building is fine. What's the most likely cause?",
+ ["All four laptops failed simultaneously","Something those four share — such as the nearest access point — has failed","The internet is out for the whole city","All four need new keyboards"],1],
+["SUP","You change two things at once and the problem disappears. What's the drawback?",
+ ["There isn't one — the problem is solved","You don't know which change actually fixed it","The computer will run more slowly","Both changes must now be undone"],1],
+["SUP","A computer runs fine for about twenty minutes, then shuts off suddenly. Every time. Which cause best fits that pattern?",
+ ["A dirty keyboard","Something that heats up over time, such as a failing fan or a blocked vent","The wrong font is installed","The screen resolution is too high"],1],
+
+["PRG","Follow these steps: add 3 to the number, double the result, then subtract 4. Starting with 5, what do you end with?",
+ ["12","14","18","20"],0,1],
+["PRG","The instruction is: \u201cWhile the cup is not full, pour one ounce.\u201d The cup holds 8 ounces and starts empty. How many times is an ounce poured?",
+ ["7","8","9","It never stops"],1,1],
+["PRG","A program should print \u201cPass\u201d for a score of 70 or higher. A score of exactly 70 prints \u201cFail.\u201d What's wrong?",
+ ["The score is invalid","The comparison checks \u201cgreater than\u201d where it should check \u201cgreater than or equal to\u201d","The program should print nothing at 70","70 isn't a possible score"],1],
+["PRG","You need to greet 500 users by name. Which approach is best?",
+ ["Write 500 separate greeting lines","Write one instruction that repeats once for each name in the list","Greet only the first user","Have each user greet themselves"],1],
+
+["NET","Four offices are linked in a line: A to B, B to C, C to D. There are no other links. B's equipment fails. Who can still communicate?",
+ ["A and C","C and D only","A and D","Nobody"],1],
+["NET","One internet line is shared by 200 people in a building. Every day at noon everything slows down. What does that suggest?",
+ ["The computers have viruses","Demand at that hour is greater than the shared line can carry","The building is losing power","People are using the wrong browser"],1],
+["NET","Mail addressed to \u201cApt 4B, 1200 Main St, Naples FL\u201d is sorted state, then city, then street, then apartment. Why that order?",
+ ["Alphabetical order is required by law","Going broadest to most specific eliminates the most possibilities at each step","Apartment numbers rarely repeat","The order makes no difference"],1],
+["NET","One computer is on the third floor, the other is in another city. They need to share files. Which is true?",
+ ["They must be physically next to each other","They can share files as long as both connect through networks that route between them","Only computers in the same building can connect","The distance makes it impossible"],1],
+
+["SEC","An email claims to be from your bank, says your account closes in one hour, and links to a page asking for your password. Which detail is the strongest warning sign?",
+ ["That it concerns your bank","The urgent deadline, designed to make you act before you think","That it arrived in the morning","That it carries the bank's logo"],1],
+["SEC","A door requires a badge. An employee holds it open for a stranger carrying boxes. What did the badge system fail to stop?",
+ ["A technical flaw in the badge reader","A person being talked past the control by another person","A power outage","A lost badge"],1],
+["SEC","A company protects everything behind a single strong password. What's the main weakness?",
+ ["The password is too long to type","One compromise hands an attacker everything at once","Passwords are an outdated idea","Employees will forget it"],1],
+["SEC","A policy forces a password change every 30 days. Employees start using \u201cSummer2026!\u201d, then \u201cSummer2027!\u201d. What does that show?",
+ ["The policy is working exactly as intended","A rule can be followed to the letter and still produce predictable, weak passwords","Employees need faster computers","Passwords should never be changed"],1],
+
+["DB","A school keeps one row per student and repeats the teacher's name and phone number in every row. The teacher changes numbers. What's the problem?",
+ ["Nothing — it's simple to manage","The number must be corrected in every row, and any row that's missed is now wrong","Students will lose their grades","The teacher needs a new ID number"],1],
+["DB","One customer can place many orders, but each order belongs to exactly one customer. That relationship is:",
+ ["One customer to many orders","One order to many customers","Many customers to many orders","One to one"],0],
+["DB","You need to find one specific student among 40,000 records instantly. What makes that possible?",
+ ["A faster monitor","A unique ID on each student that the system can look up directly","Sorting the whole list by first name","Printing the list"],1],
+["DB","A form lets people type their state as \u201cFL\u201d, \u201cFla\u201d, \u201cFlorida\u201d or \u201cflorida\u201d. Later someone counts customers per state. What happens?",
+ ["The count comes out correct","One state is counted as four different states","The form stops working","Florida is left out entirely"],1],
+
+["DAT","Nine employees earn $30,000 and one earns $500,000. Which number better describes typical pay?",
+ ["The average, about $77,000","The middle value, $30,000","The highest value","The total"],1],
+["DAT","Ice cream sales and drownings both rise in July. What's the best conclusion?",
+ ["Ice cream causes drowning","Both rise because it's hot and more people swim","Drowning causes ice cream sales","The data must be fake"],1],
+["DAT","On a chart, Product A's bar looks three times taller than Product B's. A sold 110 units; B sold 100. What most likely explains it?",
+ ["The chart is drawn correctly","The vertical axis doesn't start at zero","Product A costs more","B's bar was left out"],1],
+["DAT","A survey about school lunch is given only to students already standing in the lunch line. What's the flaw?",
+ ["The sample is too large","It misses students who avoid the lunch line — likely the least satisfied ones","Surveys are never reliable","It should have been given on a weekend"],1],
+
+["CLD","A store's website is busy three hours a day and quiet the rest. Which approach costs least while still handling the rush?",
+ ["Buy enough machines for the busiest hour and run them all day","Add capacity only during the busy hours, then release it","Shut the site down when it gets busy","Run one small machine at all times"],1],
+["CLD","A service promises 99.9% uptime. Roughly how much downtime does that allow in a 30-day month?",
+ ["About 43 minutes","About 3 hours","About 7 hours","None at all"],0,1],
+["CLD","Your files sit on one company's service and can't easily be moved elsewhere. In plain terms, that risk is:",
+ ["A volume discount","Being locked in to a single provider","A backup strategy","A firewall"],1],
+["CLD","Your application's only copy of its data lives on one machine, in one building. What's the biggest risk?",
+ ["The application will run too fast","A single fire, flood or hardware failure takes everything","Users get too many choices","Storage becomes free"],1],
+
+["VIRT","A server has 64 GB of memory. Each virtual machine needs 8 GB, and you must leave 8 GB for the host itself. How many virtual machines fit?",
+ ["6","7","8","9"],1,1],
+["VIRT","You want to test a risky change without endangering the real system. What's the best approach?",
+ ["Make the change on the real system after hours","Copy the system into an isolated virtual machine and change that copy","Make the change and hope","Ask someone else to make it"],1],
+["VIRT","Ten small servers each sit idle 90% of the time. What's the main benefit of consolidating them onto one physical machine?",
+ ["The software becomes free","Wasted capacity, power and floor space all drop","Every server becomes faster than before","Backups are no longer needed"],1],
+["VIRT","You take a snapshot of a virtual machine, install software that breaks it, then restore the snapshot. What happens?",
+ ["The machine stays permanently broken","It returns to exactly the state it was in when the snapshot was taken","The software finishes installing correctly","A second machine is created"],1],
+
+["AI","A system trained only on photographs of golden retrievers is asked to identify dogs. What's the likely result?",
+ ["It identifies every breed correctly","It struggles with breeds it was never shown","It refuses to answer","It runs faster"],1],
+["AI","A hiring tool learns from ten years of past hires, who were mostly one type of person. What will it most likely do?",
+ ["Correct the imbalance on its own","Repeat the pattern it was shown","Choose at random","Stop working"],1],
+["AI","A chatbot gives a confident answer citing a source that doesn't exist. What does that tell you?",
+ ["It looked the source up and misread it","It produces text that sounds right, so confidence is not evidence of accuracy","It is broken and must be replaced","Someone has hacked it"],1],
+["AI","You want a system to tell ripe tomatoes from unripe ones. Which set of training examples is best?",
+ ["1,000 photos of ripe tomatoes only","500 ripe and 500 unripe, across varied lighting and angles","Ten perfect studio photographs","Photographs of peppers"],1],
+
+["PM","Task B can't start until Task A finishes. A takes 4 days, B takes 3. Task C takes 2 days, depends on nothing, and a second crew can run it alongside. What's the shortest time to finish all three?",
+ ["4 days","5 days","7 days","9 days"],2,1],
+["PM","A project is running late. The client will not move the deadline and will not add money. What's the remaining lever?",
+ ["Unlimited overtime, indefinitely","Reduce what gets delivered, and agree with the client on exactly what's cut","Ignore the deadline","Start the project over"],1],
+["PM","Halfway through, the client asks for one more feature — \u201creal quick.\u201d What should happen first?",
+ ["Add it immediately to keep them happy","Price its effect on schedule and budget, then decide together","Refuse every change on principle","Add it quietly and tell no one"],1],
+["PM","Your team said a task would take 5 days. The client heard \u201cabout a week.\u201d Two weeks later it isn't done and everyone is angry. What failed first?",
+ ["The team's technical skills","A written, shared agreement on what \u201cdone\u201d means and when it's due","The client's budget","The software"],1]
+];
+
+const LIK = ["Not at all like me","A little like me","Somewhat like me","Mostly like me","Very much like me"];
+
+/* interleave so consecutive items come from different domains */
+function interleave(bank){
+  const by={}; bank.forEach((it,i)=>{(by[it[0]]=by[it[0]]||[]).push(i)});
+  const out=[]; let more=true, r=0;
+  while(more){ more=false;
+    for(const d of ORDER){ if(by[d] && by[d][r]!==undefined){ out.push(bank[by[d][r]]); more=true; } }
+    r++;
+  }
+  return out;
+}
+const Q1=interleave(INT), Q2=interleave(APT);
+
+/* Balance where the correct answer sits. Rotating an option list keeps every
+   choice intact; items whose options are naturally ordered are left alone. */
+const KEYPOS=[2,1,3,2,3,0,1,3,0,1,0,2,3,0,3,1,2,1,1,2,3,0,2,2,3,1,0,0,1,3,0,3,1,1,2,3,2,0,0,2];
+Q2.forEach((it,i)=>{
+  if(it[4])return;
+  const t=KEYPOS[i], rot=(it[3]-t+4)%4;
+  it[2]=it[2].slice(rot).concat(it[2].slice(0,rot));
+  it[3]=t;
+});
+
+const TOTAL=Q1.length+Q2.length;
+
+/* ---------------- state ---------------- */
+let idx=0;
+const ans1=new Array(Q1.length).fill(null);
+const ans2=new Array(Q2.length).fill(null);
+
+const $=s=>document.querySelector(s);
+document.getElementById('mastdate').textContent=new Date().toLocaleDateString('en-US',{year:'numeric',month:'short',day:'numeric'});
+
+function show(id){['intro','assess','inter','results','paper'].forEach(s=>{$('#'+s).style.display = (s===id?'block':'none')});}
+
+$('#start').onclick=()=>{idx=0;show('assess');render();window.scrollTo(0,0)};
+$('#startp2').onclick=()=>{idx=Q1.length;show('assess');render();window.scrollTo(0,0)};
+$('#back').onclick=()=>{if(idx>0){idx--; if(idx===Q1.length-1 && $('#inter').style.display==='block'){} show('assess'); render(); window.scrollTo(0,0);}};
+
+function render(){
+  const p1 = idx < Q1.length;
+  $('#ptitle').textContent = p1 ? 'Part 1 — Interest' : 'Part 2 — Reasoning';
+  $('#pnum').textContent = idx+1;
+  $('#pfill').style.width = ((idx)/TOTAL*100)+'%';
+  $('#back').disabled = idx===0;
+  const box=$('#qbox');
+
+  if(p1){
+    const [d,t]=Q1[idx];
+    $('#kbd').textContent='Press 1–5 to answer';
+    box.innerHTML =
+      '<div class="qnum">Item '+(idx+1)+' of '+TOTAL+'</div>'+
+      '<div class="qtext">'+esc(t)+'</div>'+
+      '<div class="scalehint"><span>Not like me</span><span>Very like me</span></div>'+
+      '<div class="opts">'+LIK.map((l,i)=>
+        '<button class="opt'+(ans1[idx]===i?' on':'')+'" data-v="'+i+'"><span class="key">'+(i+1)+'</span>'+l+'</button>').join('')+'</div>';
+    box.querySelectorAll('.opt').forEach(b=>b.onclick=()=>{ans1[idx]=+b.dataset.v;advance()});
+  } else {
+    const j=idx-Q1.length, [d,q,opts]=Q2[j];
+    $('#kbd').textContent='Press 1–4 to answer';
+    box.innerHTML =
+      '<div class="qnum">Item '+(idx+1)+' of '+TOTAL+'</div>'+
+      '<div class="qtext long">'+esc(q)+'</div>'+
+      '<div class="opts">'+opts.map((l,i)=>
+        '<button class="opt'+(ans2[j]===i?' on':'')+'" data-v="'+i+'"><span class="key">'+(i+1)+'</span>'+esc(l)+'</button>').join('')+'</div>';
+    box.querySelectorAll('.opt').forEach(b=>b.onclick=()=>{ans2[j]=+b.dataset.v;advance()});
+  }
+}
+
+function advance(){
+  if(idx===Q1.length-1){ show('inter'); window.scrollTo(0,0); idx++; return; }
+  if(idx===TOTAL-1){ buildResults(); return; }
+  idx++; render(); window.scrollTo(0,0);
+}
+
+document.addEventListener('keydown',e=>{
+  if($('#assess').style.display!=='block')return;
+  const n=parseInt(e.key,10);
+  const p1=idx<Q1.length, max=p1?5:4;
+  if(n>=1&&n<=max){ const b=document.querySelectorAll('#qbox .opt')[n-1]; if(b){b.click();} }
+  if(e.key==='Backspace'&&idx>0){e.preventDefault();$('#back').click();}
+});
+
+function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}
+
+/* ---------------- scoring ---------------- */
+function score(){
+  const iSum={},iN={},aSum={},aN={};
+  ORDER.forEach(d=>{iSum[d]=0;iN[d]=0;aSum[d]=0;aN[d]=0});
+  Q1.forEach((it,i)=>{ const d=it[0]; iN[d]++; if(ans1[i]!==null) iSum[d]+=ans1[i]; });
+  Q2.forEach((it,j)=>{ const d=it[0]; aN[d]++; if(ans2[j]!==null && ans2[j]===it[3]) aSum[d]++; });
+  return ORDER.map(d=>{
+    const interest = Math.round(iSum[d]/(iN[d]*4)*100);
+    const apt = Math.round(aSum[d]/aN[d]*100);
+    return {d, interest, apt, fit: Math.round(interest*0.6 + apt*0.4), correct:aSum[d], of:aN[d]};
+  });
+}
+function quadrant(r){
+  if(r.interest>=60&&r.apt>=60)return{k:'Strong match',t:'Interest and reasoning both point here. This is where to commit.'};
+  if(r.interest>=60&&r.apt<60) return{k:'Wants building',t:'You want this work; the reasoning behind it is still developing. Very trainable.'};
+  if(r.interest<60&&r.apt>=60) return{k:'Untested talent',t:'You reason well here without being drawn to it yet. Worth trying before ruling out.'};
+  return{k:'Lower priority',t:'Neither pull nor pattern showed up strongly today.'};
+}
+
+/* ---------------- results ---------------- */
+function certsFor(d){
+  return CERTS.filter(c=>c.domains.indexOf(d)>=0)
+    .sort((a,b)=> a.tier-b.tier || (a.cost??9999)-(b.cost??9999) || a.title.localeCompare(b.title));
+}
+const SRCLAB={adult:'Adult CAPE',de:'DE CAPE',both:'Both lists'};
+
+function ladderHTML(d){
+  const list=certsFor(d);
+  let h='';
+  for(let t=1;t<=4;t++){
+    const g=list.filter(c=>c.tier===t); if(!g.length)continue;
+    const T=TIERS[t-1];
+    h+='<div class="tier"><div class="tierhead"><span class="tierno">'+T.n+'</span><h3>'+T.h+'</h3><span class="desc">'+T.d+'</span></div><div class="certs">';
+    h+=g.map(c=>
+      '<div class="cert '+c.src+'">'+
+        '<div><div class="ct">'+(c.url&&c.url!=='nan'?'<a href="'+c.url.trim()+'" target="_blank" rel="noopener">'+esc(c.title)+'</a>':esc(c.title))+'</div>'+
+        '<div class="cm">'+esc(c.code)+' · '+esc(c.org)+'</div></div>'+
+        '<div class="right"><span class="cost">'+(c.cost===null?'—':(c.cost===0?'No cost':'$'+c.cost))+'</span>'+
+        '<span class="pill '+c.src+'">'+SRCLAB[c.src]+'</span></div>'+
+      '</div>').join('');
+    h+='</div></div>';
+  }
+  return h;
+}
+
+function pathBlock(r,rank){
+  const d=r.d, M=DOM[d], list=certsFor(d), q=quadrant(r);
+  return '<div class="pathblock" id="path-'+d+'">'+
+    '<div class="ph"><h2>'+(rank?rank+'. ':'')+M.n+'</h2>'+
+    '<span class="cnt">'+list.length+' funded certifications · sorted easiest to hardest</span></div>'+
+    (COVNOTE[d]?'<div class="covnote">'+COVNOTE[d]+'</div>':'')+
+    ladderHTML(d)+'</div>';
+}
+
+function spectrumHTML(res){
+  const s=[...res].sort((a,b)=>b.fit-a.fit);
+  let h='<div class="slabel">Signal across all ten areas</div>'+
+    '<div class="spechead"><span>Area</span><span>Interest &amp; reasoning traces</span><span>Int / Rsn</span></div>'+
+    '<div class="spectrum">';
+  h+=s.map(r=>{
+    const M=DOM[r.d];
+    return '<div class="chan"><div class="cname">'+M.n+'<span>fit '+r.fit+'</span></div>'+
+      '<div class="traces">'+
+        '<div class="gridline" style="left:25%"></div><div class="gridline" style="left:50%"></div><div class="gridline" style="left:75%"></div>'+
+        '<div class="trace int" data-w="'+r.interest+'"></div>'+
+        '<div class="trace apt" data-w="'+r.apt+'"></div>'+
+      '</div>'+
+      '<div class="cnum"><b>'+r.interest+'</b> / '+r.apt+'</div></div>';
+  }).join('');
+  h+='</div><div class="speclegend"><span><i style="background:var(--accent);opacity:.88"></i>Interest</span><span><i style="background:var(--ink);opacity:.5"></i>Reasoning</span><span>Scale 0–100 · gridlines at 25 / 50 / 75</span></div>';
+  return h;
+}
+
+function quadHTML(res){
+  const W=620,H=380, L=52, R=40, T=22, B=46;
+  const x=v=>L+(v/100)*(W-L-R), y=v=>H-B-(v/100)*(H-B-T);
+  const ranked=[...res].sort((a,b)=>b.fit-a.fit);
+
+  // markers are numbered by fit rank; separate any that land on the same point
+  const pts=ranked.map((r,i)=>({rank:i+1, d:r.d, cx:x(r.interest), cy:y(r.apt)}));
+  const groups={};
+  pts.forEach(p=>{ const k=Math.round(p.cx)+','+Math.round(p.cy); (groups[k]=groups[k]||[]).push(p); });
+  let nudged=false;
+  Object.values(groups).forEach(g=>{
+    if(g.length<2)return; nudged=true;
+    const rad = g.length===2?10.5:12.5;
+    g.forEach((p,i)=>{ const a=-Math.PI/2 + i*(2*Math.PI/g.length); p.cx+=Math.cos(a)*rad; p.cy+=Math.sin(a)*rad; });
+  });
+
+  let dots='';
+  pts.forEach(p=>{
+    const top = p.rank<=3;
+    dots+='<circle cx="'+p.cx.toFixed(1)+'" cy="'+p.cy.toFixed(1)+'" r="10" fill="'+(top?'#A81B4F':'#FFFFFF')+'" stroke="'+(top?'#A81B4F':'#7C7688')+'" stroke-width="1.2"/>'+
+      '<text x="'+p.cx.toFixed(1)+'" y="'+(p.cy+3.4).toFixed(1)+'" text-anchor="middle" class="qdotlab" fill="'+(top?'#FFFFFF':'#4A4553')+'">'+p.rank+'</text>';
+  });
+
+  const keyItems = ranked.map((r,i)=>
+    '<span class="qi"><i class="'+(i<3?'hi':'')+'">'+(i+1)+'</i>'+DOM[r.d].s+'</span>').join('');
+
+  return '<div class="quadwrap"><div class="slabel">Interest against reasoning</div>'+
+  '<svg class="quad" viewBox="0 0 '+W+' '+H+'" role="img" aria-label="Scatter plot of interest versus reasoning across the ten IT areas, markers numbered by fit rank">'+
+   '<rect x="'+x(60)+'" y="'+y(100)+'" width="'+(x(100)-x(60))+'" height="'+(y(60)-y(100))+'" fill="#FBEAF0"/>'+
+   '<line x1="'+L+'" y1="'+y(60)+'" x2="'+(W-R+10)+'" y2="'+y(60)+'" stroke="#DFDAD3" stroke-dasharray="3 3"/>'+
+   '<line x1="'+x(60)+'" y1="'+T+'" x2="'+x(60)+'" y2="'+(H-B)+'" stroke="#DFDAD3" stroke-dasharray="3 3"/>'+
+   '<line x1="'+L+'" y1="'+(H-B)+'" x2="'+(W-R+10)+'" y2="'+(H-B)+'" stroke="#1C1A24"/>'+
+   '<line x1="'+L+'" y1="'+T+'" x2="'+L+'" y2="'+(H-B)+'" stroke="#1C1A24"/>'+
+   '<text class="qlab" x="'+L+'" y="'+(H-B+16)+'">0</text>'+
+   '<text class="qlab" x="'+(x(60)-5)+'" y="'+(H-B+16)+'">60</text>'+
+   '<text class="qlab" x="'+(W-R+2)+'" y="'+(H-B+16)+'">100</text>'+
+   '<text class="qlab" x="'+(L-18)+'" y="'+(y(60)+3)+'">60</text>'+
+   '<text class="qlab" x="'+(L-20)+'" y="'+(y(100)+3)+'">100</text>'+
+   '<text class="qlab" x="'+(x(48))+'" y="'+(H-12)+'">Interest \u2192</text>'+
+   '<text class="qlab" x="16" y="'+((H-B+T)/2)+'" transform="rotate(-90 16 '+((H-B+T)/2)+')">Reasoning \u2192</text>'+
+   dots+'</svg>'+
+   '<div class="qitems">'+keyItems+'</div>'+
+   (nudged?'<p class="qfoot">Markers are numbered by fit rank. Where two areas scored identically, their markers are separated slightly so both stay visible.</p>':'<p class="qfoot">Markers are numbered by fit rank.</p>')+
+   '<div class="qkey">'+
+    '<div><b>Top right \u2014 strong match</b><span>You want it and you reason well in it.</span></div>'+
+    '<div><b>Bottom right \u2014 wants building</b><span>The pull is there; the skill isn\'t yet. Trainable.</span></div>'+
+    '<div><b>Top left \u2014 untested talent</b><span>You reason well without being drawn to it. Try before ruling out.</span></div>'+
+    '<div><b>Bottom left \u2014 lower priority</b><span>Neither showed up strongly today.</span></div>'+
+   '</div></div>';
+}
+
+function buildResults(){
+  const res=score();
+  const ranked=[...res].sort((a,b)=>b.fit-a.fit);
+  const top=ranked.slice(0,3);
+  const name=$('#sname').value.trim();
+
+  let h='';
+  h+='<div class="rhead"><div class="eyebrow">IT Pathway Diagnostic — Results</div>'+
+     '<h1 style="margin-top:10px">Your top three paths<span class="thin">and the credentials that prove them.</span></h1>'+
+     '<div class="who">'+(name?esc(name)+' · ':'')+new Date().toLocaleDateString('en-US',{year:'numeric',month:'long',day:'numeric'})+'</div></div>';
+
+  /* podium */
+  h+='<div class="podium">';
+  top.forEach((r,i)=>{
+    const M=DOM[r.d], q=quadrant(r), n=certsFor(r.d).length;
+    h+='<div class="pod'+(i===0?' first':'')+'"><div class="rank">'+(i+1)+'</div>'+
+      '<div><span class="tag">'+q.k+'</span><h3>'+M.n+'</h3>'+
+      '<p class="blurb">'+M.blurb+'</p>'+
+      '<p class="blurb" style="color:var(--ink3);font-size:13.5px">'+q.t+' '+n+' CAPE-funded certifications map to this path.</p>'+
+      '<div class="roles">'+M.roles+'</div></div>'+
+      '<div class="fit"><div class="fitnum">'+r.fit+'</div><div class="fitlab">Fit</div></div></div>';
+  });
+  h+='</div>';
+
+  h+=spectrumHTML(res);
+  h+=quadHTML(res);
+
+  /* how to read */
+  h+='<div class="card" style="margin-bottom:44px"><div class="slabel">How the score works</div>'+
+     '<p style="font-size:14.5px;margin-bottom:8px"><b>Interest</b> is the average of your four ratings in that area, on a 0–100 scale. <b>Reasoning</b> is the share of that area\'s four problems you solved. <b>Fit</b> weights interest at 60% and reasoning at 40% — because at the start of a program, what you\'re willing to keep doing predicts more than what you can already do.</p>'+
+     '<p style="font-size:14.5px;margin-bottom:0;color:var(--ink2)">Four reasoning items per area is a signal, not a placement exam. A low reasoning score with high interest means \u201cnot yet,\u201d not \u201cnot you.\u201d</p></div>';
+
+  /* legend */
+  h+='<div class="legend"><div class="slabel">Reading the certification colors</div>'+
+     '<p style="font-size:14px;margin:0;color:var(--ink2)">Every certification below appears on a Florida CAPE funding-eligible list. The color says which one.</p>'+
+     '<div class="lg">'+
+     '<div class="li"><span class="sw adult"></span><span><b>Blue — Adult CAPE</b><span>Postsecondary funding eligible. Adult and postsecondary students.</span></span></div>'+
+     '<div class="li"><span class="sw de"></span><span><b>Yellow — DE CAPE</b><span>K-12 FEFP funding eligible. Dual-enrollment and secondary students.</span></span></div>'+
+     '<div class="li"><span class="sw both"></span><span><b>Green — Both lists</b><span>Funded on both. The safest choice for a mixed cohort.</span></span></div>'+
+     '</div></div>';
+
+  /* ladders for top 3 */
+  h+='<div class="slabel">Your certification ladders</div>';
+  h+='<p style="margin-bottom:30px;color:var(--ink2)">Within each tier, the least expensive credential is listed first. Work up a tier at a time — Tier 3 certifications generally assume you already hold something from Tier 2 and have worked in the field.</p>';
+  top.forEach((r,i)=>{ h+=pathBlock(r,i+1); });
+
+  /* all paths */
+  const rest=ranked.slice(3);
+  h+='<details class="allpaths"><summary>The other seven paths, with their ladders</summary><div style="padding-top:24px">'+
+     rest.map(r=>'<div style="margin-bottom:14px"><div class="slabel" style="margin-bottom:6px">Fit '+r.fit+' · interest '+r.interest+' · reasoning '+r.apt+'</div>'+pathBlock(r,0)+'</div>').join('')+
+     '</div></details>';
+
+  /* instructor */
+  const t0=top[0], t1=top[1];
+  const firstCert=certsFor(t0.d).filter(c=>c.tier===1)[0]||certsFor(t0.d)[0];
+  h+='<div class="instr"><div class="slabel">For your instructor</div>'+
+     '<p>'+(name?esc(name):'This student')+' scored highest in <b>'+DOM[t0.d].n+'</b> (fit '+t0.fit+
+     ', interest '+t0.interest+', reasoning '+t0.apt+'), with <b>'+DOM[t1.d].n+'</b> close behind at '+t1.fit+'. '+
+     'A reasonable first target is <b>'+esc(firstCert.title)+'</b> ('+SRCLAB[firstCert.src]+
+     (firstCert.cost!==null?', '+(firstCert.cost===0?'no cost':'$'+firstCert.cost):'')+'). '+
+     'Quadrant: '+quadrant(t0).k.toLowerCase()+'.</p></div>';
+
+  h+='<div class="actions noprint">'+
+     '<button class="btn" onclick="window.print()">Print or save as PDF</button>'+
+     '<button class="btn ghost" onclick="location.reload()">Start over</button></div>';
+
+  $('#results').innerHTML=h;
+  show('results');
+  window.scrollTo(0,0);
+  requestAnimationFrame(()=>{setTimeout(()=>{
+    document.querySelectorAll('.trace').forEach((el,i)=>{setTimeout(()=>{el.style.width=el.dataset.w+'%'}, i*22)});
+  },90)});
+}
+
+/* ---------------- paper version ---------------- */
+$('#topaper').onclick=()=>{
+  let h='<div class="masthead"><div class="eyebrow">Immokalee Technical College · Career Pathway Diagnostic</div><div class="meta">Paper form</div></div>';
+  h+='<h1 style="font-size:38px">IT Pathway Diagnostic<span class="thin">Paper form, answer sheet and scoring key</span></h1>';
+  h+='<p class="lede">Print pages 1–4 for students. Keep the scoring key. Students mark one box per item on the answer grid.</p>';
+  h+='<div class="actions noprint"><button class="btn" onclick="window.print()">Print</button><button class="btn ghost" onclick="location.reload()">Back</button></div>';
+
+  h+='<div class="pagebreak"></div><div class="pp">';
+  h+='<h2 style="margin-top:26px">Part 1 — Interest · items 1–40</h2>';
+  h+='<p style="font-size:12.5px">Rate each statement: <b>1</b> not at all like me · <b>2</b> a little · <b>3</b> somewhat · <b>4</b> mostly · <b>5</b> very much like me. There are no wrong answers.</p>';
+  Q1.forEach((it,i)=>{h+='<div class="pitem"><div class="pn">'+(i+1)+'.</div><div>'+esc(it[1])+'</div></div>'});
+
+  h+='<div class="pagebreak"></div><h2 style="margin-top:26px">Part 2 — Reasoning · items 41–80</h2>';
+  h+='<p style="font-size:12.5px">One correct answer each. No IT knowledge is required — reason it out. Guess if unsure.</p>';
+  Q2.forEach((it,j)=>{
+    h+='<div class="pitem"><div class="pn">'+(j+41)+'.</div><div>'+esc(it[1])+
+      '<div class="po">'+it[2].map((o,k)=>'<b>'+(k+1)+'.</b> '+esc(o)).join(' &nbsp;·&nbsp; ')+'</div></div></div>';
+  });
+
+  /* answer grid */
+  h+='<div class="pagebreak"></div><h2 style="margin-top:26px">Answer sheet</h2>';
+  h+='<p style="font-size:12.5px">Name ______________________________________  Date ______________</p>';
+  h+='<h3 style="margin:16px 0 7px">Part 1 \u2014 items 1\u201340 &nbsp;<span style="font-weight:400;color:#7C7688;font-size:12px">Rate 1 (not like me) to 5 (very like me)</span></h3>';
+  h+=gridTable(1,40,5);
+  h+='<div class="pagebreak"></div><h3 style="margin:16px 0 7px">Part 2 \u2014 items 41\u201380 &nbsp;<span style="font-weight:400;color:#7C7688;font-size:12px">Mark the one best answer</span></h3>';
+  h+=gridTable(41,80,4);
+
+  /* scoring key */
+  h+='<div class="pagebreak"></div><h2 style="margin-top:26px">Scoring key — instructor copy</h2>';
+  h+='<p style="font-size:12.5px">Part 1: add the student\'s 1–5 ratings for the four listed items, subtract 4, multiply by 6.25 → interest score 0–100.<br>Part 2: count correct answers among the four listed items, multiply by 25 → reasoning score 0–100.<br>Fit = (interest × 0.6) + (reasoning × 0.4). Rank the ten areas by fit; the top three are the student\'s paths.</p>';
+  h+='<table class="keytable"><tr><th>Area</th><th>Part 1 items</th><th>Part 2 items (correct option)</th></tr>';
+  ORDER.forEach(d=>{
+    const i1=[],i2=[];
+    Q1.forEach((it,i)=>{if(it[0]===d)i1.push(i+1)});
+    Q2.forEach((it,j)=>{if(it[0]===d)i2.push((j+41)+' ('+(it[3]+1)+')')});
+    h+='<tr><td><b>'+DOM[d].n+'</b></td><td>'+i1.join(', ')+'</td><td>'+i2.join(', ')+'</td></tr>';
+  });
+  h+='</table>';
+
+  /* cert reference */
+  h+='<div class="pagebreak"></div><h2 style="margin-top:26px">Certification reference — all ten paths</h2>';
+  h+='<p style="font-size:12.5px"><b>Blue</b> = Adult CAPE list · <b>Yellow</b> = DE CAPE list · <b>Green</b> = both lists. Sorted by tier, then cost.</p>';
+  ORDER.forEach(d=>{ h+='<div class="pathblock">'+
+    '<div class="ph"><h2 style="font-size:19px">'+DOM[d].n+'</h2><span class="cnt">'+certsFor(d).length+' certifications</span></div>'+
+    (COVNOTE[d]?'<div class="covnote">'+COVNOTE[d]+'</div>':'')+ladderHTML(d)+'</div>'; });
+  h+='</div>';
+
+  $('#paper').innerHTML=h; show('paper'); window.scrollTo(0,0);
+};
+
+function gridTable(from,to,opts){
+  let h='<table class="gridsheet"><tr><th>#</th>';
+  for(let k=1;k<=opts;k++)h+='<th>'+k+'</th>';
+  h+='<th>#</th>';
+  for(let k=1;k<=opts;k++)h+='<th>'+k+'</th>';
+  h+='</tr>';
+  const half=(to-from+1)/2;
+  for(let r=0;r<half;r++){
+    const a=from+r, b=from+half+r;
+    h+='<tr><td><b>'+a+'</b></td>';
+    for(let k=1;k<=opts;k++)h+='<td>&nbsp;</td>';
+    h+='<td><b>'+b+'</b></td>';
+    for(let k=1;k<=opts;k++)h+='<td>&nbsp;</td>';
+    h+='</tr>';
+  }
+  return h+'</table>';
+}
+</script>
+</body>
+</html>
