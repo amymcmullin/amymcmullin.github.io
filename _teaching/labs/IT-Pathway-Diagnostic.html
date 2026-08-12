@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -78,6 +79,12 @@ input[type=text]{
 input[type=text]:focus{outline:2px solid var(--accent);outline-offset:1px;border-color:var(--accent)}
 
 button{font-family:var(--body);font-size:15px;cursor:pointer;border:none;background:none;color:inherit}
+.segs{display:flex;border:1px solid var(--rule);border-radius:2px;overflow:hidden;background:var(--card)}
+.seg{font-size:14px;padding:10px 16px;color:var(--ink3);border-right:1px solid var(--rule);transition:background .12s,color .12s}
+.seg:last-child{border-right:none}
+.seg:hover{color:var(--ink)}
+.seg.on{background:var(--ink);color:#fff;font-weight:600}
+.seg:focus-visible{outline:2px solid var(--accent);outline-offset:-2px}
 .btn{
   background:var(--ink);color:#fff;padding:14px 26px;border-radius:2px;font-weight:600;
   letter-spacing:.01em;transition:background .15s;
@@ -292,16 +299,25 @@ details.allpaths[open] summary::after{content:"−"}
       <p>Statements about the kind of work you'd choose. There is no right answer. Rate how much each one sounds like you.</p>
     </div>
     <div class="part">
-      <div class="n">Part 2 — Reasoning · 40 items</div>
-      <p>Short problems, one correct answer each. You are not expected to know any IT yet — every item can be reasoned out from scratch.</p>
+      <div class="n">Part 2 — Reasoning · <span id="p2count">80 items</span></div>
+      <p id="p2desc">Short problems, 8 per area, one correct answer each. You are not expected to know any IT yet — every item can be reasoned out from scratch.</p>
     </div>
   </div>
+
+  <div class="namebar" style="margin-bottom:18px">
+    <label class="fl">Part 2 length</label>
+    <div class="segs">
+      <button class="seg on" data-len="8">Full — 8 per area</button>
+      <button class="seg" data-len="4">Short — 4 per area</button>
+    </div>
+  </div>
+  <p class="smallnote" style="margin-bottom:22px">The full form measures each area on a nine-point scale; the short form on five. Use the short form when class time is tight.</p>
 
   <div class="namebar">
     <label class="fl" for="sname">Your name</label>
     <input type="text" id="sname" placeholder="Optional — appears on your results" autocomplete="name">
   </div>
-  <p class="smallnote">About 15–20 minutes. Nothing is saved or sent anywhere — your answers stay in this browser tab, so finish in one sitting and print or save the results at the end.</p>
+  <p class="smallnote">About <span id="mins">25–35 minutes</span>. Nothing is saved or sent anywhere — your answers stay in this browser tab, so finish in one sitting and print or save the results at the end.</p>
 
   <div class="navrow">
     <button class="btn" id="start">Start Part 1</button>
@@ -329,7 +345,7 @@ details.allpaths[open] summary::after{content:"−"}
 <section class="inter" id="inter">
   <div class="tag">Part 1 complete</div>
   <div class="big">Now the reasoning half.</div>
-  <p class="lede">Forty short problems. None of them require IT knowledge — they're about how you think through a problem you've never seen. Take a guess when you're unsure; a wrong answer costs you nothing but an unanswered one tells us less.</p>
+  <p class="lede" id="interp">Short problems. None of them require IT knowledge — they're about how you think through a problem you've never seen. Take a guess when you're unsure; a wrong answer costs you nothing but an unanswered one tells us less.</p>
   <div class="navrow"><button class="btn" id="startp2">Start Part 2</button></div>
 </section>
 
@@ -508,6 +524,97 @@ const APT = [
  ["Add it immediately to keep them happy","Price its effect on schedule and budget, then decide together","Refuse every change on principle","Add it quietly and tell no one"],1],
 ["PM","Your team said a task would take 5 days. The client heard \u201cabout a week.\u201d Two weeks later it isn't done and everyone is angry. What failed first?",
  ["The team's technical skills","A written, shared agreement on what \u201cdone\u201d means and when it's due","The client's budget","The software"],1]
+,
+
+["SUP","A user reports that the problem happens \u201csometimes.\u201d What makes an intermittent fault harder to solve than a constant one?",
+ ["It always damages the hardware","You can't confirm a fix, because the symptom may simply be absent when you test","It requires more expensive parts","Intermittent faults are actually easier"],1],
+["SUP","A printer worked yesterday and doesn't today. You confirm it has power and paper. What's the most productive next line of inquiry?",
+ ["Replace the printer","Work out what changed since yesterday — network, driver, setting or user","Reinstall the operating system on every computer in the office","Wait and see whether it corrects itself"],1],
+["SUP","A laptop has 8 GB of memory. The user opens programs needing 3 GB, 3 GB and 4 GB at once, and the system itself needs 2 GB. What most likely happens?",
+ ["Everything runs at full speed","The machine runs short of memory and slows badly as it compensates","The laptop refuses to turn on","One program is deleted automatically"],1],
+["SUP","A hard drive is failing and the user's only copy of their work is on it. What do you do first?",
+ ["Run repair tools on the drive","Copy the data somewhere else before doing anything else","Reformat the drive and start clean","Install a fresh operating system"],1],
+
+["PRG","\u201cIf it is raining AND you have no umbrella, take the bus.\u201d It is raining and you have an umbrella. What happens?",
+ ["You take the bus","You don't take the bus","The instruction fails with an error","You take the bus only once the rain stops"],1],
+["PRG","Start with x = 5. Then set x to x + 2. Then set x to x \u00d7 3. What is x?",
+ ["11","17","21","35"],2,1],
+["PRG","A program divides a total by the number of people. It works in every test. Which input would break it?",
+ ["A very large total","Zero people","A negative total","A total with decimals"],1],
+["PRG","The same twelve lines appear in four different places in a program. The rule they implement changes. What's the drawback of the duplication?",
+ ["The program runs four times slower","The change must be made four times, and missing one leaves a bug behind","The file becomes too large to open","Nothing — duplication is harmless"],1],
+
+["NET","Four offices are connected in a ring: A to B to C to D and back to A. One link fails. What happens?",
+ ["The entire network stops","All four can still communicate, using the path around the other way","Only two offices can still communicate","Two offices have to be rewired"],1],
+["NET","A large file transfer between two cities is very slow, but a short message between the same two points arrives instantly. What does that suggest?",
+ ["The connection is completely down","The path works, but its capacity for moving large amounts of data is limited","The file is corrupted","The cities are too far apart to be connected"],1],
+["NET","Two devices on the same network are accidentally given the same address. What's the likely result?",
+ ["Both devices run twice as fast","Traffic meant for one may reach the other, and communication becomes unreliable","The network doubles in size","Nothing happens at all"],1],
+["NET","A cable must run 300 feet through a warehouse full of large electric motors. Why might fiber be chosen over copper?",
+ ["Fiber costs less per foot","Fiber carries light, so the electrical noise from the motors doesn't disturb it","Copper cannot be manufactured that long","Fiber is quicker to terminate"],1],
+
+["SEC","A new receptionist is given access to every system in the company \u201cin case they need it.\u201d What's the risk?",
+ ["The receptionist will work more slowly","If that single account is compromised, the attacker reaches everything","The company will run out of software licenses","There is no risk — more access is always better"],1],
+["SEC","A building has one lock on the front door and nothing else. Why do security teams prefer several independent layers instead?",
+ ["Layers look more professional to visitors","Each layer an attacker has to defeat costs time and creates another chance to be caught","A single unbreakable lock is impossible to build","Layers make the building cheaper to run"],1],
+["SEC","Someone calls claiming to be from IT and asks for your password to fix your account. What's the safest response?",
+ ["Give it — IT already has access anyway","Refuse, hang up, and call IT back on a number you look up yourself","Give a slightly wrong password to test them","Ask them to email the request first"],1],
+["SEC","A company backs up its data every night but has never attempted a restore. What is the untested assumption?",
+ ["That backups consume storage space","That the backups can actually be restored when they're needed","That the backup runs overnight","That backups cost money"],1],
+
+["DB","A customer record is deleted, but that customer's 40 orders remain, still pointing to a customer who no longer exists. What's the problem?",
+ ["The orders will ship twice","Those orders now reference nothing, so lookups and reports break","The database will run faster","Nothing — orders don't need a customer"],1],
+["DB","A student can enroll in many courses, and a course can hold many students. What's needed to record that?",
+ ["One column in the student table listing every course","A separate table linking one student to one course, with a row per enrollment","A separate table for each student","Nothing — the relationship can't be stored"],1],
+["DB","Phone numbers are stored as numbers rather than as text. What breaks?",
+ ["Nothing breaks","Leading zeros disappear, and formats with dashes or a country code can't be kept","The numbers become longer","Phones stop ringing"],1],
+["DB","Two people register with the same email address and the system allows it. Later, a password reset is requested for that address. What happens?",
+ ["Both accounts reset correctly","The system can't tell which of the two accounts was meant","The email address is deleted","The two accounts merge automatically"],1],
+
+["DAT","A test for a rare condition is 95% accurate, and 1 person in 1,000 has it. You test positive. What's the most reasonable conclusion?",
+ ["You almost certainly have it","Because the condition is so rare, most positives are still false alarms — a second test is needed","The test must be broken","You definitely don't have it"],1],
+["DAT","A store's sales rise 50% in January, then fall 50% in February. Compared with where they started, sales are now:",
+ ["Back exactly where they started","Lower than they started","Higher than they started","Impossible to determine"],1],
+["DAT","Overall satisfaction is 80%. Split by location, one store is at 95% and the other at 40%. What did the single overall number hide?",
+ ["Nothing of importance","That one location is doing badly and is being masked by the other","That the survey was too short","That satisfaction is falling everywhere"],1],
+["DAT","A report on average delivery time leaves out every order that was never delivered. What effect does that have?",
+ ["It makes delivery look worse than it is","It makes delivery look better than it actually is","It has no effect on the average","It doubles the average"],1],
+
+["CLD","A test server is left running all month but used on only two days. On a service billed by the hour, what happens?",
+ ["You're billed for the two days of use","You're billed for the whole month it was running","The service shuts it down for you automatically","Idle servers are free"],1],
+["CLD","The provider secures its data centers and physical hardware. Who is responsible for deciding who can log in to your application?",
+ ["The provider","You","Nobody — logins are automatic","Your internet service provider"],1],
+["CLD","Your application is slow because one machine's processor is pinned at 100%. Adding a second identical machine behind a load balancer helps most when:",
+ ["The work can be split across machines","The work has to run in one place, in a fixed order","The database is the real bottleneck","The application has very few users"],0],
+["CLD","All of your customers are in Florida but your servers are in Singapore. Nothing is broken. What do users notice?",
+ ["Nothing at all","A delay on every request, because each one crosses the planet and back","Their files go missing","The site only works at night"],1],
+
+["VIRT","One virtual machine on a host is infected with malware. What limits the damage to the others?",
+ ["Nothing — every VM on a host shares one operating system","Each VM is isolated, so the infection doesn't automatically spread to the rest","The host deletes all of its VMs","Malware cannot run inside a VM"],1],
+["VIRT","A host has 32 GB of memory. You create eight VMs each configured for 8 GB, though each typically uses only 2 GB. What's the risk?",
+ ["No risk — eight times 2 GB fits comfortably","If several VMs demand their full allocation at the same time, the host runs short","The VMs won't start at all","Memory allocation doubles automatically"],1],
+["VIRT","Twenty virtual machines run on one physical host. The host's power supply fails. What happens?",
+ ["One VM stops","All twenty stop at once","The VMs relocate themselves to another building","Nothing — virtual machines aren't physical"],1],
+["VIRT","You need to build 30 identical lab machines. What's the fastest reliable approach?",
+ ["Install each one by hand and hope they match","Build one, verify it works, then clone it 29 times","Buy 30 physical computers","Build 30 slightly different configurations"],1],
+
+["AI","A model is tested on exactly the same examples it was trained on and scores 100%. What does that prove?",
+ ["That it will work perfectly on new data","Very little — it may have memorized the examples rather than learned the pattern","That the test was too difficult","That the model is broken"],1],
+["AI","You want a system that flags spam messages. What do you need to train it?",
+ ["Examples of spam only","Examples of both spam and legitimate messages, each labeled as such","No examples — it works it out alone","Examples of legitimate messages only"],1],
+["AI","A system approves loan applications with 97% accuracy. Why might a human still review the results?",
+ ["To slow the process down deliberately","Because the other 3% are real people, and a wrong decision carries consequences the system can't weigh","Because computers can't do arithmetic","To make the system run faster"],1],
+["AI","A model trained on shopping habits from 2019 is still running in 2026 with no updates. What's the likely problem?",
+ ["It improves on its own as time passes","The world it learned from has changed, so its predictions get steadily worse","It runs out of storage space","It becomes more accurate with age"],1],
+
+["PM","Every task in a plan is estimated at its best possible case. What's the likely outcome?",
+ ["The project finishes early","The project runs late, because no task has room for anything going wrong","The estimates turn out more accurate","The budget shrinks"],1],
+["PM","A project is late, so the manager doubles the team size in the final week. What most likely happens?",
+ ["The remaining work finishes twice as fast","Progress slows first, because the people doing the work must stop to bring the new people up to speed","Nothing changes either way","The deadline moves itself back"],1],
+["PM","A project depends on one vendor delivering a part by a fixed date. What's the most useful thing to do in advance?",
+ ["Assume it arrives on time and plan nothing else","Decide now what you'll do if it's late, before it is","Cancel the project","Order the part later to save money"],1],
+["PM","Two departments each believe the project is being built for their needs, and nobody has compared the two descriptions. What most likely happens?",
+ ["Both departments end up satisfied","Late in the project the conflict surfaces, as expensive rework","The project finishes ahead of schedule","The two departments merge"],1]
 ];
 
 const LIK = ["Not at all like me","A little like me","Somewhat like me","Mostly like me","Very much like me"];
@@ -522,29 +629,42 @@ function interleave(bank){
   }
   return out;
 }
-const Q1=interleave(INT), Q2=interleave(APT);
+const Q1=interleave(INT), Q2FULL=interleave(APT);
 
 /* Balance where the correct answer sits. Rotating an option list keeps every
    choice intact; items whose options are naturally ordered are left alone. */
-const KEYPOS=[2,1,3,2,3,0,1,3,0,1,0,2,3,0,3,1,2,1,1,2,3,0,2,2,3,1,0,0,1,3,0,3,1,1,2,3,2,0,0,2];
-Q2.forEach((it,i)=>{
+const KEYPOS=[1,0,2,2,3,1,2,0,3,1,3,0,2,3,0,2,0,2,1,3,0,2,1,0,0,2,2,1,3,3,2,1,3,2,3,3,0,1,3,3,0,3,2,2,0,3,2,1,3,3,1,3,0,0,3,0,1,2,2,1,2,2,1,3,0,1,1,0,2,1,0,1,1,0,1,0,2,3,0,1];
+Q2FULL.forEach((it,i)=>{
   if(it[4])return;
   const t=KEYPOS[i], rot=(it[3]-t+4)%4;
   it[2]=it[2].slice(rot).concat(it[2].slice(0,rot));
   it[3]=t;
 });
 
-const TOTAL=Q1.length+Q2.length;
+/* The bank is interleaved one item per area per round, so the first 4 x 10
+   items are a balanced short form. */
+let APT_PER=8, Q2=Q2FULL, TOTAL=Q1.length+Q2.length;
+function setLen(n){
+  APT_PER=n; Q2=Q2FULL.slice(0,n*ORDER.length); TOTAL=Q1.length+Q2.length;
+  document.querySelectorAll('.seg').forEach(b=>b.classList.toggle('on', +b.dataset.len===n));
+  $('#p2count').textContent=Q2.length+' items';
+  $('#p2desc').textContent='Short problems, '+n+' per area, one correct answer each. You are not expected to know any IT yet \u2014 every item can be reasoned out from scratch.';
+  $('#mins').textContent = n===8 ? '25\u201335 minutes' : '15\u201320 minutes';
+  $('#interp').textContent=Q2.length+' short problems. None of them require IT knowledge \u2014 they are about how you think through a problem you have never seen. Take a guess when you are unsure; a wrong answer costs you nothing, but an unanswered one tells us less.';
+}
 
 /* ---------------- state ---------------- */
 let idx=0;
 const ans1=new Array(Q1.length).fill(null);
-const ans2=new Array(Q2.length).fill(null);
+const ans2=new Array(Q2FULL.length).fill(null);
 
 const $=s=>document.querySelector(s);
 document.getElementById('mastdate').textContent=new Date().toLocaleDateString('en-US',{year:'numeric',month:'short',day:'numeric'});
 
 function show(id){['intro','assess','inter','results','paper'].forEach(s=>{$('#'+s).style.display = (s===id?'block':'none')});}
+
+document.querySelectorAll('.seg').forEach(b=>b.onclick=()=>setLen(+b.dataset.len));
+setLen(8);
 
 $('#start').onclick=()=>{idx=0;show('assess');render();window.scrollTo(0,0)};
 $('#startp2').onclick=()=>{idx=Q1.length;show('assess');render();window.scrollTo(0,0)};
@@ -749,8 +869,8 @@ function buildResults(){
 
   /* how to read */
   h+='<div class="card" style="margin-bottom:44px"><div class="slabel">How the score works</div>'+
-     '<p style="font-size:14.5px;margin-bottom:8px"><b>Interest</b> is the average of your four ratings in that area, on a 0–100 scale. <b>Reasoning</b> is the share of that area\'s four problems you solved. <b>Fit</b> weights interest at 60% and reasoning at 40% — because at the start of a program, what you\'re willing to keep doing predicts more than what you can already do.</p>'+
-     '<p style="font-size:14.5px;margin-bottom:0;color:var(--ink2)">Four reasoning items per area is a signal, not a placement exam. A low reasoning score with high interest means \u201cnot yet,\u201d not \u201cnot you.\u201d</p></div>';
+     '<p style="font-size:14.5px;margin-bottom:8px"><b>Interest</b> is the average of your four ratings in that area, on a 0–100 scale. <b>Reasoning</b> is the share of that area\'s '+APT_PER+' problems you solved. <b>Fit</b> weights interest at 60% and reasoning at 40% — because at the start of a program, what you\'re willing to keep doing predicts more than what you can already do.</p>'+
+     '<p style="font-size:14.5px;margin-bottom:0;color:var(--ink2)">'+APT_PER+' reasoning items per area is a signal, not a placement exam. A low reasoning score with high interest means \u201cnot yet,\u201d not \u201cnot you.\u201d</p></div>';
 
   /* legend */
   h+='<div class="legend"><div class="slabel">Reading the certification colors</div>'+
@@ -806,9 +926,9 @@ $('#topaper').onclick=()=>{
   h+='<p style="font-size:12.5px">Rate each statement: <b>1</b> not at all like me · <b>2</b> a little · <b>3</b> somewhat · <b>4</b> mostly · <b>5</b> very much like me. There are no wrong answers.</p>';
   Q1.forEach((it,i)=>{h+='<div class="pitem"><div class="pn">'+(i+1)+'.</div><div>'+esc(it[1])+'</div></div>'});
 
-  h+='<div class="pagebreak"></div><h2 style="margin-top:26px">Part 2 — Reasoning · items 41–80</h2>';
-  h+='<p style="font-size:12.5px">One correct answer each. No IT knowledge is required — reason it out. Guess if unsure.</p>';
-  Q2.forEach((it,j)=>{
+  h+='<div class="pagebreak"></div><h2 style="margin-top:26px">Part 2 — Reasoning · items 41–'+(40+Q2FULL.length)+'</h2>';
+  h+='<p style="font-size:12.5px">One correct answer each. No IT knowledge is required — reason it out. Guess if unsure. <b>Short form:</b> items 41–80 alone are a balanced four-per-area version; stop there if class time is tight.</p>';
+  Q2FULL.forEach((it,j)=>{
     h+='<div class="pitem"><div class="pn">'+(j+41)+'.</div><div>'+esc(it[1])+
       '<div class="po">'+it[2].map((o,k)=>'<b>'+(k+1)+'.</b> '+esc(o)).join(' &nbsp;·&nbsp; ')+'</div></div></div>';
   });
@@ -818,17 +938,17 @@ $('#topaper').onclick=()=>{
   h+='<p style="font-size:12.5px">Name ______________________________________  Date ______________</p>';
   h+='<h3 style="margin:16px 0 7px">Part 1 \u2014 items 1\u201340 &nbsp;<span style="font-weight:400;color:#7C7688;font-size:12px">Rate 1 (not like me) to 5 (very like me)</span></h3>';
   h+=gridTable(1,40,5);
-  h+='<div class="pagebreak"></div><h3 style="margin:16px 0 7px">Part 2 \u2014 items 41\u201380 &nbsp;<span style="font-weight:400;color:#7C7688;font-size:12px">Mark the one best answer</span></h3>';
-  h+=gridTable(41,80,4);
+  h+='<div class="pagebreak"></div><h3 style="margin:16px 0 7px">Part 2 \u2014 items 41\u2013'+(40+Q2FULL.length)+' &nbsp;<span style="font-weight:400;color:#7C7688;font-size:12px">Mark the one best answer</span></h3>';
+  h+=gridTable(41,40+Q2FULL.length,4);
 
   /* scoring key */
   h+='<div class="pagebreak"></div><h2 style="margin-top:26px">Scoring key — instructor copy</h2>';
-  h+='<p style="font-size:12.5px">Part 1: add the student\'s 1–5 ratings for the four listed items, subtract 4, multiply by 6.25 → interest score 0–100.<br>Part 2: count correct answers among the four listed items, multiply by 25 → reasoning score 0–100.<br>Fit = (interest × 0.6) + (reasoning × 0.4). Rank the ten areas by fit; the top three are the student\'s paths.</p>';
+  h+='<p style="font-size:12.5px">Part 1: add the student\'s 1–5 ratings for the four listed items, subtract 4, multiply by 6.25 → interest score 0–100.<br>Part 2: count correct answers among the eight listed items, multiply by 12.5 → reasoning score 0–100. If you used the short form, count only the first four listed and multiply by 25.<br>Fit = (interest × 0.6) + (reasoning × 0.4). Rank the ten areas by fit; the top three are the student\'s paths.</p>';
   h+='<table class="keytable"><tr><th>Area</th><th>Part 1 items</th><th>Part 2 items (correct option)</th></tr>';
   ORDER.forEach(d=>{
     const i1=[],i2=[];
     Q1.forEach((it,i)=>{if(it[0]===d)i1.push(i+1)});
-    Q2.forEach((it,j)=>{if(it[0]===d)i2.push((j+41)+' ('+(it[3]+1)+')')});
+    Q2FULL.forEach((it,j)=>{if(it[0]===d)i2.push((j+41)+' ('+(it[3]+1)+')')});
     h+='<tr><td><b>'+DOM[d].n+'</b></td><td>'+i1.join(', ')+'</td><td>'+i2.join(', ')+'</td></tr>';
   });
   h+='</table>';
