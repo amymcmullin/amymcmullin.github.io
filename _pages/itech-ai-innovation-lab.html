@@ -1,0 +1,1429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Innovation Lab | Immokalee Technical College (iTECH)</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink:       #100e09;
+    --ink2:      #1a1710;
+    --ink3:      #242018;
+    --ink4:      #2e2a20;
+    --gold:      #f5a623;
+    --gold2:     #ffc84a;
+    --amber:     #ff9500;
+    --cream:     #fef6e4;
+    --cream-dim: #c8b896;
+    --blue:      #003087;
+    --blue2:     #1a4a9e;
+    --text:      #ede8df;
+    --muted:     #8a7f6a;
+    --border:    rgba(245,166,35,0.14);
+    --card:      rgba(26,23,16,0.9);
+    --glow:      rgba(255,149,0,0.10);
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+
+  body {
+    font-family:'DM Sans', sans-serif;
+    background: var(--ink);
+    color: var(--text);
+    overflow-x: hidden;
+  }
+
+  /* ── ANIMATED NEURAL NETWORK CANVAS ── */
+  #neural-canvas {
+    position:fixed; inset:0; z-index:0;
+    pointer-events:none; opacity:0.35;
+  }
+
+  /* ── WARM GLOW BACKGROUND ── */
+  body::before {
+    content:'';
+    position:fixed; inset:0; z-index:0;
+    background:
+      radial-gradient(ellipse 800px 600px at 75% 20%, rgba(255,149,0,0.07) 0%, transparent 70%),
+      radial-gradient(ellipse 600px 500px at 10% 85%, rgba(245,166,35,0.05) 0%, transparent 70%),
+      radial-gradient(ellipse 400px 300px at 90% 90%, rgba(0,48,135,0.06) 0%, transparent 60%);
+    pointer-events:none;
+  }
+
+  /* ── TOP BANNER ── */
+  .top-banner {
+    position:relative; z-index:20;
+    background: var(--blue);
+    border-bottom: 2px solid var(--gold);
+    padding: 6px 2rem;
+    display:flex; align-items:center; justify-content:space-between;
+    font-size:.74rem; font-family:'Fira Code', monospace;
+  }
+
+  .top-banner a { color:var(--gold); text-decoration:none; transition:opacity .2s; }
+  .top-banner a:hover { opacity:.7; }
+  .top-banner-links { display:flex; gap:1.5rem; }
+
+  /* ── NAV ── */
+  nav {
+    position:sticky; top:0; z-index:100;
+    background: rgba(16,14,9,0.96);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border);
+    display:flex; align-items:center; justify-content:space-between;
+    padding:0 2rem; height:70px;
+  }
+
+  .nav-brand { display:flex; align-items:center; gap:14px; }
+
+  /* AI "brain" node emblem — circles instead of hex */
+  .nav-emblem {
+    width:44px; height:44px; flex-shrink:0;
+    border-radius:50%;
+    background: conic-gradient(from 0deg, var(--amber), var(--gold2), var(--gold), var(--amber));
+    display:flex; align-items:center; justify-content:center;
+    font-family:'DM Serif Display', serif;
+    font-size:1.1rem; color:var(--ink);
+    font-style:italic; font-weight:400;
+    box-shadow: 0 0 22px rgba(255,149,0,0.35);
+    animation: emblem-spin 8s linear infinite;
+  }
+
+  @keyframes emblem-spin {
+    from { box-shadow: 0 0 22px rgba(255,149,0,0.35); }
+    50%  { box-shadow: 0 0 36px rgba(255,149,0,0.55); }
+    to   { box-shadow: 0 0 22px rgba(255,149,0,0.35); }
+  }
+
+  .nav-text strong {
+    font-family:'DM Serif Display', serif;
+    font-weight:400; font-size:1.05rem;
+    color:var(--text); display:block;
+  }
+
+  .nav-text span {
+    font-size:.67rem; color:var(--gold);
+    font-family:'Fira Code', monospace;
+    letter-spacing:.12em; text-transform:uppercase;
+  }
+
+  .nav-links { display:flex; gap:1.75rem; list-style:none; }
+
+  .nav-links a {
+    color:var(--muted); text-decoration:none;
+    font-size:.88rem; font-weight:500;
+    transition:color .2s;
+  }
+
+  .nav-links a:hover { color:var(--gold); }
+
+  .nav-cta {
+    background: linear-gradient(135deg, var(--amber), var(--gold2));
+    color:var(--ink) !important;
+    padding:8px 20px; border-radius:30px;
+    font-weight:700 !important; font-size:.85rem !important;
+    letter-spacing:.03em;
+    box-shadow: 0 4px 16px rgba(255,149,0,0.3);
+    transition: transform .2s, box-shadow .2s !important;
+  }
+
+  .nav-cta:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(255,149,0,0.45) !important;
+    color:var(--ink) !important;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    position:relative; z-index:1;
+    min-height:92vh; display:flex; align-items:center;
+    padding:6rem 2rem 3rem; overflow:hidden;
+  }
+
+  .hero-content {
+    max-width:1200px; margin:0 auto; width:100%;
+    display:grid; grid-template-columns:1.1fr 0.9fr; gap:5rem;
+    align-items:center;
+  }
+
+  /* organic blob floating in hero right */
+  .hero-blob {
+    position:relative;
+  }
+
+  .blob-outer {
+    width:100%; padding-top:100%;
+    position:relative;
+    filter: drop-shadow(0 0 60px rgba(255,149,0,0.18));
+  }
+
+  .blob-svg {
+    position:absolute; inset:0;
+    width:100%; height:100%;
+  }
+
+  .hero-eyebrow {
+    display:inline-flex; align-items:center; gap:8px;
+    font-family:'Fira Code', monospace;
+    font-size:.72rem; color:var(--amber);
+    letter-spacing:.18em; text-transform:uppercase;
+    margin-bottom:1.25rem;
+    animation: rise .6s ease both;
+  }
+
+  .hero-eyebrow::before {
+    content:''; width:28px; height:2px;
+    background: var(--amber);
+  }
+
+  .hero h1 {
+    font-family:'DM Serif Display', serif;
+    font-size: clamp(3rem, 6vw, 5.5rem);
+    font-weight:400; line-height:1.05;
+    margin-bottom:1.5rem;
+    animation: rise .6s .1s ease both;
+  }
+
+  .hero h1 .italic-word {
+    font-style:italic; color:var(--gold);
+  }
+
+  .hero h1 .small-line {
+    font-size:.55em; display:block;
+    font-style:normal; color:var(--muted);
+    font-family:'DM Sans', sans-serif;
+    font-weight:300; letter-spacing:.06em;
+    text-transform:uppercase; margin-bottom:.3rem;
+  }
+
+  .hero-sub {
+    font-size:1.05rem; color:var(--muted);
+    line-height:1.8; max-width:500px;
+    margin-bottom:2.25rem;
+    font-weight:300;
+    animation: rise .6s .2s ease both;
+  }
+
+  .hero-pills {
+    display:flex; flex-wrap:wrap; gap:.6rem;
+    margin-bottom:2rem;
+    animation: rise .6s .25s ease both;
+  }
+
+  .pill {
+    padding:5px 14px; border-radius:20px;
+    font-size:.75rem; font-family:'Fira Code', monospace;
+    font-weight:500; letter-spacing:.04em;
+    border:1px solid;
+  }
+
+  .pill-amber { border-color:rgba(255,149,0,.4); color:var(--amber); background:rgba(255,149,0,.08); }
+  .pill-gold  { border-color:rgba(245,166,35,.4); color:var(--gold2); background:rgba(245,166,35,.08); }
+  .pill-blue  { border-color:rgba(0,48,135,.5); color:#7ab3ff; background:rgba(0,48,135,.15); }
+
+  .hero-actions {
+    display:flex; gap:1rem; flex-wrap:wrap;
+    animation: rise .6s .3s ease both;
+  }
+
+  .btn-amber {
+    background: linear-gradient(135deg, var(--amber), var(--gold2));
+    color:var(--ink); padding:13px 32px;
+    border-radius:30px; border:none;
+    font-weight:700; font-size:.95rem;
+    font-family:'DM Sans', sans-serif;
+    cursor:pointer; text-decoration:none; display:inline-block;
+    box-shadow: 0 6px 20px rgba(255,149,0,0.3);
+    transition: transform .2s, box-shadow .2s;
+  }
+
+  .btn-amber:hover {
+    transform:translateY(-2px);
+    box-shadow: 0 10px 28px rgba(255,149,0,0.45);
+  }
+
+  .btn-ghost {
+    background:transparent; color:var(--text);
+    padding:13px 32px; border-radius:30px;
+    border:1px solid rgba(245,166,35,.3);
+    font-weight:500; font-size:.9rem;
+    cursor:pointer; text-decoration:none; display:inline-block;
+    transition: border-color .2s, color .2s;
+  }
+
+  .btn-ghost:hover { border-color:var(--gold); color:var(--gold); }
+
+  /* ── MISSION STRIP ── */
+  .mission-strip {
+    position:relative; z-index:1;
+    background: var(--ink2);
+    border-top:1px solid var(--border);
+    border-bottom:1px solid var(--border);
+    padding:3rem 2rem;
+  }
+
+  .mission-inner {
+    max-width:1200px; margin:0 auto;
+    display:grid; grid-template-columns:auto 1fr; gap:3rem; align-items:center;
+  }
+
+  .mission-label {
+    font-family:'DM Serif Display', serif;
+    font-size:4rem; color:rgba(245,166,35,0.12);
+    line-height:1; white-space:nowrap;
+    writing-mode:vertical-lr; transform:rotate(180deg);
+    letter-spacing:-.02em;
+  }
+
+  .mission-text {
+    font-family:'DM Serif Display', serif;
+    font-size: clamp(1.3rem, 2.5vw, 1.9rem);
+    font-weight:400; line-height:1.55;
+    color:var(--text); font-style:italic;
+  }
+
+  .mission-text strong {
+    font-style:normal; color:var(--gold);
+  }
+
+  /* ── SECTION BASE ── */
+  section { position:relative; z-index:1; padding:5rem 2rem; }
+  .section-inner { max-width:1200px; margin:0 auto; }
+
+  .eyebrow {
+    font-family:'Fira Code', monospace;
+    font-size:.7rem; color:var(--amber);
+    letter-spacing:.22em; text-transform:uppercase;
+    margin-bottom:.75rem; display:flex; align-items:center; gap:10px;
+  }
+
+  .eyebrow::after { content:''; flex:1; max-width:40px; height:1px; background:var(--amber); opacity:.4; }
+
+  .section-title {
+    font-family:'DM Serif Display', serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight:400; line-height:1.1; margin-bottom:1rem;
+  }
+
+  .section-title em { color:var(--gold); font-style:italic; }
+
+  .section-desc {
+    color:var(--muted); max-width:680px;
+    line-height:1.8; margin-bottom:3rem;
+    font-size:1rem; font-weight:300;
+  }
+
+  .divider {
+    position:relative; z-index:1; height:1px;
+    background: linear-gradient(90deg, transparent, var(--border), transparent);
+    margin:0 2rem;
+  }
+
+  /* ── THE LAB ── */
+  .lab-section { background:var(--ink2); border-top:1px solid var(--border); border-bottom:1px solid var(--border); }
+
+  .lab-grid {
+    display:grid; grid-template-columns:1fr 1fr; gap:1.5rem;
+  }
+
+  .lab-card {
+    background:var(--card); border:1px solid var(--border);
+    border-radius:14px; padding:2rem; backdrop-filter:blur(10px);
+    position:relative; overflow:hidden;
+    transition: transform .3s, border-color .3s;
+  }
+
+  .lab-card:hover { transform:translateY(-4px); border-color:rgba(255,149,0,.35); }
+
+  .lab-card.featured {
+    grid-column:span 2;
+    display:grid; grid-template-columns:1fr 1fr; gap:2rem;
+    align-items:center;
+  }
+
+  .lab-card::before {
+    content:''; position:absolute; top:0; right:0;
+    width:120px; height:120px;
+    border-radius:0 14px 0 100%;
+    background: rgba(255,149,0,0.05);
+    border-left:1px solid rgba(255,149,0,0.08);
+    border-bottom:1px solid rgba(255,149,0,0.08);
+  }
+
+  .device-icon {
+    font-size:2.8rem; margin-bottom:1rem; display:block;
+  }
+
+  .lab-card h3 {
+    font-family:'DM Serif Display', serif;
+    font-size:1.35rem; font-weight:400;
+    margin-bottom:.6rem;
+  }
+
+  .lab-card p { color:var(--muted); font-size:.875rem; line-height:1.7; }
+
+  .device-tag {
+    display:inline-block; margin-top:.85rem;
+    font-family:'Fira Code', monospace; font-size:.67rem;
+    color:var(--amber); letter-spacing:.1em;
+    border:1px solid rgba(255,149,0,.25);
+    background:rgba(255,149,0,.06);
+    padding:3px 10px; border-radius:4px;
+    text-transform:uppercase;
+  }
+
+  .lab-spec-list {
+    list-style:none; margin-top:1rem;
+    display:flex; flex-direction:column; gap:.5rem;
+  }
+
+  .lab-spec-list li {
+    font-size:.82rem; color:var(--muted);
+    display:flex; align-items:flex-start; gap:.6rem;
+    line-height:1.4;
+  }
+
+  .lab-spec-list li::before {
+    content:'→'; color:var(--amber); flex-shrink:0; font-family:'Fira Code', monospace;
+  }
+
+  /* ── PROGRAMS AI SECTION ── */
+  .programs-grid {
+    display:grid;
+    grid-template-columns:repeat(auto-fill, minmax(280px,1fr));
+    gap:1.25rem;
+  }
+
+  .prog-card {
+    background:var(--card); border:1px solid var(--border);
+    border-radius:12px; padding:1.5rem; backdrop-filter:blur(8px);
+    transition: border-color .25s, transform .25s;
+    position:relative; overflow:hidden;
+    cursor:default;
+  }
+
+  .prog-card:hover { border-color:rgba(255,149,0,.4); transform:translateY(-3px); }
+
+  .prog-card::after {
+    content:'';
+    position:absolute; bottom:0; left:0;
+    width:100%; height:3px;
+    background: linear-gradient(90deg, var(--amber), transparent);
+    opacity:0; transition:opacity .25s;
+  }
+
+  .prog-card:hover::after { opacity:1; }
+
+  .prog-icon { font-size:1.8rem; margin-bottom:.75rem; display:block; }
+
+  .prog-label {
+    font-family:'Fira Code', monospace; font-size:.65rem;
+    color:var(--muted); text-transform:uppercase; letter-spacing:.12em;
+    margin-bottom:.4rem;
+  }
+
+  .prog-card h3 {
+    font-family:'DM Serif Display', serif;
+    font-size:1.05rem; font-weight:400;
+    margin-bottom:.5rem;
+  }
+
+  .prog-card p { font-size:.8rem; color:var(--muted); line-height:1.6; }
+
+  .prog-ai-tag {
+    margin-top:.85rem;
+    font-size:.72rem; font-family:'Fira Code', monospace;
+    color:var(--gold2); display:block;
+    font-weight:500;
+  }
+
+  /* ── MODEL SECTION ── */
+  .model-section { background:var(--ink2); border-top:1px solid var(--border); border-bottom:1px solid var(--border); }
+
+  .steps-row {
+    display:grid; grid-template-columns:repeat(4,1fr); gap:1rem;
+    position:relative;
+  }
+
+  .steps-row::before {
+    content:'';
+    position:absolute; top:28px; left:15%; right:15%;
+    height:1px;
+    background: linear-gradient(90deg, transparent, var(--border), var(--border), transparent);
+    z-index:0;
+  }
+
+  .step-item { text-align:center; position:relative; z-index:1; }
+
+  .step-num {
+    width:56px; height:56px; border-radius:50%;
+    background: linear-gradient(135deg, var(--ink3), var(--ink4));
+    border:2px solid var(--border);
+    display:flex; align-items:center; justify-content:center;
+    margin:0 auto 1rem;
+    font-family:'DM Serif Display', serif;
+    font-size:1.4rem; color:var(--gold);
+    font-style:italic;
+    transition: border-color .2s, box-shadow .2s;
+  }
+
+  .step-item:hover .step-num {
+    border-color:var(--amber);
+    box-shadow: 0 0 20px rgba(255,149,0,.25);
+  }
+
+  .step-item h4 {
+    font-family:'DM Serif Display', serif;
+    font-size:1rem; font-weight:400; margin-bottom:.4rem;
+  }
+
+  .step-item p { font-size:.8rem; color:var(--muted); line-height:1.5; }
+
+  /* ── COMMUNITY FUTURE SECTION ── */
+  .future-grid {
+    display:grid; grid-template-columns:1fr 1fr; gap:1.5rem;
+  }
+
+  .future-card {
+    background:var(--card); border:1px solid var(--border);
+    border-radius:14px; padding:2rem; backdrop-filter:blur(8px);
+    position:relative; overflow:hidden;
+    transition: border-color .25s;
+  }
+
+  .future-card:hover { border-color:rgba(255,149,0,.35); }
+
+  .future-card.coming-soon::after {
+    content:'COMING SOON';
+    position:absolute; top:16px; right:16px;
+    font-family:'Fira Code', monospace; font-size:.6rem;
+    letter-spacing:.15em; color:var(--gold);
+    background:rgba(245,166,35,.1); border:1px solid rgba(245,166,35,.25);
+    padding:3px 8px; border-radius:4px;
+  }
+
+  .future-icon { font-size:2.4rem; margin-bottom:1rem; display:block; }
+
+  .future-card h3 {
+    font-family:'DM Serif Display', serif;
+    font-size:1.3rem; font-weight:400; margin-bottom:.6rem;
+  }
+
+  .future-card p { color:var(--muted); font-size:.875rem; line-height:1.7; }
+
+  .future-list {
+    list-style:none; margin-top:1rem;
+    display:flex; flex-direction:column; gap:.45rem;
+  }
+
+  .future-list li {
+    font-size:.82rem; color:var(--muted);
+    display:flex; align-items:flex-start; gap:.6rem;
+  }
+
+  .future-list li::before { content:'◦'; color:var(--gold); flex-shrink:0; }
+
+  /* ── CONTACT ── */
+  .contact-wrap {
+    display:grid; grid-template-columns:1fr 1fr; gap:2rem;
+    align-items:start;
+  }
+
+  .contact-editorial h2 {
+    font-family:'DM Serif Display', serif;
+    font-size: clamp(2rem,4vw,3.2rem);
+    font-weight:400; line-height:1.1;
+    margin-bottom:1.25rem;
+  }
+
+  .contact-editorial h2 em { color:var(--gold); font-style:italic; }
+
+  .contact-editorial p {
+    color:var(--muted); font-size:1rem;
+    line-height:1.75; font-weight:300; margin-bottom:1.75rem;
+  }
+
+  .contact-block {
+    background:var(--card); border:1px solid var(--border);
+    border-radius:14px; padding:2.25rem; backdrop-filter:blur(10px);
+    position:relative; overflow:hidden;
+  }
+
+  .contact-block::before {
+    content:''; position:absolute; top:0; left:0;
+    width:100%; height:3px;
+    background: linear-gradient(90deg, var(--amber), var(--gold2), transparent);
+  }
+
+  .contact-row {
+    display:flex; gap:.75rem; margin-bottom:.9rem; align-items:flex-start;
+  }
+
+  .c-lbl {
+    font-family:'Fira Code', monospace; font-size:.68rem;
+    color:var(--amber); min-width:70px;
+    text-transform:uppercase; letter-spacing:.06em; padding-top:2px;
+  }
+
+  .c-val { font-size:.9rem; }
+  .c-val a { color:var(--gold2); text-decoration:none; }
+  .c-val a:hover { text-decoration:underline; }
+
+  /* ── FOOTER ── */
+  footer {
+    position:relative; z-index:1;
+    background:var(--blue);
+    border-top:3px solid var(--gold);
+    padding:2.5rem; text-align:center;
+  }
+
+  .footer-logo {
+    font-family:'DM Serif Display', serif;
+    font-size:1.4rem; color:white;
+    margin-bottom:.5rem;
+  }
+
+  .footer-logo em { color:var(--gold); font-style:italic; }
+
+  footer p {
+    color:rgba(255,255,255,.65); font-size:.8rem;
+    font-family:'Fira Code', monospace; line-height:1.9;
+  }
+
+  footer a { color:var(--gold); text-decoration:none; }
+
+  .footer-links {
+    display:flex; justify-content:center; gap:2rem;
+    margin-top:1rem; flex-wrap:wrap;
+  }
+
+  .footer-links a {
+    color:rgba(255,255,255,.55); font-size:.76rem;
+    font-family:'Fira Code', monospace; text-decoration:none;
+    transition:color .2s;
+  }
+
+  .footer-links a:hover { color:var(--gold); }
+
+  /* ── ANIMATIONS ── */
+  @keyframes rise {
+    from { opacity:0; transform:translateY(18px); }
+    to   { opacity:1; transform:translateY(0); }
+  }
+
+  /* ── SCROLLBAR ── */
+  ::-webkit-scrollbar { width:7px; }
+  ::-webkit-scrollbar-track { background:var(--ink); }
+  ::-webkit-scrollbar-thumb { background:var(--ink4); border-radius:4px; }
+
+  /* ── RESPONSIVE ── */
+  @media(max-width:900px) {
+    .hero-content { grid-template-columns:1fr; }
+    .hero-blob { display:none; }
+    .lab-card.featured { grid-column:span 1; grid-template-columns:1fr; }
+    .lab-grid { grid-template-columns:1fr; }
+    .steps-row { grid-template-columns:repeat(2,1fr); }
+    .future-grid { grid-template-columns:1fr; }
+    .contact-wrap { grid-template-columns:1fr; }
+    .mission-inner { grid-template-columns:1fr; }
+    .mission-label { writing-mode:horizontal-tb; transform:none; font-size:2rem; }
+    .nav-links { display:none; }
+    .top-banner { flex-direction:column; gap:.35rem; text-align:center; }
+  }
+
+  /* ── STATUS BADGES ── */
+  .status {
+    display:inline-block; margin-bottom:.6rem;
+    font-family:'Fira Code', monospace; font-size:.62rem;
+    letter-spacing:.1em; text-transform:uppercase;
+    padding:3px 9px; border-radius:4px; border:1px solid;
+  }
+  .status-active  { color:#8fe3a8; border-color:rgba(143,227,168,.35); background:rgba(143,227,168,.08); }
+  .status-build   { color:var(--gold2); border-color:rgba(255,200,74,.35); background:rgba(255,200,74,.08); }
+  .status-planned { color:#9fbfff; border-color:rgba(122,179,255,.35); background:rgba(0,48,135,.18); }
+  .status-legend { display:flex; gap:1rem; flex-wrap:wrap; margin:-1.75rem 0 2rem; font-size:.78rem; color:var(--muted); align-items:center; }
+  .prog-card.planned { opacity:.82; }
+
+  .lab-grid { grid-template-columns:repeat(auto-fill, minmax(320px,1fr)); }
+  .lab-card.featured { grid-column:1 / -1; }
+  .lab-seq { margin-top:.9rem; padding-top:.8rem; border-top:1px dashed var(--border); }
+  .lab-seq strong { display:block; font-size:.72rem; font-family:'Fira Code', monospace; color:var(--gold2); font-weight:500; margin-bottom:.35rem; letter-spacing:.04em; }
+  .lab-seq ol { margin-left:1.1rem; color:var(--muted); font-size:.8rem; line-height:1.6; }
+
+  /* ── PRINCIPLES ── */
+  .principles { display:grid; grid-template-columns:repeat(3,1fr); gap:1.25rem; margin-top:3.5rem; }
+  .principle { border-left:2px solid var(--amber); padding:.25rem 0 .25rem 1.1rem; }
+  .principle h4 { font-family:'DM Serif Display', serif; font-weight:400; font-size:1.1rem; margin-bottom:.35rem; }
+  .principle p { font-size:.84rem; color:var(--muted); line-height:1.65; }
+
+  /* ── LAB LEAD ── */
+  .lead-section { background:var(--ink2); border-top:1px solid var(--border); border-bottom:1px solid var(--border); }
+  .lead-wrap { display:grid; grid-template-columns:1.2fr .8fr; gap:2.5rem; align-items:start; }
+  .lead-bio p { color:var(--muted); line-height:1.8; font-weight:300; margin-bottom:1.1rem; max-width:640px; }
+  .lead-bio p strong { color:var(--text); font-weight:500; }
+  .award {
+    display:flex; gap:1rem; align-items:center;
+    background:rgba(245,166,35,.07); border:1px solid rgba(245,166,35,.3);
+    border-radius:12px; padding:1rem 1.25rem; margin-bottom:1.75rem; max-width:640px;
+  }
+  .award span.award-icon { font-size:2rem; }
+  .award div { font-size:.9rem; line-height:1.5; }
+  .award div em { color:var(--gold); font-style:normal; font-weight:600; }
+  .cred-card { background:var(--card); border:1px solid var(--border); border-radius:14px; padding:1.75rem; }
+  .cred-card h3 { font-family:'DM Serif Display', serif; font-weight:400; font-size:1.2rem; margin-bottom:1rem; }
+  .cred-card h3:not(:first-child) { margin-top:1.5rem; }
+
+  @media(max-width:900px) {
+    .principles { grid-template-columns:1fr; }
+    .lead-wrap { grid-template-columns:1fr; }
+  }
+</style>
+</head>
+<body>
+
+
+<!-- ANIMATED NEURAL NETWORK -->
+<canvas id="neural-canvas"></canvas>
+
+<!-- TOP BANNER -->
+<div class="top-banner">
+  <span>🏫 Immokalee Technical College · 508 N 9th Street, Immokalee, FL 34142 · <a href="tel:239-377-9900">(239) 377-9900</a></span>
+  <div class="top-banner-links">
+    <a href="https://itc.collierschools.com" target="_blank">iTECH Homepage</a>
+    <a href="https://itc.collierschools.com/programs" target="_blank">All Programs</a>
+    <a href="https://forms.office.com/Pages/ResponsePage.aspx?id=SjyUWVNiDU2KmP71AwPTS6jOS3eDn0FMmtcCFdTWjHJUQUFBTEJDVjQ1Slg3MDBPNkpUTlU0UjdCSi4u" target="_blank">Apply Now</a>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-brand">
+    <div class="nav-emblem">Ai</div>
+    <div class="nav-text">
+      <strong>AI Innovation Lab</strong>
+      <span>Immokalee Technical College</span>
+    </div>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#lab">The Stations</a></li>
+    <li><a href="#model">How It Works</a></li>
+    <li><a href="#programs">By Program</a></li>
+    <li><a href="#lead">Lab Lead</a></li>
+    <li><a href="#community">Community</a></li>
+    <li><a href="#contact" class="nav-cta">Get Involved</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-content">
+    <div>
+      <div class="hero-eyebrow">AI Innovation Lab · iTECH</div>
+      <h1>
+        <span class="small-line">Robots, edge devices &amp; real networks</span>
+        <span class="italic-word">Hands-on</span>
+        Intelligence
+      </h1>
+      <p class="hero-sub">
+        A rotating-station lab inside iTECH's Computer Systems &amp; Information Technology program. Student teams cycle through robotic arms, AI robots, single-board computers and industrial trainers — onboarding each one as a managed IT device, programming it, securing it, and documenting it the way a working technician would.
+      </p>
+      <div class="hero-pills">
+        <span class="pill pill-amber">Rotating Stations</span>
+        <span class="pill pill-gold">Robotics + Edge AI</span>
+        <span class="pill pill-blue">IT · Networking · Cybersecurity</span>
+        <span class="pill pill-amber">Industry Certification Pathway</span>
+      </div>
+      <div class="hero-actions">
+        <a href="#lab" class="btn-amber">Explore the Stations</a>
+        <a href="#model" class="btn-ghost">How a Rotation Works</a>
+      </div>
+    </div>
+
+    <!-- ORGANIC BLOB / AI VISUAL -->
+    <div class="hero-blob">
+      <div class="blob-outer">
+        <svg class="blob-svg" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <radialGradient id="blobGrad" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#ff9500" stop-opacity="0.18"/>
+              <stop offset="60%" stop-color="#f5a623" stop-opacity="0.06"/>
+              <stop offset="100%" stop-color="#003087" stop-opacity="0.02"/>
+            </radialGradient>
+            <filter id="blur1"><feGaussianBlur stdDeviation="3"/></filter>
+          </defs>
+
+          <!-- Animated blob shape -->
+          <path id="blobPath"
+            fill="url(#blobGrad)"
+            stroke="rgba(255,149,0,0.25)" stroke-width="1"
+            d="M 200,80
+               C 260,60 320,110 340,180
+               C 360,250 330,320 260,345
+               C 190,370 120,340 90,270
+               C 60,200 80,130 140,100
+               C 160,90 180,85 200,80 Z">
+            <animate attributeName="d"
+              dur="8s" repeatCount="indefinite"
+              values="
+                M 200,80 C 260,60 320,110 340,180 C 360,250 330,320 260,345 C 190,370 120,340 90,270 C 60,200 80,130 140,100 C 160,90 180,85 200,80 Z;
+                M 200,70 C 270,55 330,120 345,195 C 358,265 320,330 250,348 C 180,368 110,330 85,260 C 55,190 85,120 150,95 C 168,87 185,74 200,70 Z;
+                M 200,80 C 260,60 320,110 340,180 C 360,250 330,320 260,345 C 190,370 120,340 90,270 C 60,200 80,130 140,100 C 160,90 180,85 200,80 Z
+              "/>
+          </path>
+
+          <!-- Central "brain" nodes -->
+          <g opacity="0.7">
+            <!-- core nodes -->
+            <circle cx="200" cy="200" r="14" fill="none" stroke="#f5a623" stroke-width="2"/>
+            <circle cx="200" cy="200" r="5" fill="#ff9500"/>
+
+            <circle cx="145" cy="155" r="8" fill="none" stroke="#f5a623" stroke-width="1.5"/>
+            <circle cx="145" cy="155" r="3" fill="#f5a623"/>
+
+            <circle cx="255" cy="155" r="8" fill="none" stroke="#f5a623" stroke-width="1.5"/>
+            <circle cx="255" cy="155" r="3" fill="#f5a623"/>
+
+            <circle cx="145" cy="245" r="8" fill="none" stroke="#f5a623" stroke-width="1.5"/>
+            <circle cx="145" cy="245" r="3" fill="#f5a623"/>
+
+            <circle cx="255" cy="245" r="8" fill="none" stroke="#f5a623" stroke-width="1.5"/>
+            <circle cx="255" cy="245" r="3" fill="#f5a623"/>
+
+            <circle cx="200" cy="130" r="6" fill="none" stroke="#ff9500" stroke-width="1.5"/>
+            <circle cx="200" cy="130" r="2.5" fill="#ff9500"/>
+
+            <circle cx="200" cy="270" r="6" fill="none" stroke="#ff9500" stroke-width="1.5"/>
+            <circle cx="200" cy="270" r="2.5" fill="#ff9500"/>
+
+            <circle cx="130" cy="200" r="6" fill="none" stroke="#ff9500" stroke-width="1.5"/>
+            <circle cx="270" cy="200" r="6" fill="none" stroke="#ff9500" stroke-width="1.5"/>
+
+            <!-- outer satellite nodes -->
+            <circle cx="108" cy="130" r="5" fill="none" stroke="#f5a623" stroke-width="1" opacity=".6"/>
+            <circle cx="292" cy="130" r="5" fill="none" stroke="#f5a623" stroke-width="1" opacity=".6"/>
+            <circle cx="108" cy="270" r="5" fill="none" stroke="#f5a623" stroke-width="1" opacity=".6"/>
+            <circle cx="292" cy="270" r="5" fill="none" stroke="#f5a623" stroke-width="1" opacity=".6"/>
+            <circle cx="200" cy="95"  r="4" fill="none" stroke="#f5a623" stroke-width="1" opacity=".5"/>
+            <circle cx="200" cy="305" r="4" fill="none" stroke="#f5a623" stroke-width="1" opacity=".5"/>
+
+            <!-- connection lines -->
+            <line x1="200" y1="200" x2="145" y2="155" stroke="#f5a623" stroke-width="1" opacity=".4"/>
+            <line x1="200" y1="200" x2="255" y2="155" stroke="#f5a623" stroke-width="1" opacity=".4"/>
+            <line x1="200" y1="200" x2="145" y2="245" stroke="#f5a623" stroke-width="1" opacity=".4"/>
+            <line x1="200" y1="200" x2="255" y2="245" stroke="#f5a623" stroke-width="1" opacity=".4"/>
+            <line x1="200" y1="200" x2="200" y2="130" stroke="#ff9500" stroke-width="1" opacity=".35"/>
+            <line x1="200" y1="200" x2="200" y2="270" stroke="#ff9500" stroke-width="1" opacity=".35"/>
+            <line x1="200" y1="200" x2="130" y2="200" stroke="#ff9500" stroke-width="1" opacity=".35"/>
+            <line x1="200" y1="200" x2="270" y2="200" stroke="#ff9500" stroke-width="1" opacity=".35"/>
+            <line x1="145" y1="155" x2="108" y2="130" stroke="#f5a623" stroke-width=".8" opacity=".25"/>
+            <line x1="255" y1="155" x2="292" y2="130" stroke="#f5a623" stroke-width=".8" opacity=".25"/>
+            <line x1="145" y1="245" x2="108" y2="270" stroke="#f5a623" stroke-width=".8" opacity=".25"/>
+            <line x1="255" y1="245" x2="292" y2="270" stroke="#f5a623" stroke-width=".8" opacity=".25"/>
+            <line x1="200" y1="130" x2="200" y2="95"  stroke="#f5a623" stroke-width=".8" opacity=".25"/>
+            <line x1="200" y1="270" x2="200" y2="305" stroke="#f5a623" stroke-width=".8" opacity=".25"/>
+
+            <!-- pulsing ring on center -->
+            <circle cx="200" cy="200" r="26" fill="none" stroke="#f5a623" stroke-width="1" opacity=".15">
+              <animate attributeName="r" values="14;30;14" dur="3s" repeatCount="indefinite"/>
+              <animate attributeName="opacity" values="0.4;0;0.4" dur="3s" repeatCount="indefinite"/>
+            </circle>
+          </g>
+
+          <!-- Labels on blob -->
+          <g font-family="Fira Code, monospace" fill="rgba(255,149,0,0.5)" font-size="10" text-anchor="middle">
+            <text x="145" y="152">xArm</text>
+            <text x="255" y="152">Vector</text>
+            <text x="145" y="260">Nous</text>
+            <text x="255" y="260">AIPI</text>
+            <text x="200" y="127">UNIHIKER</text>
+            <text x="200" y="285">Skill Boss</text>
+          </g>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MISSION STRIP -->
+<div class="mission-strip">
+  <div class="mission-inner">
+    <div class="mission-label">Mission</div>
+    <p class="mission-text">
+      The AI Innovation Lab gives iTECH students <strong>practical, hands-on experience with the AI tools and devices reshaping technical careers</strong> — not by watching demos, but by standing up, networking, programming, securing and troubleshooting real AI hardware. It starts in Computer Systems &amp; IT. <strong>The goal is AI fluency for every iTECH graduate.</strong>
+    </p>
+  </div>
+</div>
+
+<!-- THE STATIONS -->
+<section id="lab" class="lab-section">
+  <div class="section-inner">
+    <div class="eyebrow">Physical AI Lab</div>
+    <h2 class="section-title">The <em>Stations</em></h2>
+    <p class="section-desc">
+      Every piece of equipment in the Lab is its own station. Teams rotate through them, and each station carries a sequenced set of self-guided labs — so a student who starts on the robotic arm and a student who starts on the Vector robot both build the same core IT skills: device onboarding, networking, Linux and Python, security, and documentation.
+    </p>
+
+    <div class="lab-grid">
+
+      <!-- FEATURED: xArm -->
+      <div class="lab-card featured">
+        <div>
+          <span class="device-icon">🦾</span>
+          <span class="status status-active">Active station</span>
+          <h3>Hiwonder xArm 1S Robotic Arm</h3>
+          <p>
+            A programmable desktop robotic arm that brings AI out of the screen and into physical work. Computer Systems students build AI projects with real industrial applications — the same pick, sort, and move logic behind modern manufacturing cells and inventory control.
+          </p>
+          <span class="device-tag">⬤ Manufacturing · Inventory · Automation</span>
+        </div>
+        <ul class="lab-spec-list">
+          <li>Pick-and-place and sorting tasks modeled on manufacturing and warehouse work</li>
+          <li>AI-driven projects: recognize an object, decide where it goes, move it there</li>
+          <li>Pairs with the Skill Boss Logistics trainer for inventory-control scenarios</li>
+          <li>Students treat the arm as an asset on the network — addressed, documented, secured</li>
+          <li>Project work doubles as showcase material for Lab open houses</li>
+        </ul>
+      </div>
+
+      <div class="lab-card">
+        <span class="device-icon">🤖</span>
+        <span class="status status-active">Active station</span>
+        <h3>Anki Vector Robot</h3>
+        <p>
+          When the manufacturer's cloud servers shut down in 2024, Vector lost its brain. Students bring it back — a real service-restoration job that runs from Raspberry Pi servers and packet captures to Python and large language models.
+        </p>
+        <div class="lab-seq">
+          <strong>Lab sequence</strong>
+          <ol>
+            <li>Stand Up Vector's Brain — self-host wire-pod on a Raspberry Pi, capture the traffic in Wireshark, write a restore SOP</li>
+            <li>Perceive, Decide, Act — calibrate its sensors in Python, then deliberately fool them</li>
+            <li>Give Vector an LLM personality — and test it for hallucination and prompt injection</li>
+            <li>Capstone: Vector as the Lab's ambassador, greeting visitors and explaining the Lab</li>
+          </ol>
+        </div>
+      </div>
+
+      <div class="lab-card">
+        <span class="device-icon">🧩</span>
+        <span class="status status-build">Lab sequence in build</span>
+        <h3>MatataStudio Nous AI Robotics Set</h3>
+        <p>
+          A buildable AI robotics kit. Students start the way an IT department would with any new device: unbox it, assemble it, and document it as a managed asset before a single line of code runs.
+        </p>
+        <div class="lab-seq">
+          <strong>Lab 1</strong>
+          <ol>
+            <li>Unbox, assemble &amp; document the robot as a managed IT device — self-guided, with student handouts and deliverables</li>
+          </ol>
+        </div>
+      </div>
+
+      <div class="lab-card">
+        <span class="device-icon">📟</span>
+        <span class="status status-active">Active station</span>
+        <h3>UNIHIKER M10</h3>
+        <p>
+          A single-board Linux computer with a built-in touchscreen and sensors. Students connect over USB networking, work in the Linux command line over SSH, and write Python that reads live sensor data.
+        </p>
+        <div class="lab-seq">
+          <strong>Lab sequence</strong>
+          <ol>
+            <li>Sensor dashboard — hardware ID, SSH, Linux CLI, Python, live sensor tests</li>
+            <li>MQTT sensor network</li>
+            <li>Lab network status monitor</li>
+            <li>Computer vision project</li>
+            <li>Cloud-connected AI assistant</li>
+          </ol>
+        </div>
+      </div>
+
+      <div class="lab-card">
+        <span class="device-icon">🎙️</span>
+        <span class="status status-build">In development</span>
+        <h3>AIPI Lite Handheld AI Devices (×4)</h3>
+        <p>
+          Four pocket-sized AI assistants — enough for a full team to work in parallel. They serve as AI endpoints across the Lab, including as devices students onboard to the Skill Boss network. Dedicated classroom activities are being designed now.
+        </p>
+        <span class="device-tag">⬤ 4 units · team station</span>
+      </div>
+
+      <div class="lab-card">
+        <span class="device-icon">🏭</span>
+        <span class="status status-active">Active station</span>
+        <h3>Amatrol Skill Boss Logistics</h3>
+        <p>
+          An industrial logistics trainer with its own network. The Lab's AI extension series layers on top of Amatrol Skills 23–26, putting AI devices onto an industrial network — IT and operational technology meeting in one place.
+        </p>
+        <div class="lab-seq">
+          <strong>AI extension labs</strong>
+          <ol>
+            <li>AI-1: Onboard an AI device as a managed asset — static addressing, verification, and why the device never shows up in industrial discovery tools</li>
+            <li>AI-4: Audit an AI troubleshooting assistant — students grade the AI's answer against the evidence; the audit is what gets graded</li>
+          </ol>
+        </div>
+      </div>
+
+      <div class="lab-card">
+        <span class="device-icon">🔌</span>
+        <span class="status status-active">Active station</span>
+        <h3>iTECH Network Trainers</h3>
+        <p>
+          Modular network trainers built in-house for the Computer Systems program. Equipment is pulled per lab, so each exercise uses exactly the gear it needs. Built for returning students who have already earned CompTIA Tech+ and Cisco IT Support.
+        </p>
+        <span class="device-tag">⬤ Built at iTECH · veteran students</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- HOW IT WORKS -->
+<section id="model" class="model-section">
+  <div class="section-inner">
+    <div class="eyebrow">Instructional Model</div>
+    <h2 class="section-title">How a <em>Rotation</em> Works</h2>
+    <p class="section-desc">
+      The Lab runs on rotating stations. Each team works through a self-guided lab packet at one station, then resets it and moves to the next. Labs are designed so any team can pick up any station on any day.
+    </p>
+
+    <div class="steps-row">
+      <div class="step-item">
+        <div class="step-num">1</div>
+        <h4>Rotate In</h4>
+        <p>Teams arrive at a station and pick up where its lab sequence says to — with safe stopping points built in, so rotations never strand a project mid-step.</p>
+      </div>
+      <div class="step-item">
+        <div class="step-num">2</div>
+        <h4>Self-Guided Lab</h4>
+        <p>A Canvas Student Annotation packet walks students through numbered, checkable steps, with instructor checkpoints along the way.</p>
+      </div>
+      <div class="step-item">
+        <div class="step-num">3</div>
+        <h4>Evidence &amp; Analysis</h4>
+        <p>Deliverables are written for the next technician, not just the teacher. Analysis and failure documentation carry more weight than procedure.</p>
+      </div>
+      <div class="step-item">
+        <div class="step-num">4</div>
+        <h4>Reset &amp; Hand Off</h4>
+        <p>A station reset checklist — credentials removed, device restored — leaves the station ready for the next team.</p>
+      </div>
+    </div>
+
+    <div class="principles">
+      <div class="principle">
+        <h4>Scaffolded by design</h4>
+        <p>Every station follows a scope and sequence. Students get step-by-step exposure to a task early, even before they fully understand it — and that exposure pays off when the concepts arrive.</p>
+      </div>
+      <div class="principle">
+        <h4>Returning students lead</h4>
+        <p>Veteran students step into lead-tech roles with their own constraints and responsibilities, rather than repeating work they've already mastered.</p>
+      </div>
+      <div class="principle">
+        <h4>Built to run without us</h4>
+        <p>Instructor guides, answer keys, rubrics, and substitute notes ship with every lab — complete enough that the Lab keeps running no matter who is in the room.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- AI BY PROGRAM -->
+<section id="programs">
+  <div class="section-inner">
+    <div class="eyebrow">Curriculum Integration</div>
+    <h2 class="section-title">AI Across <em>iTECH</em></h2>
+    <p class="section-desc">
+      The Lab launched in Computer Systems &amp; Information Technology (FL DOE program Y100200), where its labs align to the state curriculum framework. The long-term vision is for every iTECH program to connect to AI through the Lab. Here's where each program stands.
+    </p>
+    <div class="status-legend">
+      <span class="status status-active" style="margin:0">Active now</span>
+      <span class="status status-planned" style="margin:0">Planned</span>
+    </div>
+
+    <div class="programs-grid">
+
+      <div class="prog-card">
+        <span class="status status-active">Active now</span>
+        <span class="prog-icon">💻</span>
+        <div class="prog-label">Computer Systems &amp; IT · Y100200</div>
+        <h3>AI Devices as Managed IT</h3>
+        <p>Students onboard, address, network, program and document every AI device in the Lab — robotic arm, robots, single-board computers — and rotate through all stations as part of the program.</p>
+        <span class="prog-ai-tag">↳ Stations: all · Linux · Python · SSH · MQTT · Wireshark</span>
+      </div>
+
+      <div class="prog-card">
+        <span class="status status-active">Active now</span>
+        <span class="prog-icon">🛡️</span>
+        <div class="prog-label">Applied Cybersecurity</div>
+        <h3>AI in the Security Operations Center</h3>
+        <p>"Shift Change at the SOC" is a tiered SOC-analyst simulation in a Huntress managed EDR/SIEM sandbox, with new students working Tier 1 and returning students on Tier 2. On the AI side, students red-team an LLM for prompt injection and audit what data leaves the building.</p>
+        <span class="prog-ai-tag">↳ Tools: Huntress EDR/SIEM · packet capture · LLM security testing</span>
+      </div>
+
+      <div class="prog-card">
+        <span class="status status-active">Active now</span>
+        <span class="prog-icon">🏭</span>
+        <div class="prog-label">Logistics &amp; Industrial Systems</div>
+        <h3>AI on the Industrial Network</h3>
+        <p>AI extension labs on the Amatrol Skill Boss Logistics trainer and the xArm show how AI devices join industrial networks — and why IT and operational-technology skills now overlap.</p>
+        <span class="prog-ai-tag">↳ Stations: Skill Boss Logistics · xArm 1S · AIPI Lite</span>
+      </div>
+
+      <div class="prog-card planned">
+        <span class="status status-planned">Planned</span>
+        <span class="prog-icon">💰</span>
+        <div class="prog-label">Accounting Operations</div>
+        <h3>AI in Finance &amp; Fraud Detection</h3>
+        <p>AI literacy, AI-assisted bookkeeping, and fraud-detection concepts connected to the program's existing industry resources.</p>
+        <span class="prog-ai-tag">↳ AI literacy · automated reporting · fraud classifiers</span>
+      </div>
+
+      <div class="prog-card planned">
+        <span class="status status-planned">Planned</span>
+        <span class="prog-icon">🏥</span>
+        <div class="prog-label">Nursing · Patient Care · Nursing Assistant</div>
+        <h3>Clinical AI &amp; Smart Monitoring</h3>
+        <p>How AI triage, decision support, and monitoring devices work in patient care — and where their limits and ethical boundaries sit.</p>
+        <span class="prog-ai-tag">↳ decision support · smart sensors · AI ethics</span>
+      </div>
+
+      <div class="prog-card planned">
+        <span class="status status-planned">Planned</span>
+        <span class="prog-icon">⚙️</span>
+        <div class="prog-label">CNC · Machining Technologies</div>
+        <h3>AI-Optimized Manufacturing</h3>
+        <p>Robotic handling, computer-vision quality inspection, and predictive tool wear — built on the xArm station's manufacturing projects.</p>
+        <span class="prog-ai-tag">↳ robotic arm · vision QC · predictive maintenance</span>
+      </div>
+
+      <div class="prog-card planned">
+        <span class="status status-planned">Planned</span>
+        <span class="prog-icon">🚗</span>
+        <div class="prog-label">Automotive · Heavy Equipment</div>
+        <h3>AI Diagnostics &amp; Fleet Intelligence</h3>
+        <p>Sensor data, predictive failure, and AI diagnostics for vehicles and the construction and agriculture equipment central to Collier County.</p>
+        <span class="prog-ai-tag">↳ sensor data · predictive maintenance · fleet AI</span>
+      </div>
+
+      <div class="prog-card planned">
+        <span class="status status-planned">Planned</span>
+        <span class="prog-icon">🏗️</span>
+        <div class="prog-label">Building Construction Technology</div>
+        <h3>AI in Construction &amp; Design</h3>
+        <p>Generative design, AI scheduling, and computer-vision site inspection for structural layout, materials, and safety planning.</p>
+        <span class="prog-ai-tag">↳ generative BIM · AI scheduling · vision inspection</span>
+      </div>
+
+      <div class="prog-card planned">
+        <span class="status status-planned">Planned</span>
+        <span class="prog-icon">🍳</span>
+        <div class="prog-label">Culinary Arts · Cosmetology · Early Childhood</div>
+        <h3>AI in Service Careers</h3>
+        <p>Inventory forecasting in kitchens, AI consultation tools in salons, and critical evaluation of AI learning tools in early childhood classrooms.</p>
+        <span class="prog-ai-tag">↳ inventory AI · consultation tools · adaptive learning</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- LAB LEAD -->
+<section id="lead" class="lead-section">
+  <div class="section-inner">
+    <div class="eyebrow">Lab Lead</div>
+    <h2 class="section-title">Meet <em>Amy</em></h2>
+    <div class="lead-wrap">
+      <div class="lead-bio">
+        <div class="award">
+          <span class="award-icon">🏆</span>
+          <div><em>2025–2026 Outstanding Post-Secondary Teacher of the Year</em><br>Collier County Public Schools</div>
+        </div>
+        <p>
+          Amy is a <strong>post-secondary CTE educator and IT professional</strong> at Immokalee Technical College, where she teaches computer systems, networking, and applied cybersecurity in the Computer Systems &amp; Information Technology program. She designs and builds the AI Innovation Lab's stations and lab sequences.
+        </p>
+        <p>
+          She also serves as <strong>Department Chair</strong>, <strong>Building Technology Coordinator</strong>, and iTECH's <strong>Canvas LMS point of contact</strong> and subject-matter expert. As an instructional coach, she mentors new teachers — including guiding them through Florida's CAPE industry certification program — and was selected for the first two cohorts of the district's Innovative Teacher Leaders program.
+        </p>
+        <p>
+          Amy administers iTECH's on-campus <strong>Pearson VUE and Certiport testing center</strong>, so students can earn industry certifications without leaving campus. She is the liaison between campus leadership, instructors, district technology, vendors, facilities, and sister campus Lorenzo Walker Technical College.
+        </p>
+      </div>
+      <div class="cred-card">
+        <h3>Education</h3>
+        <ul class="lab-spec-list">
+          <li>M.S. in Information Technology — Florida State University</li>
+          <li>Graduate Certificate in Information Architecture — Florida State University</li>
+          <li>B.A. in Technical Education &amp; Industry Training — University of Central Florida</li>
+        </ul>
+        <h3>Certifications</h3>
+        <ul class="lab-spec-list">
+          <li>ISTE+ASCD Certified Instructional Leader</li>
+          <li>Collier County Vocational Teaching Certificate — Computer Service &amp; Cybersecurity</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- COMMUNITY & FUTURE -->
+<section id="community">
+  <div class="section-inner">
+    <div class="eyebrow">Beyond the Classroom</div>
+    <h2 class="section-title">Community &amp; <em>Future Plans</em></h2>
+    <p class="section-desc">
+      The AI Innovation Lab is designed to grow. What begins as a resource for iTECH students will expand to serve Immokalee and the broader Collier County community.
+    </p>
+
+    <div class="future-grid">
+      <div class="future-card">
+        <span class="future-icon">🎤</span>
+        <h3>Lab Showcase &amp; Live Demos</h3>
+        <p>
+          Student AI projects are the Lab's best argument for itself. Finished work is shared with administrators, advisory boards, and visitors at open houses.
+        </p>
+        <ul class="future-list">
+          <li>Vector greets visitors and explains the Lab (capstone project)</li>
+          <li>xArm manufacturing and inventory demonstrations</li>
+          <li>Student project work featured in Lab outreach</li>
+        </ul>
+      </div>
+
+      <div class="future-card">
+        <span class="future-icon">🎓</span>
+        <h3>Certification Pathway</h3>
+        <p>
+          Lab work connects to the industry certifications Florida funds through CAPE, and students can test on campus at iTECH's authorized testing center.
+        </p>
+        <ul class="future-list">
+          <li>CompTIA Tech+ and Cisco IT Support as the foundation</li>
+          <li>AWS Cloud/AI Practitioner for many returning students</li>
+          <li>Pearson VUE &amp Certiport testing on site</li>
+        </ul>
+      </div>
+
+      <div class="future-card">
+        <span class="future-icon">🤝</span>
+        <h3>Industry &amp; Employer Partnerships</h3>
+        <p>
+          Local employers in agriculture, healthcare, construction, logistics, and hospitality — the industries that define Collier County — are invited to partner with the Lab, co-design projects, and meet AI-ready graduates.
+        </p>
+        <ul class="future-list">
+          <li>Industry-sponsored lab challenges</li>
+          <li>Employer-defined AI project briefs</li>
+          <li>Guest practitioner demonstrations</li>
+          <li>Advisory board input on new stations</li>
+        </ul>
+      </div>
+
+      <div class="future-card coming-soon">
+        <span class="future-icon">🛠️</span>
+        <h3>Student-Staffed Community IT Support</h3>
+        <p>
+          A concept for an online IT help platform staffed by iTECH students, serving the Immokalee community — real support tickets as real-world practice.
+        </p>
+        <ul class="future-list">
+          <li>Students gain help-desk experience with real users</li>
+          <li>Residents and small businesses get accessible tech support</li>
+        </ul>
+      </div>
+
+      <div class="future-card coming-soon">
+        <span class="future-icon">👥</span>
+        <h3>Community AI Education</h3>
+        <p>
+          Public-facing AI literacy workshops and short courses for Immokalee residents, small business owners, and community organizations navigating AI in their own work.
+        </p>
+        <ul class="future-list">
+          <li>AI Literacy for Small Businesses</li>
+          <li>AI Tools for Agriculture</li>
+          <li>Senior Technology Inclusion Workshops</li>
+          <li>K–12 AI introduction days</li>
+        </ul>
+      </div>
+
+      <div class="future-card coming-soon">
+        <span class="future-icon">🏆</span>
+        <h3>AI Competitions &amp; Events</h3>
+        <p>
+          Hosting and joining regional AI competitions, hackathons, and showcases that put iTECH students alongside college and university peers.
+        </p>
+        <ul class="future-list">
+          <li>Annual iTECH AI Project Showcase</li>
+          <li>Regional AI challenge participation</li>
+          <li>Cross-program collaborative AI projects</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- CONTACT / GET INVOLVED -->
+<section id="contact">
+  <div class="section-inner">
+    <div class="contact-wrap">
+      <div class="contact-editorial">
+        <div class="eyebrow">Get Involved</div>
+        <h2>Ready to bring <em>intelligence</em> to your work?</h2>
+        <p>
+          Prospective students, employers, community partners, and fellow educators are welcome to visit the AI Innovation Lab. AI literacy is not a luxury; it's a baseline skill for every modern career.
+        </p>
+        <div style="display:flex;flex-wrap:wrap;gap:.75rem;margin-top:1rem;">
+          <a href="https://forms.office.com/Pages/ResponsePage.aspx?id=SjyUWVNiDU2KmP71AwPTS6jOS3eDn0FMmtcCFdTWjHJUQUFBTEJDVjQ1Slg3MDBPNkpUTlU0UjdCSi4u" target="_blank" class="btn-amber">Apply to iTECH</a>
+          <a href="https://itc.collierschools.com/programs" target="_blank" class="btn-ghost">Explore All Programs</a>
+        </div>
+      </div>
+
+      <div class="contact-block">
+        <h3 style="font-family:'DM Serif Display',serif;font-size:1.4rem;font-weight:400;margin-bottom:1.5rem;">Lab Contact Information</h3>
+
+        <div class="contact-row">
+          <span class="c-lbl">Lab Lead</span>
+          <span class="c-val">Amy McMullin, M.S. IT<br><span style="font-size:.8rem;color:var(--muted)">Department Chair · Computer Systems &amp; IT Instructor</span></span>
+        </div>
+        <div class="contact-row">
+          <span class="c-lbl">Email</span>
+          <span class="c-val"><a href="mailto:[mcmula@collierschools.com]">[Amy.McMullin@collierschools.com]</a></span>
+        </div>
+        <div class="contact-row">
+          <span class="c-lbl">Phone</span>
+          <span class="c-val"><a href="tel:239-377-9900">(239) 377-9900</a></span>
+        </div>
+        <div class="contact-row">
+          <span class="c-lbl">Location</span>
+          <span class="c-val">508 N 9th Street<br>Immokalee, FL 34142<br><span style="font-size:.8rem;color:var(--muted)">Lab Room: 1-217</span></span>
+        </div>
+        <div class="contact-row">
+          <span class="c-lbl">Hours</span>
+          <span class="c-val">Mon – Fri · 8:00 AM – 2:30 PM<br><span style="font-size:.8rem;color:var(--muted)">Visits and demos by appointment</span></span>
+        </div>
+        <div class="contact-row">
+          <span class="c-lbl">Testing</span>
+          <span class="c-val">On-campus Pearson VUE · Certiport testing center</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">
+    i<em>TECH</em> AI Innovation Lab
+  </div>
+  <p>
+    <strong style="color:rgba(255,255,255,.9)">Immokalee Technical College</strong> — Part of Collier County Public Schools<br>
+    508 N 9th Street, Immokalee, FL 34142 · <a href="tel:239-377-9900">(239) 377-9900</a><br>
+    Accredited by the <a href="https://itc.collierschools.com/admissions/accrediting-associations" target="_blank">Council on Occupational Education (COE)</a> and Cognia
+  </p>
+  <div class="footer-links">
+    <a href="https://itc.collierschools.com" target="_blank">iTECH Homepage</a>
+    <a href="#lab">The Stations</a>
+    <a href="#model">How It Works</a>
+    <a href="#programs">By Program</a>
+    <a href="#lead">Lab Lead</a>
+    <a href="#community">Community</a>
+    <a href="https://itc.collierschools.com/admissions/financial-aid" target="_blank">Financial Aid</a>
+    <a href="https://itc.collierschools.com/about-us/campus-safety-and-security" target="_blank">Campus Safety</a>
+    <a href="https://www.collierschools.com/compliance" target="_blank">Compliance</a>
+    <a href="https://itc.collierschools.com/cybersecurity-center" target="_blank">Cybersecurity Center →</a>
+  </div>
+</footer>
+
+
+<!-- NEURAL NETWORK ANIMATION -->
+<script>
+(function() {
+  const canvas = document.getElementById('neural-canvas');
+  const ctx = canvas.getContext('2d');
+  let W, H, nodes = [], animFrame;
+
+  function resize() {
+    W = canvas.width  = window.innerWidth;
+    H = canvas.height = window.innerHeight;
+  }
+
+  function Node() {
+    this.x  = Math.random() * W;
+    this.y  = Math.random() * H;
+    this.vx = (Math.random() - 0.5) * 0.35;
+    this.vy = (Math.random() - 0.5) * 0.35;
+    this.r  = Math.random() * 2.5 + 1;
+    this.pulse = Math.random() * Math.PI * 2;
+  }
+
+  Node.prototype.update = function() {
+    this.x += this.vx;
+    this.y += this.vy;
+    this.pulse += 0.022;
+    if (this.x < 0 || this.x > W) this.vx *= -1;
+    if (this.y < 0 || this.y > H) this.vy *= -1;
+  };
+
+  function init() {
+    nodes = [];
+    const count = Math.floor((W * H) / 14000);
+    for (let i = 0; i < Math.min(count, 80); i++) nodes.push(new Node());
+  }
+
+  function draw() {
+    ctx.clearRect(0, 0, W, H);
+    const maxDist = 160;
+
+    // Draw connections
+    for (let i = 0; i < nodes.length; i++) {
+      for (let j = i + 1; j < nodes.length; j++) {
+        const dx = nodes[j].x - nodes[i].x;
+        const dy = nodes[j].y - nodes[i].y;
+        const d  = Math.sqrt(dx*dx + dy*dy);
+        if (d < maxDist) {
+          const alpha = (1 - d / maxDist) * 0.2;
+          ctx.beginPath();
+          ctx.moveTo(nodes[i].x, nodes[i].y);
+          ctx.lineTo(nodes[j].x, nodes[j].y);
+          ctx.strokeStyle = `rgba(245,166,35,${alpha})`;
+          ctx.lineWidth = 0.7;
+          ctx.stroke();
+        }
+      }
+    }
+
+    // Draw nodes
+    for (const n of nodes) {
+      const pulse = Math.sin(n.pulse) * 0.5 + 0.5;
+      ctx.beginPath();
+      ctx.arc(n.x, n.y, n.r + pulse * 0.8, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(255,149,0,${0.35 + pulse * 0.25})`;
+      ctx.fill();
+    }
+  }
+
+  function loop() {
+    for (const n of nodes) n.update();
+    draw();
+    animFrame = requestAnimationFrame(loop);
+  }
+
+  resize();
+  init();
+  loop();
+
+  window.addEventListener('resize', () => {
+    resize();
+    init();
+  });
+})();
+</script>
+
+</body>
+</html>
