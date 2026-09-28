@@ -8,4 +8,4 @@ A web-based assessment that measures student interest and aptitude across ten IT
 
 Results match each path to industry certifications from Florida's CAPE funding lists, sorted by difficulty and color-coded by adult and dual-enrollment eligibility.
 
-[Try the diagnostic »](/teaching/labs/IT-Pathway-Diagnostic.html)
+[Try the diagnostic »](https://amymcmullin.github.io/IT-Pathway-Diagnostic/) · [Source on GitHub](https://github.com/amymcmullin/IT-Pathway-Diagnostic)
