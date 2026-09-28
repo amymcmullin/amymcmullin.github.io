@@ -23,7 +23,7 @@ repository               : "amymcmullin/amymcmullin.github.io"
 #               Additional customization can be done by editing /_includes/author-profile.html
 author:
   # Biographic information
-  avatar           : "profile.png"
+  avatar           : "bio-photo.jpg"
   name             : "Amy McMullin"
   pronouns         : "she/her"  
   bio              : "Bringing 25 years of IT experience to the classroom"
