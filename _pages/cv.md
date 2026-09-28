@@ -212,12 +212,6 @@ Publications, media & community
 * Cub Scout Pack 165 — Webelos I/II Den Leader, 2013–2015
 * Boy Scout Troop 165 — Committee Member, 2013–2020
 
-Talks & showcases
-======
-  <ul>{% for post in site.talks reversed %}
-    {% include archive-single-talk-cv.html  %}
-  {% endfor %}</ul>
-
 Professional memberships
 ======
 * SWFL Tech (formerly Southwest Florida Regional Technology Partnership)
