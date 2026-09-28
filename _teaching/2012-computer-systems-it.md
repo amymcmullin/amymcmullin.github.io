@@ -16,7 +16,7 @@ Program highlights
 * **Modular network trainers:** Returning students work through a sequenced library of hands-on networking labs, pulling the equipment each lab needs.
 * **Industrial networking:** A six-lab sequence on the Amatrol Skill Boss Logistics trainer covers everything from system orientation to VFD/PLC network configuration and managed-switch work.
 * **[AI Innovation Lab](/talks/itech-ai-innovation-lab.html):** AI extension labs that bring AI devices onto the industrial network as managed assets.
-* **[IT Pathway Diagnostic](/teaching/labs/IT-Pathway-Diagnostic.html):** An interest-and-aptitude assessment that matches students to IT career paths and the certifications that lead to them.
+* **[IT Pathway Diagnostic](https://amymcmullin.github.io/IT-Pathway-Diagnostic/):** An interest-and-aptitude assessment that matches students to IT career paths and the certifications that lead to them.
 
 Networking labs
 ======
