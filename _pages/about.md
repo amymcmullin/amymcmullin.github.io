@@ -27,6 +27,6 @@ Education and credentials
 * M.S., Information Technology (Machine Learning focus), and Graduate Certificate in Information Architecture, Florida State University
 * B.A., Technical Education & Industry Training, University of Central Florida
 * ISTE+ASCD Certified Instructional Leader
-* 100+ industry certifications and badges across CompTIA, Cisco, AWS, Microsoft, and AI platforms ([Credly](https://www.credly.com/users/amy-mcmullin/))
+* 100+ industry certifications and badges across CompTIA, Cisco, AWS, Microsoft, and AI platforms ([see them all](/certifications/))
 
-See my full [CV](/cv/), or browse my [teaching](/teaching/) and [portfolio](/portfolio/).
+See my full [CV](/cv/), or browse my [teaching](/teaching/), [portfolio](/portfolio/) and [certifications](/certifications/).

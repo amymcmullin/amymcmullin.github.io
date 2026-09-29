@@ -108,7 +108,7 @@ iTECH holds active academic partnership status with the following organizations,
 
 Professional certifications
 ======
-100+ verified digital badges on [Credly](https://www.credly.com/users/amy-mcmullin/).
+100+ verified digital badges on [Credly](https://www.credly.com/users/amy-mcmullin/). See them all on the [Certifications & Achievements](/certifications/) page.
 
 * **Artificial Intelligence**
   * Microsoft Certified: Azure AI Fundamentals (AI-900) — Microsoft
