@@ -48,7 +48,7 @@ My written follow-up that afternoon had three parts:
 - **Timeline:** I build the Canvas shell with example assignments by end of day. The instructor adds the rest with due dates by Friday. Students start using it Monday.
 - **Expected outcome:** Students actively working through the course instead of passively clicking, and a first-time pass rate of 75% or better, above the 70% the vendor reports for its curriculum alone.
 
-The instructor then built out his own Canvas module from the example. <!-- CONFIRM: what did the 89% practice test represent (one student, or the class)? Any EPA 608 pass results since? -->
+The instructor then built out his own Canvas module from the example, and one student's first practice test through the new course came back at 89%.
 
 ### Cutting a course from 1,296 assignments to 264
 
@@ -66,9 +66,9 @@ Working with both instructors, we:
 
 ### A certification PLC
 
-I helped lead a professional learning community on credentials, certifications and licensure. A small core group met weekly in person, and other staff joined as needed to give input. <!-- CONFIRM: your role in the PLC (lead, co-lead, member). --> We worked through the state's CAPE funding list to find certifications programs weren't yet offering, met with vendors about new exams, and simplified the paperwork instructors submit when a student certifies.
+I led a professional learning community on credentials, certifications and licensure. A small core group met weekly in person, and other staff joined as needed to give input. We worked through the state's CAPE funding list to find certifications programs weren't yet offering, met with vendors about new exams, and simplified the paperwork instructors submit when a student certifies.
 
-Industry certifications at iTECH went from 69 in 2023–24 to 235 in 2024–25. In the heavy equipment program on our Glades campus, ASE certifications went from zero to 23 in one year. <!-- CONFIRM: 69 → 235 is campus-wide from the district certification report. -->
+Campus-wide, industry certifications at iTECH went from 69 in 2023–24 to 235 in 2024–25, according to our student information system. In the heavy equipment program on our Glades campus, ASE certifications went from zero to 23 in one year.
 
 ## Professional learning I designed
 
@@ -84,9 +84,9 @@ Industry certifications at iTECH went from 69 in 2023–24 to 235 in 2024–25. 
 - **Teachers trust data they can see themselves.** The cosmetology dashboard moved the conversation from a feeling about hard topics to specific objectives and questions.
 - **Most of coaching is follow-up.** The second email and the two-week check-in are where changes actually stick.
 
-<!-- OPTIONAL SECTION, pending permission from the colleague involved:
+<!-- OPTIONAL SECTION: uncomment once your colleague is comfortable with it (he is not named).
 ## Helping a colleague finish
-Our district originally enrolled about ten post-secondary instructors in this certification. Most did not finish. After I completed mine, I kept working with one colleague at our sister campus through the rest of his portfolio, and built examples and templates to make each indicator easier to document. That support material became the toolkit below.
+Our district enrolled about ten post-secondary instructors in this certification, and most did not finish. After I completed mine, I kept working with one colleague at our sister campus until he finished his. I met with him in person on his campus on at least two dates, and I shared everything I had submitted along with how I organized my evidence, so he could follow the same process for his own work. That material is the starting point for the toolkit below.
 -->
 
 <!-- PLANNED: link to the Instructional Coaching Toolkit repo once published. -->
