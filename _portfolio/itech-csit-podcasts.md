@@ -11,7 +11,9 @@ collection: portfolio
 | **Episodes** | 104 |
 | **Average length** | ~45 minutes |
 | **Total audio** | ~78 hours |
-| **Tracks covered** | AWS Cloud Practitioner, IC3, CompTIA Tech+, Cisco CCST, Pearson IT Specialist, and others |
+| **Structure** | A library of separate shows, one per certification track |
+| **Tracks covered** | AWS Cloud Practitioner, AWS Machine Learning Specialty, CompTIA Tech+ (Security and Databases domains), Cisco CCST Networking, Cisco IT Support, CCNA Cybersecurity, IC3 Spark, Python ITS, AI Studycasts |
+| **Localization** | IC3 Spark published in a Haitian Creole edition |
 | **Distribution** | Canvas and in live lecture |
 | **AI disclosure** | Stated in the show description |
 
@@ -20,6 +22,10 @@ collection: portfolio
 My students are not sitting at a desk with a textbook. They have hour-long commutes. They work evening shifts. Many are English language learners who are new to the United States. Some are sixteen; some are seventy; a good number are veterans. What they share is that reading a 300-page certification guide is not the constraint — *finding the hours to sit still and do it* is.
 
 Audio solves a scheduling problem before it solves a pedagogical one. A forty-five minute drive is forty-five minutes a student already has.
+
+The library is organised as separate shows rather than one feed — AWS Cloud Practitioner, CompTIA Tech+ broken out by domain, Cisco CCST Networking, CCNA Cybersecurity, IC3 Spark, Python, AWS Machine Learning Specialty — so a student preparing for one exam subscribes to that exam, not to everything.
+
+**IC3 Spark is also published in a Haitian Creole edition.** Writing a prompt that avoids idiom for English language learners helps. Producing the material in a student's first language is the stronger version of the same decision, and it is the part of this project I would want to extend to the other tracks.
 
 ## The prompt is the work
 
