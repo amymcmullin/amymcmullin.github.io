@@ -39,4 +39,4 @@ All three are still live on FSU's Torch server, five years on:
 
 A caveat on the last two: they currently render the table structure and the band labels but not the numeric values. I no longer have access to the account, so I can't read the source to say whether those two were always incomplete or whether something broke under a later PHP version. The super bonus submission still renders correctly, which is the one I'd have spent the most time on.
 
-The larger project from this course was the [iTech Differentiated OCP Tracker](/portfolio/itech-ocp-tracker).
+The larger project from this course was the [iTech Differentiated OCP Tracker](/portfolio/03-itech-ocp-tracker).
