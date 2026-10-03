@@ -89,4 +89,8 @@ Campus-wide, industry certifications at iTECH went from 69 in 2023–24 to 235 i
 Our district enrolled about ten post-secondary instructors in this certification, and most did not finish. After I completed mine, I kept working with one colleague at our sister campus until he finished his. I met with him in person on his campus on at least two dates, and I shared everything I had submitted along with how I organized my evidence, so he could follow the same process for his own work. That material is the starting point for the toolkit below.
 -->
 
-<!-- PLANNED: link to the Instructional Coaching Toolkit repo once published. -->
+## The toolkit
+
+The templates and process behind these cycles are open for any CTE coach or teacher leader to use: a coaching follow-up email, a data coaching protocol, a feedback-methods guide, a PD session plan, a teacher newsletter, and a guide to organizing certification evidence.
+
+[github.com/amymcmullin/instructional-coaching-toolkit](https://github.com/amymcmullin/instructional-coaching-toolkit)
