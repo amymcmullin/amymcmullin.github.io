@@ -94,7 +94,7 @@ Each completed application is scored on a 100-point rubric:
 | Employer recommendation | 5 |
 | Practical Nursing instructor recommendation | 5 |
 
-A paperwork check (LPN license verified, both transcripts, BLS, IV therapy) has to be complete before anything is scored, and the score before the interview tells us whom to invite.
+A paperwork check (LPN license verified, both transcripts, BLS, IV therapy) has to be complete, and a pre-interview score is calculated before the interview round.
 
 The first round drew 30 applicants for 12 seats, each of whom had completed the essays and the TEAS.
 
