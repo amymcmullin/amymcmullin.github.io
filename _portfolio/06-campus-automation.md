@@ -1,13 +1,105 @@
 ---
 title: "Campus Workflow Automation"
-excerpt: "Application, admissions, and certification systems that iTECH runs on every day, built in Microsoft Forms and Power Automate."
+excerpt: "A college application approved as a three-month stopgap in 2022, built with only Microsoft Forms, Power Automate, Excel and Planner. More than 4,000 applicants later, it's still how students apply to iTECH. Plus an RN admissions process and a testing center app built the same way.<br/><img src='/images/auto-online-application.png'>"
 collection: portfolio
 ---
 
-A set of automated workflow systems built with Microsoft Forms and Power Automate:
+*Immokalee Technical College (iTECH), Collier County Public Schools. 2022–present.*
+*Built with Microsoft Forms, Power Automate, Power Apps, Excel, SharePoint and Teams Planner: the only tools available to me.*
 
-* **College-wide online application:** Replaced a manual, paper-based process with a centralized digital pipeline that the institution now depends on daily.
-* **Registered Nursing admissions:** An application and rubric-based evaluation system for a new, competitive RN program, with eligibility logic and automated notifications.
-* **Certification ticketing and analytics:** Automates exam registration and produces real-time reporting for Pearson VUE, Certiport, and Prometric exams, supporting district and state reporting.
+## The problem
 
-Each system was designed with the staff who use it, so it holds up in daily practice.
+In 2020, applying to iTECH meant filling out a PDF. It asked for a Social Security number, criminal history, residency details and emergency contacts, and its only submit option was an email button at the top. Younger applicants couldn't figure it out. Neither could my own kid.
+
+Nothing tracked what happened after a form arrived. There were no numbers on how many people applied, how many we lost, or how long anyone waited to hear back.
+
+![The 2020 fillable PDF application](/images/auto-old-pdf-application.png)
+
+Administration asked our web design specialist to "go paperless." She's a visual artist, and she was trying to write Java code to solve it when she came to me.
+
+## The decision I lost
+
+My first answer was that we shouldn't build our own. Our sister college already had an application system. I wanted to adopt it, and work with them to make it better for students, advisors and administration.
+
+Administration didn't want to, because of differences in philosophy, culture and institutional guidance between the two colleges. I argued for it, and I lost. I've since come to agree with that decision.
+
+That left a narrow set of tools. I had no database and no access to the student information system. What I did have was the district's Microsoft 365 license. My supervisor approved it as a three-month stopgap.
+
+## How I built it
+
+I spent about a month in summer 2022 on it, and most of that month was spent with the people who would use it, not building.
+
+**I started from the advisors' form, not a blank page.** Advisors at iTECH run every intake conversation from the Academic Advisement Form (AAF). It was designed on paper long before I arrived, it covers what our accreditor (the Council on Occupational Education) requires, and it's how advisors decide whether a student qualifies for a program or needs remediation first. If the new system didn't produce that form, advisors wouldn't use it.
+
+So every application now generates one. Each applicant gets their own workbook, filed in a SharePoint folder under their name and date of birth. It contains:
+
+- the AAF, pre-filled from the application, with the program's prerequisites, basic-skills exit scores, total hours and approximate cost looked up automatically from a program table;
+- the residency statement, media release, information release, SSN disclosure and rules of conduct that used to be separate paper forms.
+
+**Students tested it before launch.** The early versions were held together with popsicle sticks and bubble gum, and I put them in front of students before anything went live.
+
+![The application on a phone](/images/auto-online-application.png)
+
+## What happens when a student applies
+
+![The main Power Automate flow (IDs and site address blurred)](/images/auto-flow-overview.png)
+
+1. **The answers are recorded twice.** Once into the student's AAF, and once into a referral spreadsheet that tracks how applicants heard about iTECH, their high school, campus, program and ZIP code, for recruitment planning.
+2. **A student folder is created** in SharePoint, and the filled-in workbook is moved into it.
+3. **The flow branches by campus.** Each campus has its own master spreadsheet and its own confirmation email with the right next steps and contacts.
+4. **A Planner card is created** in the bucket for the student's program, tagged with what's still outstanding, such as the application fee or the learning-styles and career-interest surveys. Staff work from that board.
+
+![Program buckets on the advisors' Planner board](/images/auto-planner-buckets.png)
+
+![Campus branch and Planner task creation (a colleague's name blurred)](/images/auto-flow-campus-branch.png)
+
+Some answers on the application carry legal, compliance or reporting requirements, or tell us a student may need support. Those trigger notifications to the staff responsible. One more rule waives the $40 application fee for students who applied at a recruitment event.
+
+## Results
+
+- **Live since summer 2022.** More than 4,000 applicants have come through it, at a college of about 750 full-time-equivalent students including dual enrollment and walk-ins.
+- **Every application is accounted for.** Each one has a folder, a pre-filled AAF and a card on the advisors' board, so nothing sits in an inbox.
+- **Very few incidents.** It's been stable enough that it rarely needs attention.
+
+## The limits
+
+I'd rather be honest about these than oversell it.
+
+- **It doesn't talk to the student information system.** Staff still enter accepted students into the SIS by hand.
+- **The confirmation email still tells students to come in person.** I don't like that step.
+- **I'm the only person who knows how it works.** I've written documentation, but nobody has asked to learn it. To reduce the risk, I moved every flow and file into a second staff member's account so the system wouldn't depend on mine. When that colleague resigned, I learned about it late and had to move everything again on short notice. It's still an open risk, and it's the strongest argument for the integrated system I wanted in the first place.
+
+## RN admissions
+
+When iTECH was approved for a Registered Nursing program, we had less than a month to build an application and evaluate candidates. Our Practical Nursing program already draws far more applications than any other program on campus, because so many people want to be nurses. We expected the same for RN, with a much smaller class.
+
+One proposal was a social-media push to bring in more applicants. The data pointed the other way: we didn't have a quantity problem, we had a quality problem. We needed to find the strongest candidates and turn them into students.
+
+So the RN application front-loads the work:
+
+- **Writing prompts** that applicants answer as part of the application.
+- **TEAS test results**, the nursing entrance exam, required up front.
+- **A rubric-based evaluation** of each completed application.
+
+The first round drew 30 applicants for 12 seats, each of whom had completed the writing prompts and the TEAS. <!-- CONFIRM: is front-loading (prompts, practice TEAS) already used for Practical Nursing, or planned? Add a sentence once you decide. -->
+
+<!-- IMAGES TO ADD: RN writing prompts / TEAS section (blank), advisor rubric view with a test applicant. -->
+
+## Testing center and certification reporting
+
+I also run iTECH's Pearson VUE, Certiport and Prometric testing center, and I built its scheduling and reporting the same way.
+
+- **Scheduling app (Power Apps).** Instructors book exam sessions much like a calendar booking app. The proctor approves and reports from the same app. Programs that submit many students at once, like Construction, can batch them in a single request.
+- **Certification reporting.** Every certification earned is tracked, and the relevant details go automatically to everyone who needs them: district CTE staff, our data entry staff, the instructor, the student, and the district-required notice to parents.
+
+<!-- IMAGES TO ADD: booking screen, batch request (names blurred), stakeholder notification, report view (counts only). -->
+
+## What I learned
+
+<!-- DRAFT: my reading of your notes. Rewrite in your own words. -->
+- **Ask and listen before building.** The design came from the advisors' existing form, not from me.
+- **Constraints shape the design.** Forms, Power Automate and Planner weren't what I would have chosen, but everything runs on the district's existing Microsoft 365 license.
+- **A "temporary" system needs the same care as a permanent one.** This one was built to last three months and is still running.
+- **Ownership is part of the design.** A system one person understands is a risk, no matter how well it runs.
+
+*This write-up was drafted with AI assistance from my notes, files and screenshots. The system, its design and the decisions described here are mine.*

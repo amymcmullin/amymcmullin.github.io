@@ -94,3 +94,5 @@ Our district enrolled about ten post-secondary instructors in this certification
 The templates and process behind these cycles are open for any CTE coach or teacher leader to use: a coaching follow-up email, a data coaching protocol, a feedback-methods guide, a PD session plan, a teacher newsletter, and a guide to organizing certification evidence.
 
 [github.com/amymcmullin/instructional-coaching-toolkit](https://github.com/amymcmullin/instructional-coaching-toolkit)
+
+*This write-up was drafted with AI assistance from my ISTE submissions and notes. The coaching work, materials and decisions described here are mine.*
