@@ -1,6 +1,6 @@
 ---
 title: "Campus Workflow Automation"
-excerpt: "A college application approved as a three-month stopgap in 2022, built with only Microsoft Forms, Power Automate, Excel and Planner. More than 4,000 applicants later, it's still how students apply to iTECH. Plus an RN admissions process and a testing center app built the same way.<br/><img src='/images/auto-online-application.png'>"
+excerpt: "A college application approved as a three-month stopgap in 2022, built with only Microsoft Forms, Power Automate, Excel and Planner. More than 4,000 applicants later, it's still how students apply to iTECH. Plus a nursing admissions process and a testing center app built the same way.<br/><img src='/images/auto-online-application.png'>"
 collection: portfolio
 ---
 
@@ -69,21 +69,38 @@ I'd rather be honest about these than oversell it.
 - **The confirmation email still tells students to come in person.** I don't like that step.
 - **I'm the only person who knows how it works.** I've written documentation, but nobody has asked to learn it. To reduce the risk, I moved every flow and file into a second staff member's account so the system wouldn't depend on mine. When that colleague resigned, I learned about it late and had to move everything again on short notice. It's still an open risk, and it's the strongest argument for the integrated system I wanted in the first place.
 
-## RN admissions
+## Nursing admissions
 
-When iTECH was approved for a Registered Nursing program, we had less than a month to build an application and evaluate candidates. Our Practical Nursing program already draws far more applications than any other program on campus, because so many people want to be nurses. We expected the same for RN, with a much smaller class.
+When iTECH was approved for a Professional Nursing (LPN-to-RN) diploma, we had less than a month to build an application and evaluate candidates for a small first class. Nursing is the most requested path on campus, so the problem wasn't going to be finding applicants. It was finding the ones who were ready.
 
-One proposal was a social-media push to bring in more applicants. The data pointed the other way: we didn't have a quantity problem, we had a quality problem. We needed to find the strongest candidates and turn them into students.
+So the application front-loads the work. Before anyone is evaluated, applicants have to:
 
-So the RN application front-loads the work:
+- **Write two short essays** in the form: a summary of their life story, and their opinion on the state of healthcare in their community. Each is one paragraph, 1,800 characters at most, written in a professional voice.
+- **Submit their documents** using a required file-naming convention: Practical Nursing transcript, high school or GED transcript, current BLS card and IV therapy certificate.
+- **Agree to the TEAS rules** up front. The nursing entrance exam counts for half the rubric. Scores must come from an in-person exam taken after December 31, 2023, applicants get one retake, and there's no "super score."
 
-- **Writing prompts** that applicants answer as part of the application.
-- **TEAS test results**, the nursing entrance exam, required up front.
-- **A rubric-based evaluation** of each completed application.
+![TEAS scoring rules on the application](/images/auto-rn-teas.png)
 
-The first round drew 30 applicants for 12 seats, each of whom had completed the writing prompts and the TEAS. <!-- CONFIRM: is front-loading (prompts, practice TEAS) already used for Practical Nursing, or planned? Add a sentence once you decide. -->
+![The two essay prompts](/images/auto-rn-prompts.png)
 
-<!-- IMAGES TO ADD: RN writing prompts / TEAS section (blank), advisor rubric view with a test applicant. -->
+Each completed application is scored on a 100-point rubric:
+
+| Element | Points |
+| --- | --- |
+| TEAS composite (10 for the minimum score of 60, plus 1 per point above, up to 50) | 50 |
+| Essay 1 and Essay 2 | 20 |
+| Practical Nursing GPA (90–100% earns 10, 80–89% earns 5) | 10 |
+| Interview | 10 |
+| Employer recommendation | 5 |
+| Practical Nursing instructor recommendation | 5 |
+
+A paperwork check (LPN license verified, both transcripts, BLS, IV therapy) has to be complete before anything is scored, and the score before the interview tells us whom to invite.
+
+The first round drew 30 applicants for 12 seats, each of whom had completed the essays and the TEAS.
+
+### Applying it to Practical Nursing
+
+Later, when Practical Nursing enrollment came up short, one suggestion at a leadership meeting was more social media posts. I pointed out that applications were already high and the problem was converting applicants into students. At the next meeting I presented the Practical Nursing data: it draws far more applications than any other program. I proposed giving it an application modeled on the RN process, and collecting readiness data with an ATI practice test. <!-- CONFIRM: has the PN version been adopted yet? If so, add a sentence. -->
 
 ## Testing center and certification reporting
 
