@@ -1,7 +1,19 @@
 {
-  "updated": "2026-09-29",
+  "updated": "2026-10-05",
   "profile": "https://www.credly.com/users/amy-mcmullin",
   "badges": [
+    {
+      "id": "9b5e85df-719c-4db8-929c-943f6343b53f",
+      "name": "Microsoft Elevate Educator – Explorer",
+      "issuer": "Microsoft Elevate",
+      "issued": "2026-09-29",
+      "expires": null,
+      "status": "active",
+      "type": "Learning",
+      "level": "Foundational",
+      "image": "https://images.credly.com/images/53599c17-0e2d-4496-a476-91b6742cabcc/blob",
+      "url": "https://www.credly.com/badges/9b5e85df-719c-4db8-929c-943f6343b53f"
+    },
     {
       "id": "173d71f0-8612-48ac-9c6d-1abb1c3ecebd",
       "name": "AI Powered IT Specialist",
@@ -13,6 +25,18 @@
       "level": "Foundational",
       "image": "https://images.credly.com/images/39d63f97-1618-45f8-b3d7-528942d06280/blob",
       "url": "https://www.credly.com/badges/173d71f0-8612-48ac-9c6d-1abb1c3ecebd"
+    },
+    {
+      "id": "5b154a03-153d-4e72-a7ff-4f0af946689f",
+      "name": "Intuit for Education Accounting Futures Badge",
+      "issuer": "Intuit",
+      "issued": "2026-09-17",
+      "expires": null,
+      "status": "active",
+      "type": "Learning",
+      "level": "Foundational",
+      "image": "https://images.credly.com/images/3591d924-8fae-47f6-ab3c-7768c28c4e39/blob",
+      "url": "https://www.credly.com/badges/5b154a03-153d-4e72-a7ff-4f0af946689f"
     },
     {
       "id": "6ead0c61-ee2f-4c5d-a3c4-6c787f9e08b2",
