@@ -115,7 +115,7 @@ The booking screens enforce the testing center's rules so the proctor doesn't ha
 
 ![Booking screen for NCCER and ASE exams](/images/auto-testing-booking.png)
 
-**Batch requests.** Construction can schedule dozens of module exams at once. Instead of an email per student, the instructor receives one summary of all new requests from the last hour, each with a confirmation number.
+**Batch requests.** Construction often schedules many module exams at once. Instead of an email per student, the instructor receives one summary of all new requests from the last hour, each with a confirmation number.
 
 ![Hourly batch summary sent to an instructor (names removed)](/images/auto-testing-bulk-email.png)
 
