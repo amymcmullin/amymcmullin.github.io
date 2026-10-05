@@ -1,4 +1,8 @@
 ---
+permalink: /portfolio/scorm-orientations/
+redirect_from:
+  - /portfolio/13-scorm-orientations/
+  - /portfolio/14-scorm-orientations/
 title: "SCORM Orientation Courses for Canvas"
 excerpt: "Three SCORM 1.2 program orientation courses for Canvas LMS."
 collection: portfolio

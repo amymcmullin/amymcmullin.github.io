@@ -1,4 +1,8 @@
 ---
+permalink: /portfolio/instructional-coaching/
+redirect_from:
+  - /portfolio/15-instructional-coaching/
+  - /portfolio/16-instructional-coaching/
 title: "Coaching Other Teachers"
 excerpt: "Coaching cycles with trades and technical instructors at iTECH: licensing-exam data in Power BI, a same-day Canvas fix for EPA 608 prep, a course cut from 1,296 assignments to 264, and a certification PLC. Documented for the ISTE+ASCD Certified Instructional Leader credential.<br/><img src='/images/iste-coaching-canvas-before-after.png'>"
 collection: portfolio

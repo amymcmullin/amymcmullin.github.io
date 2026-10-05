@@ -1,4 +1,7 @@
 ---
+permalink: /portfolio/itech-csit-podcasts/
+redirect_from:
+  - /portfolio/01-itech-csit-podcasts/
 title: "Teaching to the Commute: 104 AI-Generated Certification Podcasts"
 excerpt: "An audio study library for students with hour-long drives and evening shifts — 104 episodes, ~78 hours, across a dozen certification tracks. The engineering is in the prompt.<br/><img src='/images/itech-csit-podcasts.png'>"
 collection: portfolio

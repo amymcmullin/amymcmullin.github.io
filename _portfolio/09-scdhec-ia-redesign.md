@@ -1,4 +1,8 @@
 ---
+permalink: /portfolio/scdhec-ia-redesign/
+redirect_from:
+  - /portfolio/07-scdhec-ia-redesign/
+  - /portfolio/08-scdhec-ia-redesign/
 title: "Information Architecture Redesign: A State Health Agency Website"
 excerpt: "A full IA redesign of South Carolina's DHEC website — heuristic evaluation, 400-page content audit, card sorting, taxonomy, sitemap and Adobe XD wireframes. In 2021 we recommended splitting it by department. In 2024 the state split the agency in two.<br/><img src='/images/scdhec-2021-homepage.png'>"
 collection: portfolio

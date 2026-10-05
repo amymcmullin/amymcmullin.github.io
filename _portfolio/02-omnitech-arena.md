@@ -1,4 +1,7 @@
 ---
+permalink: /portfolio/omnitech-arena/
+redirect_from:
+  - /portfolio/05-omnitech-arena/
 title: "OmniTech Arena"
 excerpt: "Capture-the-flag games for the whole IT curriculum, not just cybersecurity. The first track turns the Cisco IT Support Specialist path into four investigation-based games with 153 challenges.<br/><img src='/images/omnitech-arena-scoreboard.png'>"
 collection: portfolio

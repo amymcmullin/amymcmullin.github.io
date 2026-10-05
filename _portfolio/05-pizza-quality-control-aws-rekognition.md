@@ -1,4 +1,7 @@
 ---
+permalink: /portfolio/pizza-quality-control-aws-rekognition/
+redirect_from:
+  - /portfolio/02-pizza-quality-control-aws-rekognition/
 title: "Pizza Quality Control with Amazon Rekognition Custom Labels"
 excerpt: "I rebuilt an AWS computer-vision case study end to end to find out what the marketing page leaves out. F1 of 0.971 — and the honest reasons that number doesn't mean what it looks like.<br/><img src='/images/pizza-evaluation.png'>"
 collection: portfolio

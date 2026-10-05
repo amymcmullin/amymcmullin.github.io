@@ -1,4 +1,8 @@
 ---
+permalink: /portfolio/skill-boss-logistics-labs/
+redirect_from:
+  - /portfolio/11-skill-boss-logistics-labs/
+  - /portfolio/12-skill-boss-logistics-labs/
 title: "Industrial Networking Labs — Amatrol Skill Boss Logistics"
 excerpt: "A six-lab sequence that connects conveyors, VFDs, and PLCs to network-layer analysis."
 collection: portfolio
