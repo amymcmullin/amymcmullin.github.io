@@ -1,4 +1,8 @@
 ---
+permalink: /portfolio/it-pathway-diagnostic/
+redirect_from:
+  - /portfolio/10-it-pathway-diagnostic/
+  - /portfolio/11-it-pathway-diagnostic/
 title: "IT Pathway Diagnostic"
 excerpt: "An interest-and-aptitude assessment that maps students to IT career paths and CAPE-eligible certifications."
 collection: portfolio

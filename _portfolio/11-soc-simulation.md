@@ -1,4 +1,8 @@
 ---
+permalink: /portfolio/soc-simulation/
+redirect_from:
+  - /portfolio/09-soc-simulation/
+  - /portfolio/10-soc-simulation/
 title: "Shift Change at the SOC"
 excerpt: "A half-day, tiered SOC-analyst simulation on the Huntress Managed EDR/SIEM platform."
 collection: portfolio

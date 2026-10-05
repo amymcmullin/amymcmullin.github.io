@@ -1,4 +1,7 @@
 ---
+permalink: /portfolio/system-lockdown-escape-room/
+redirect_from:
+  - /portfolio/06-system-lockdown-escape-room/
 title: "SYSTEM LOCKDOWN: A Print-and-Play Escape Room"
 excerpt: "A ransomware incident-response escape room that runs on paper in 45 minutes with no lab, no computers and no prerequisite instruction. Four parallel stations feed one meta-code — and the codes are configurable, because the answer key is public.<br/><img src='/images/system-lockdown-pack.png'>"
 collection: portfolio
@@ -78,7 +81,7 @@ past an analyst unnoticed.
 
 Open-sourcing an answer key is self-defeating when your students can find your
 GitHub. I hit the same question with the [AI Certification
-Diagnostic](/portfolio/04-ai-certification-diagnostic) and solved it there by
+Diagnostic](/portfolio/ai-certification-diagnostic/) and solved it there by
 keeping the keys out of the repository.
 
 That does not work here, because the generator source *is* the answer key —

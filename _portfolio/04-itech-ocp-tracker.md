@@ -1,4 +1,7 @@
 ---
+permalink: /portfolio/itech-ocp-tracker/
+redirect_from:
+  - /portfolio/03-itech-ocp-tracker/
 title: "iTech Differentiated OCP Tracker"
 excerpt: "A PHP/MySQL application mapping student skill mastery to Florida DOE curriculum frameworks — and a security review of my own 2021 code, written five years later as a cybersecurity instructor.<br/><img src='/images/ocp-tracker-progress.png'>"
 collection: portfolio

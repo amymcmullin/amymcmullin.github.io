@@ -1,4 +1,7 @@
 ---
+permalink: /portfolio/ai-certification-diagnostic/
+redirect_from:
+  - /portfolio/04-ai-certification-diagnostic/
 title: "AI Certification Diagnostic"
 excerpt: "One practice test that tells a student which of three overlapping AI certifications they're closest to passing, and what to study first. The answer keys stay private, but the tool is open source.<br/><img src='/images/ai-diagnostic-report.png'>"
 collection: portfolio

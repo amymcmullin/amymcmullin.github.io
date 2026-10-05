@@ -1,4 +1,8 @@
 ---
+permalink: /portfolio/itech-farmbot-hackathon/
+redirect_from:
+  - /portfolio/12-itech-farmbot-hackathon/
+  - /portfolio/13-itech-farmbot-hackathon/
 title: "iTech Hackathon 2016: FarmBot Edition"
 excerpt: "A two-day, five-program hackathon I designed and ran to launch a campus-wide FarmBot build — 150 students across Machining, Culinary, Construction, Automotive and Computer Systems, funded by a Champions for Learning classroom grant.<br/><img src='/images/farmbot-hackathon-flyer.png'>"
 collection: portfolio

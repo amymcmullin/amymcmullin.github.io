@@ -1,4 +1,8 @@
 ---
+permalink: /portfolio/campus-automation/
+redirect_from:
+  - /portfolio/06-campus-automation/
+  - /portfolio/07-campus-automation/
 title: "Campus Workflow Automation"
 excerpt: "A college application approved as a three-month stopgap in 2022, built with only Microsoft Forms, Power Automate, Excel and Planner. More than 4,000 applicants later, it's still how students apply to iTECH. Plus a nursing admissions process and a testing center app built the same way.<br/><img src='/images/auto-online-application.png'>"
 collection: portfolio

@@ -1,4 +1,8 @@
 ---
+permalink: /portfolio/ai-innovation-lab/
+redirect_from:
+  - /portfolio/08-ai-innovation-lab/
+  - /portfolio/09-ai-innovation-lab/
 title: "iTECH AI Innovation Lab"
 excerpt: "A station-based lab where student teams rotate through hands-on AI equipment."
 collection: portfolio
