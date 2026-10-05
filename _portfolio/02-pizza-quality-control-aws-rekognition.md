@@ -7,6 +7,13 @@ collection: portfolio
 *M.S. Information Technology (Machine Learning focus), Florida State University — data analytics coursework, Fall 2021.*
 *Full write-up and console screenshots: [github.com/amymcmullin/pizza-quality-control-aws-rekognition](https://github.com/amymcmullin/pizza-quality-control-aws-rekognition)*
 
+<video controls preload="metadata" poster="/images/pizza-walkthrough-poster.jpg" style="width:100%;max-width:760px;height:auto;border-radius:6px;">
+  <source src="/files/case-study-walkthrough.mp4" type="video/mp4">
+  Your browser can't play embedded video — <a href="/files/case-study-walkthrough.mp4">download the walkthrough (MP4, 48 seconds)</a>.
+</video>
+
+*A 48-second silent walkthrough of the build, cut from the original presentation slides and AWS console screenshots. The video was produced with AI assistance; the project, the screenshots and the analysis it summarizes are mine.*
+
 ## The project
 
 The assignment was to pick a technology and teach the class how it works. Rather than read a feature list aloud, I took a published AWS customer case study and rebuilt the machine learning pipeline it described — in my own AWS account, with my own data, start to finish.
