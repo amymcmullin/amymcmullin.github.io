@@ -60,6 +60,7 @@ Some answers on the application carry legal, compliance or reporting requirement
 - **Live since summer 2022.** More than 4,000 applicants have come through it, at a college of about 750 full-time-equivalent students including dual enrollment and walk-ins.
 - **Every application is accounted for.** Each one has a folder, a pre-filled AAF and a card on the advisors' board, so nothing sits in an inbox.
 - **Very few incidents.** It's been stable enough that it rarely needs attention.
+- **The same approach scaled to testing.** The testing center app below handled 1,814 exams in the last year.
 
 ## The limits
 
@@ -100,16 +101,25 @@ The first round drew 30 applicants for 12 seats, each of whom had completed the 
 
 ### Applying it to Practical Nursing
 
-Later, when Practical Nursing enrollment came up short, one suggestion at a leadership meeting was more social media posts. I pointed out that applications were already high and the problem was converting applicants into students. At the next meeting I presented the Practical Nursing data: it draws far more applications than any other program. I proposed giving it an application modeled on the RN process, and collecting readiness data with an ATI practice test. <!-- CONFIRM: has the PN version been adopted yet? If so, add a sentence. -->
+Later, when Practical Nursing enrollment came up short, one suggestion at a leadership meeting was more social media posts. I pointed out that applications were already high and the problem was converting applicants into students. At the next meeting I presented the Practical Nursing data: it draws far more applications than any other program. I proposed giving it an application modeled on the RN process, and collecting readiness data with an ATI practice test. It's being considered for the spring 2027 Practical Nursing cohort.
 
 ## Testing center and certification reporting
 
-I also run iTECH's Pearson VUE, Certiport and Prometric testing center, and I built its scheduling and reporting the same way.
+I also run iTECH's testing center, which delivers Pearson VUE, Certiport and Prometric certification exams along with entrance and basic-skills tests. We administered 1,814 exams in the last year. I built its scheduling and reporting with the same tools.
 
-- **Scheduling app (Power Apps).** Instructors book exam sessions much like a calendar booking app. The proctor approves and reports from the same app. Programs that submit many students at once, like Construction, can batch them in a single request.
-- **Certification reporting.** Every certification earned is tracked, and the relevant details go automatically to everyone who needs them: district CTE staff, our data entry staff, the instructor, the student, and the district-required notice to parents.
+**Scheduling app (Power Apps).** Instructors request exam sessions through a weekly calendar, with separate request paths for each kind of test: basic-skills literacy, TEAS, ParaPro, NCCER construction credentials, all other CTE certifications, and student services. Each request shows as pending, approved or denied, and the proctor approves it in the same app.
 
-<!-- IMAGES TO ADD: booking screen, batch request (names blurred), stakeholder notification, report view (counts only). -->
+![The weekly testing calendar (student details pixelated)](/images/auto-testing-calendar.png)
+
+The booking screens enforce the testing center's rules so the proctor doesn't have to. NCCER and entry-level ASE exams, for example, can only be booked on Mondays or Thursdays, between 1 and 14 days out, and a time slot greys out once it's full.
+
+![Booking screen for NCCER and ASE exams](/images/auto-testing-booking.png)
+
+**Batch requests.** Construction can schedule dozens of module exams at once. Instead of an email per student, the instructor receives one summary of all new requests from the last hour, each with a confirmation number.
+
+![Hourly batch summary sent to an instructor (names removed)](/images/auto-testing-bulk-email.png)
+
+**Certification reporting.** When a student earns a certification, the result goes to everyone who needs it: district CTE staff, our data entry staff (with the certificate attached), the instructor, the student, and the district-required notice to parents. The records also cover what the district's required test-monitoring report asks for, including attempt numbers, days between attempts, and a proctor who isn't the student's instructor.
 
 ## What I learned
 
