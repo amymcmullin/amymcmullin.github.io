@@ -10,6 +10,15 @@ location: "Immokalee, FL"
 
 A two-year, workforce-focused post-secondary program covering network defense, vulnerability management, security operations, and the changing threat landscape, including AI. Coursework follows Florida DOE frameworks and prepares students for certifications such as Cisco CCST Cybersecurity and CompTIA Security+.
 
+Program at a glance
+======
+* **Length:** 750 hours, extendable to 900, 1,050, 1,200 or 1,350 hours with optional specializations
+* **Enrollment:** August, January and June
+* **Certifications offered:** CompTIA Security+, CompTIA Network+, Cisco Certified Support Technician – Cybersecurity, Microsoft Security, Compliance and Identity Fundamentals, Microsoft Azure AI Fundamentals, AWS Security Specialty, AWS Certified AI Practitioner
+* **Academic partners:** Cisco Networking Academy, AWS Academy, VMware IT Academy, Palo Alto Networks Cybersecurity Academy, Oracle Academy, Microsoft IT Academy, Splunk Academic Alliance, EC-Council Academia Partner, CompTIA Academic Partner
+
+Details from the [official iTECH program page](https://itc.collierschools.com/programs/career-programs-at-itech/applied-cybersecurity).
+
 Program highlights
 ======
 * **"Shift Change at the SOC":** A half-day, tiered SOC-analyst simulation on the Huntress Managed EDR/SIEM platform. New students work as Tier 1 analysts and returning students as Tier 2 as they move through detection, response, and containment.

@@ -10,6 +10,16 @@ location: "Immokalee, FL"
 
 A post-secondary CTE program aligned to the Florida DOE curriculum framework for **Y100200 — Computer Systems & Information Technology**. Students build hardware, operating system, networking, and IT support skills and earn industry certifications funded through Florida's CAPE program, including CompTIA Tech+ and A+, Cisco CCST IT Support and Networking, and AWS Cloud Practitioner.
 
+Program at a glance
+======
+* **Length:** 900 hours across four occupational completion points
+* **Enrollment:** August, January and June
+* **Certifications offered:** CompTIA ITF+ (now Tech+), CompTIA A+, CompTIA Network+, Cisco Certified Support Technician – IT Support, Cisco Certified Support Technician – Networking, AWS Cloud Practitioner, Microsoft 365, Microsoft Azure
+* **Career paths:** computer service technician, desktop support, help desk, network administration, field service and systems administration
+* **Academic partners:** the same partnerships as [Applied Cybersecurity](/teaching/applied-cybersecurity) — Cisco Networking Academy, AWS Academy, VMware IT Academy, Palo Alto Networks Cybersecurity Academy, Oracle Academy, Microsoft IT Academy, Splunk Academic Alliance, EC-Council Academia Partner, CompTIA Academic Partner
+
+Details from the [official iTECH program page](https://itc.collierschools.com/programs/career-programs-at-itech/computer-systems-and-information-technology).
+
 Program highlights
 ======
 * **Student-run tech support business:** Up to 45 students repair equipment and support real clients in a structured lab.
