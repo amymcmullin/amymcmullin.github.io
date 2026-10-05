@@ -11,11 +11,11 @@ redirect_from:
 
 **Cybersecurity & Information Technology Educator | Curriculum Designer | AI and Cybersecurity**
 
-[LinkedIn](https://linkedin.com/in/amy-mcmullin) • [Credly](https://www.credly.com/users/amy-mcmullin/) • [ajmcmullin@gmail.com](mailto:ajmcmullin@gmail.com)
+[Portfolio](/portfolio/) • [GitHub](https://github.com/amymcmullin) • [LinkedIn](https://linkedin.com/in/amy-mcmullin) • [Credly](https://www.credly.com/users/amy-mcmullin/) • [ajmcmullin@gmail.com](mailto:ajmcmullin@gmail.com)
 
 Professional profile
 ======
-Post-secondary educator with 13+ years of experience teaching Information Technology and Applied Cybersecurity at Immokalee Technical College (iTECH), Collier County Public Schools. Holds a broad range of industry certifications spanning the full CompTIA ecosystem, Cisco, AWS, Microsoft, and emerging AI platforms, bringing practitioner-level expertise directly into the classroom. Recognized as the 2025–2026 Outstanding Post-Secondary Teacher of the Year, Amy designs student-centered curricula that connect workforce-ready skills with rigorous technical foundations, and is actively expanding her practice at the intersection of Artificial Intelligence and Cybersecurity — most recently by building iTECH's station-based AI Innovation Lab.
+Post-secondary educator with 14+ years of experience teaching Information Technology and Applied Cybersecurity at Immokalee Technical College (iTECH), Collier County Public Schools. Holds a broad range of industry certifications spanning the full CompTIA ecosystem, Cisco, AWS, Microsoft, and emerging AI platforms, bringing practitioner-level expertise directly into the classroom. Recognized as the 2025–2026 Outstanding Post-Secondary Teacher of the Year, Amy designs student-centered curricula that connect workforce-ready skills with rigorous technical foundations, and is actively expanding her practice at the intersection of Artificial Intelligence and Cybersecurity — most recently by building iTECH's station-based AI Innovation Lab. Also builds and maintains the workflow systems iTECH runs on, including the college application system (4,000+ applicants since 2022) and the testing center's scheduling and reporting app.
 
 Education
 ======
@@ -33,10 +33,12 @@ Teaching & academic leadership experience
   * Roles: Department Chair • Faculty Advisor • Peer Teacher • Building Technology Coordinator • Canvas Point of Contact
   * Selected for the first two cohorts of Collier County Public Schools' Innovative Teacher Leaders program
   * Serve as the campus Canvas LMS subject-matter expert, instructional coach, and mentor to new teachers, including guidance on Florida's CAPE industry certification program
+  * Run documented coaching cycles with trades and technical instructors (classroom visits, written action plans, assessment-data reviews in Power BI); published the process as an open [instructional coaching toolkit](https://github.com/amymcmullin/instructional-coaching-toolkit)
+  * Lead the campus professional learning community on credentials, certifications and licensure; campus industry certifications rose from 69 (2023–24) to 235 (2024–25)
   * Act as liaison between campus leadership and instructors and district technology, vendors, facilities, administration, and sister campus Lorenzo Walker Technical High School
   * Design, deliver, and continuously improve two concurrent post-secondary CTE programs — Computer Systems & IT and Applied Cybersecurity — aligned with Florida DOE frameworks and live industry certification objectives
   * Operate a student-led technical repair and support business with up to 45 students, providing real-world client service experience in a structured lab environment
-  * Established iTECH as an authorized testing center for Pearson VUE, Certiport, and Prometric; recruited, trained, and managed 8 proctors; administer hundreds of industry certification exams annually
+  * Established iTECH as an authorized testing center for Pearson VUE, Certiport, and Prometric; recruited, trained, and managed 8 proctors; administered 1,814 exams in the last year
   * Deliver live and online courses via Blackboard, Canvas, and Angel LMS; serve as Instructional Technology resource for colleagues institution-wide
   * Convene advisory committees with regional employers to analyze workforce needs and align curriculum; implement data-driven program improvements
   * Secured multiple Champions for Learning grants for CyberRange infrastructure, diversity initiatives, and STEM programming
@@ -65,11 +67,20 @@ Prior industry experience
 Strategic projects & leadership
 ======
 * **5-Year Technology Plan:** Drafting and implementing a comprehensive proposal to eliminate infrastructure inequities between technical college campuses and the K-12 district
-* **Enterprise Workflow Architecture:** Conceptualized and implemented a full-scale online application system and automated administrative workflows for the entire institution with Microsoft Forms and Power Automate, moving the college from paper-based entry to a centralized digital pipeline
-* **Program-Specific Systems Engineering:** Built an automated application and tracking system for the launch of a new Registered Nursing (RN) program, with eligibility logic and automated notifications for a competitive admissions cycle
-* **Automated Certification Analytics:** Designed and deployed a ticketing and reporting system that automates certification registration and generates real-time performance analytics for Pearson VUE, Certiport, and Prometric exams, supporting district and state reporting requirements
+* **[College Application System](/portfolio/campus-automation/):** Replaced a fillable PDF with an online application built in Microsoft Forms, Power Automate, Excel, SharePoint and Teams Planner, with no database or student information system access. Approved as a three-month stopgap in 2022; still in use, with 4,000+ applicants at a college of about 750 FTE. Each application generates the advisors' pre-filled Academic Advisement Form, a student folder, campus routing and an advisor task, plus compliance and support notifications
+* **Nursing Admissions:** Built the application and evaluation process for iTECH's new Professional Nursing (LPN-to-RN) program in under a month: required essays, TEAS rules and document checks up front, scored on a 100-point rubric. First round: 30 applicants for 12 seats
+* **Testing Center Scheduling & Certification Reporting:** Built a Power Apps scheduling app in which instructors request exams, proctors approve them, and booking rules (allowed days, lead time, slot limits) are enforced automatically, with batch requests for high-volume programs. Certification results are routed to district CTE staff, data entry, instructors, students and parents, supporting district and state reporting
 * **AI Workflow Automation:** Pioneered the use of AI agents to automate classroom content creation and student support workflows
 * **STEM Pull-Out Section:** Led community-focused STEM initiatives recognized by the Naples Daily News
+
+Projects & code
+======
+Full write-ups on the [Portfolio](/portfolio/) page.
+
+* **[OmniTech Arena](https://github.com/amymcmullin/OmniTech-Arena):** Open-source CTF games for the whole IT curriculum; the first track covers the Cisco IT Support path with 153 evidence-based challenges for CTFd
+* **[IT Pathway Diagnostic](https://github.com/amymcmullin/IT-Pathway-Diagnostic):** Interest and aptitude assessment that maps students to IT career paths and CAPE-eligible certifications
+* **[Instructional Coaching Toolkit](https://github.com/amymcmullin/instructional-coaching-toolkit):** Templates and process for coaching cycles, data-driven coaching and certification portfolios
+* **[Educational Escape Rooms](https://github.com/amymcmullin/Educational-Escape-Rooms):** Print-and-play escape rooms for CTE classes
 
 AI Innovation Lab & recent curriculum development
 ======
@@ -162,11 +173,11 @@ Professional certifications
   * Big Data Foundations Levels 1 & 2; Spark Level 1; Hadoop Foundations — IBM
   * MTA: Introduction to Programming Using HTML and CSS — Microsoft
 * **Teaching, Pedagogy & Professional Development**
+  * ISTE+ASCD Certified Instructional Leader — ISTE+ASCD (2026)
   * Instructor 5 Years of Service — Cisco NetAcad (2026)
   * Getting Ready to Teach Cybersecurity Essentials — Cisco NetAcad (2024)
   * Getting Ready to Teach Networking Essentials — Cisco NetAcad (2024)
   * AWS Academy Certified Educator — Amazon Web Services (2021)
-  * Florida State Teaching Certificate — Business Education — Florida DOE
   * Collier County Vocational Teaching Certificate — Computer Service & Cybersecurity
   * NCCER Curriculum Proctor — NCCER (2024)
   * PMI Project Management Ready™ — Project Management Institute
