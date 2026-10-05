@@ -104,7 +104,7 @@ AI & emerging technology in curriculum
 
 Academic partnerships & program affiliations
 ======
-iTECH holds active academic partnership status with the following organizations, enabling curriculum co-development, faculty credentials, and student access to industry pathways:
+iTECH holds active academic partnership status with the following organizations, enabling curriculum co-development, faculty credentials, and student access to industry pathways (listed on the [official Applied Cybersecurity program page](https://itc.collierschools.com/programs/career-programs-at-itech/applied-cybersecurity)):
 
 * Cisco Networking Academy — NetAcad Instructor (5 Years of Service)
 * AWS Academy — Academy Certified Educator
