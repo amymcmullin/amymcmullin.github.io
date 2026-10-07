@@ -24,6 +24,10 @@ That choice reflects how I route students. Many arrive wanting A+, but its two-e
 
 Results sort matching certifications by difficulty and colour-code them by adult and dual-enrollment eligibility.
 
-*The tool was built with AI assistance against my specification. The domains, the interest-and-aptitude model, the CAPE mapping and the advising logic are mine.*
+## Admissions chatbot
+
+I also built an admissions chatbot for iTECH in Microsoft Copilot Studio and embedded it at the bottom of the diagnostic. A student who has just seen their results can ask about programs and how to apply without leaving the page. It's hidden while the test is running, so it can't be used to answer the reasoning items.
+
+*The tool was built with AI assistance against my specification. The domains, the interest-and-aptitude model, the CAPE mapping and the advising logic are mine. The chatbot is my own build; its styling on the page was done with AI assistance.*
 
 [Try the diagnostic »](https://amymcmullin.github.io/IT-Pathway-Diagnostic/) · [Source on GitHub](https://github.com/amymcmullin/IT-Pathway-Diagnostic)
