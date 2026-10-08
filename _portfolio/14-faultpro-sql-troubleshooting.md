@@ -37,6 +37,9 @@ Next I worked out how FaultPro is put together by querying its databases:
 ![The FaultPro databases in SQL Server Management Studio: Class databases, the mmt catalog with its tables, and the template databases](/images/faultpro-ssms-databases.png)
 *The FaultPro databases: the `mmt` catalog with its tables, one database per class, and one database per template.*
 
+![Database diagram of a FaultPro class database: units, laps and skills, the devices and stations each skill uses, and student grades](/images/faultpro-class-db-diagram.png)
+*A diagram I made from one of the class databases while working out the structure. Units contain laps, laps contain skills, and each skill links to its trainer stations, fault devices and student grades.*
+
 The catalog's entry for Skill Boss Logistics pointed to a template database name that didn't exist on the server. The template's data had been installed under a different, unrelated name.
 
 ## The fix
