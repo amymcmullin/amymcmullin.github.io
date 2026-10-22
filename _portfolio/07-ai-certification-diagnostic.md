@@ -55,9 +55,11 @@ Teachers also choose how much students see afterward: the full key, right/wrong 
 
 The engine is built around question packs, so a new subject is new data, not new code. Next up:
 
-- **Networking and cloud**, which have the same overlapping-certification problem.
+- **Networking**, now built: see the [Networking Certification Diagnostic](/portfolio/networking-certification-diagnostic/). Cloud is next.
 - **Single exams with many domains, like CompTIA A+ and Tech+**, where the question becomes which domains are holding a student back.
 
 The plan is to compare each student's diagnostic readiness with their real exam result. After a term or two, that will show whether the readiness score predicts passing, and give me real data for tuning the 75% line and the topic weights.
+
+*Built with AI assistance against my specification. The choice of exams, the sample questions it was mapped from, and the decisions about format, licensing and keeping the banks private are mine. The questions, explanations, software and this write-up were produced with AI assistance from the vendors' published objectives.*
 
 <small>Not affiliated with or endorsed by Pearson, Certiport, or Microsoft. Exam names are trademarks of their owners.</small>
