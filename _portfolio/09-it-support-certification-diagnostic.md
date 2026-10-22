@@ -26,6 +26,18 @@ A 50-question diagnostic on the same engine as my [AI](/portfolio/ai-certificati
 
 Neither vendor publishes domain percentages, so the weights are estimates from the breadth of each exam's objectives. Every topic lists the objective numbers it covers, so the study plan points students straight back to the official objectives.
 
+## Letting my class's results decide where the questions lean
+
+My students had already taken GMetrix practice tests for both exams: 82 questions on CCST IT Support (up to 39 students) and 120 on Device Configuration and Management (up to 8). The CCST results showed a clear pattern:
+
+- **Connectivity and Resource Access** was the weakest domain (66%). Within it, the weakest questions were on security vs. distribution groups (46%), an external drive not being recognized (45%), and the protocol used to map network drives (55%).
+- **Hardware issues** (65%) were close behind, including reading Device Manager status icons (45%).
+- **Threats** (78%) and **documentation** (85%) were the strongest.
+
+The Device Configuration group is small, but it points the same way: troubleshooting, file-sharing permissions and backup were weakest, and security was strongest.
+
+So the diagnostic gives fewer questions to security and more to directory groups and permissions, hardware and peripherals, and Windows troubleshooting. I also adjusted the CCST weights to match how the GMetrix bank spreads its questions, with about a quarter on hardware and peripherals.
+
 ## How I use it
 
 - **Placement:** given at the start of the foundations stage, it shows which adult students already have enough Windows or help desk experience to move faster.
@@ -41,6 +53,6 @@ As with the other diagnostics, the engine and documentation are open source. The
 
 Comparing students' diagnostic results with their real exam scores, to tune the weights and the 75% "likely ready" line. After that comes a version for single exams with many domains, like CompTIA Tech+.
 
-*Built with AI assistance against my specification. The choice of exams, the goal of using it to decide which exam each student takes first, and the decisions about format and keeping the bank private are mine. The comparison of the two exams' objectives, the questions, explanations, weights draft, software and this write-up were produced with AI assistance from the vendors' published objectives.*
+*Built with AI assistance against my specification. The choice of exams, the goal of using it to decide which exam each student takes first, using my class's GMetrix results to decide where the questions lean, and the decisions about format and keeping the bank private are mine. The comparison of the two exams' objectives, the questions, explanations, weights draft, software and this write-up were produced with AI assistance from the vendors' published objectives.*
 
 <small>Not affiliated with or endorsed by Cisco, Pearson, or Certiport. Exam names are trademarks of their owners.</small>
