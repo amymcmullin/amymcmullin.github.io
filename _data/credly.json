@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-19",
+  "updated": "2026-10-26",
   "profile": "https://www.credly.com/users/amy-mcmullin",
   "badges": [
     {
@@ -1389,7 +1389,7 @@
       "issued": "2022-09-20",
       "expires": null,
       "status": "active",
-      "type": "",
+      "type": "Certification",
       "level": "",
       "image": "https://images.credly.com/images/ec1c25e9-3451-466e-87f8-23ce6b33cf0a/MOS_Outlook.png",
       "url": "https://www.credly.com/badges/98a68e5b-f404-4ede-a266-cce63ac8f673"
@@ -2157,7 +2157,7 @@
       "issued": "2019-04-14",
       "expires": null,
       "status": "active",
-      "type": "",
+      "type": "Certification",
       "level": "",
       "image": "https://images.credly.com/images/cbcee0cb-3281-4c8d-b402-7dc8bcf81426/MOS_Access.png",
       "url": "https://www.credly.com/badges/720e7fff-51aa-4841-839a-33fcece08041"
@@ -2169,7 +2169,7 @@
       "issued": "2019-04-14",
       "expires": null,
       "status": "active",
-      "type": "",
+      "type": "Certification",
       "level": "",
       "image": "https://images.credly.com/images/238bc0c8-e93e-4f61-aba2-255ca4e0f220/MOS_Word_Expert1.png",
       "url": "https://www.credly.com/badges/e656292d-f3a6-49f0-96da-039869ace896"
@@ -2181,7 +2181,7 @@
       "issued": "2019-02-05",
       "expires": null,
       "status": "active",
-      "type": "",
+      "type": "Certification",
       "level": "",
       "image": "https://images.credly.com/images/201a514b-cf69-432e-a370-e3d744214050/MOS_Outlook.png",
       "url": "https://www.credly.com/badges/f1669fd6-7f04-438b-84f8-8f2d2c8a9891"
@@ -2301,7 +2301,7 @@
       "issued": "2019-01-08",
       "expires": null,
       "status": "active",
-      "type": "",
+      "type": "Certification",
       "level": "",
       "image": "https://images.credly.com/images/96c033ea-d798-45d7-9c2c-80834335706d/MOS_PowerPoint.png",
       "url": "https://www.credly.com/badges/078ce247-5e55-4f94-a807-5669c007cf80"
