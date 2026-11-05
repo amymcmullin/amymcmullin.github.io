@@ -37,18 +37,19 @@ Two design choices follow from that:
 
 "Silicon Glades" is the name I gave the series of grant proposals that fund the Lab's equipment, written across iTECH programs so each one asks for what that program could use.
 
-Each program's instructor submitted their own proposal; I scoped the equipment with each instructor and prepared the drafts. In November 2026, Champions for Learning delivered all eight of the classroom grants that made it through their system:
+I wrote eight proposals: one for my own program and one for each of seven other programs, submitted under each instructor's name after I scoped the equipment with them. In November 2026, Champions for Learning funded and delivered seven:
 
 | Program | Project | What students do |
 |---|---|---|
-| Professional Culinary Arts | The Smart Sous-Chef | Wireless temperature probes, a waste-auditing scale and a vision station for heat transfer, food safety compliance and kitchen margins |
-| Accounting Operations | Automated Inventory Auditing | A TurtleBot 4 mobile robot scans inventory so students reconcile physical stock with the general ledger |
-| Automotive Service Technology | ADAS Sensor Calibration | LiDAR workstations for calibrating collision-avoidance zones and auditing sensor blind spots |
-| Heavy Equipment Service | Autonomous Machinery | An AWS DeepRacer fleet and edge hub for autonomous navigation and reinforcement learning |
-| Machining & Advanced Manufacturing | Precision Robotics | ROBOTIS OMX arms taught by demonstration to pick, sort and tend the campus sorting line |
-| Cosmetology | 3D Volumetric Imaging | A turntable capture station that turns mannequin work into 360° digital portfolios |
+| Computer Systems & IT | [Edge AI & Industrial Vision](https://educators.championsforlearning.org/form1/gallery/view_detail.asp?id=3717) | NVIDIA Jetson edge nodes and cameras running vision models that sort items in real time on the sortation trainer, benchmarked for latency and power |
+| Professional Culinary Arts | [The Smart Sous-Chef](https://educators.championsforlearning.org/form1/gallery/view_detail.asp?id=4043) | Wireless temperature probes, a waste-auditing scale and a vision station for heat transfer, food safety compliance and kitchen margins |
+| Accounting Operations | [Automated Inventory Auditing](https://educators.championsforlearning.org/form1/gallery/view_detail.asp?id=4084) | A TurtleBot 4 mobile robot scans inventory so students reconcile physical stock with the general ledger |
+| Automotive Service Technology | [ADAS Sensor Calibration](https://educators.championsforlearning.org/form1/gallery/view_detail.asp?id=4112) | LiDAR workstations for calibrating collision-avoidance zones and auditing sensor blind spots |
+| Heavy Equipment Service | [Autonomous Machinery](https://educators.championsforlearning.org/form1/gallery/view_detail.asp?id=4047) | An AWS DeepRacer fleet and edge hub for autonomous navigation and reinforcement learning |
+| Machining & Advanced Manufacturing | [Precision Robotics](https://educators.championsforlearning.org/form1/gallery/view_detail.asp?id=4117) | ROBOTIS OMX arms taught by demonstration to pick, sort and tend the campus sorting line |
+| Cosmetology | [3D Volumetric Imaging](https://educators.championsforlearning.org/form1/gallery/view_detail.asp?id=4097) | A turntable capture station that turns mannequin work into 360° digital portfolios |
 
-A ninth, for Building Construction (camera-based PPE and red-zone safety monitoring), never went through. It went missing from the portal and I most likely missed resubmitting it during the last-day rewrite of the full set. It goes back out next cycle.
+The eighth, for Building Construction (camera-based PPE and red-zone safety monitoring), never went through. It went missing from the portal and I most likely missed resubmitting it during the last-day rewrite of the full set. It goes back out next cycle.
 
 The same week, a DonorsChoose project funded two Miko Mini conversational AI robots. Applied Cybersecurity and CSIT students will use them to study how voice assistants process speech and to run privacy audits on voice-activated devices.
 
