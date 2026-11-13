@@ -68,7 +68,8 @@ Strategic projects & leadership
 ======
 * **5-Year Technology Plan:** Drafting and implementing a comprehensive proposal to eliminate infrastructure inequities between technical college campuses and the K-12 district
 * **[College Application System](/portfolio/campus-automation/):** Replaced a fillable PDF with an online application built in Microsoft Forms, Power Automate, Excel, SharePoint and Teams Planner, with no database or student information system access. Approved as a three-month stopgap in 2022; still in use, with 4,000+ applicants at a college of about 750 FTE. Each application generates the advisors' pre-filled Academic Advisement Form, a student folder, campus routing and an advisor task, plus compliance and support notifications
-* **Nursing Admissions:** Built the application and evaluation process for iTECH's new Professional Nursing (LPN-to-RN) program in under a month: required essays, TEAS rules and document checks up front, scored on a 100-point rubric. First round: 30 applicants for 12 seats
+* **[Silicon Glades Grant Series](/portfolio/ai-innovation-lab/):** Scoped equipment with instructors across eight iTECH programs and wrote a Champions for Learning classroom grant proposal for each, one for my own program and seven submitted under the other instructors' names. Seven were funded and delivered in November 2026, equipping the AI Innovation Lab with edge AI, robotics, LiDAR and computer-vision stations for Computer Systems, Culinary Arts, Accounting, Automotive, Heavy Equipment, Machining and Cosmetology. A companion DonorsChoose project funded two conversational AI robots for privacy and voice-assistant labs
+* **Nursing Admissions:** Built the application and evaluation process for iTECH's new Professional Nursing (LPN-to-RN) program in under a month: required essays, TEAS rules and document checks up front, scored on a 100-point rubric, with a Power Apps dashboard for administrators to review and score applicants. First round: 30 applicants for 12 seats
 * **Testing Center Scheduling & Certification Reporting:** Built a Power Apps scheduling app in which instructors request exams, proctors approve them, and booking rules (allowed days, lead time, slot limits) are enforced automatically, with batch requests for high-volume programs. Certification results are routed to district CTE staff, data entry, instructors, students and parents, supporting district and state reporting
 * **[Admissions Chatbot](/portfolio/it-pathway-diagnostic/):** Built an AI admissions chatbot for iTECH in Microsoft Copilot Studio, embedded on the public IT Pathway Diagnostic so students can ask about programs and how to apply
 * **AI Workflow Automation:** Pioneered the use of AI agents to automate classroom content creation and student support workflows
@@ -82,12 +83,14 @@ Full write-ups on the [Portfolio](/portfolio/) page.
 * **[IT Pathway Diagnostic](https://github.com/amymcmullin/IT-Pathway-Diagnostic):** Interest and aptitude assessment that maps students to IT career paths and CAPE-eligible certifications
 * **[Instructional Coaching Toolkit](https://github.com/amymcmullin/instructional-coaching-toolkit):** Templates and process for coaching cycles, data-driven coaching and certification portfolios
 * **[Educational Escape Rooms](https://github.com/amymcmullin/Educational-Escape-Rooms):** Print-and-play escape rooms for CTE classes
+* **[Program Recruitment Games](/portfolio/recruitment-games/):** Browser mini-games for prospective CSIT and Cybersecurity students (network puzzle, PC build, binary, help desk, phishing, passwords, ciphers, firewall) in English, Spanish and Haitian Creole
+* **[NetFault](https://github.com/amymcmullin/NetFault):** Hardware overview and labs for the modular network trainers built for the CSIT program
 
 AI Innovation Lab & recent curriculum development
 ======
-* **[iTECH AI Innovation Lab](/talks/itech-ai-innovation-lab.html):** Building a station-based lab in which student teams rotate through hands-on AI equipment, with student project work used to showcase and build support for the Lab
-  * Equipment includes AIPI Lite handheld AI devices, a Hiwonder xArm 1S robotic arm, a MatataStudio Nous AI Robotics Set, an Anki Vector robot, and a UNIHIKER M10
-  * Leading "Silicon Glades," a series of grant proposals (DonorsChoose, Champions for Learning) to fund Lab equipment across iTECH programs
+* **[iTECH AI Innovation Lab](/talks/itech-ai-innovation-lab.html):** Building a station-based lab, open to every program on campus, in which student teams rotate through hands-on AI equipment, with student project work used to showcase and build support for the Lab
+  * Edge AI throughout: models run on local hardware, keeping student data on campus
+  * Equipment includes AIPI Lite handheld AI devices, a Hiwonder xArm 1S robotic arm, a MatataStudio Nous AI Robotics Set, an Anki Vector robot, a UNIHIKER M10, an M5Stack Cardputer and Miko Mini conversational AI robots, plus the program stations funded through the Silicon Glades grants (November 2026)
   * Focus on AI projects with real-world physical applications such as manufacturing and inventory control
 * **Amatrol Skill Boss Logistics (95-MSB3) Lab Sequence:** Developed a six-lab sequence running from system orientation through VFD/PLC network configuration, connecting physical system behavior to network-layer analysis (Wireshark, Studio 5000, RSLinx Classic, FaultPro); extended with a series of AI labs that onboard AI devices to the trainer's industrial network as managed assets
 * **Network Trainers:** Built modular network trainers for the Computer Systems & IT program, with a sequenced lab library for students who have completed CompTIA Tech+ and Cisco IT Support
@@ -211,6 +214,8 @@ Awards, grants & funding
   * Golden Apple Award Nomination — Collier County (2012–2013)
   * iTECH Staff/Faculty of the Month — Immokalee Technical College
 * **Grants**
+  * Silicon Glades: Edge AI & Industrial Vision — Champions for Learning (2026); also wrote seven funded proposals for other iTECH programs in the same series (2026)
+  * Silicon Glades: Conversational AI & Social Edge Robotics — DonorsChoose (2026)
   * CyberRange Infrastructure Grant — $1,917 — Champions for Learning (2024)
   * STEM: It Takes a Village to Feed the Cities of Tomorrow — $1,988 — Suncoast Credit Union (2017)
   * Connect with a Classroom Grant — Champions for Learning
