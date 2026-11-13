@@ -134,20 +134,20 @@ Professional certifications
   * Artificial Intelligence Fundamentals — IBM SkillsBuild
 * **Cybersecurity — Advanced & Expert Level**
   * CompTIA SecurityX (CASP+) ce — CompTIA (2019, lapsed)
-  * CompTIA Security Analytics Expert (CSAE) — Stackable
+  * CompTIA Security Analytics Expert (CSAE) — Stackable (lapsed)
   * CompTIA CySA+ ce (Cybersecurity Analyst) — CompTIA (2019, lapsed)
-  * CompTIA Security Analytics Professional (CSAP) — Stackable
+  * CompTIA Security Analytics Professional (CSAP) — Stackable (lapsed)
   * TestOut Ethical Hacker Pro / Security Pro — TestOut
 * **Networking & Infrastructure**
   * CompTIA Network+ ce — CompTIA (2017, lapsed)
   * Cisco CCST Networking — Lifetime — Cisco (2024)
   * Cisco CCST Cybersecurity — Lifetime — Cisco (2024)
-  * CompTIA Network Infrastructure Professional (CNIP) — Stackable
+  * CompTIA Network Infrastructure Professional (CNIP) — Stackable (lapsed)
   * CompTIA Server+ — CompTIA
 * **Cloud Computing**
   * CompTIA Cloud+ ce — CompTIA (2019, lapsed)
-  * CompTIA Cloud Admin Professional (CCAP) — Stackable
-  * CompTIA Secure Cloud Professional (CSCP) — Stackable
+  * CompTIA Cloud Admin Professional (CCAP) — Stackable (lapsed)
+  * CompTIA Secure Cloud Professional (CSCP) — Stackable (lapsed)
   * CompTIA Cloud Essentials+ — CompTIA (2024)
   * Microsoft Certified: Azure Fundamentals (AZ-900) — Microsoft (2021)
   * Microsoft Certified: Azure Data Fundamentals (DP-900) — Microsoft (2021)
@@ -158,8 +158,8 @@ Professional certifications
   * CompTIA A+ ce — CompTIA (2019)
   * CompTIA IT Fundamentals+ (ITF+) — CompTIA
   * Cisco CCST IT Support — Lifetime — Cisco (2024)
-  * CompTIA IT Operations Specialist (CIOS) — Stackable
-  * CompTIA Secure Infrastructure Specialist (CSIS) — Stackable
+  * CompTIA IT Operations Specialist (CIOS) — Stackable (lapsed)
+  * CompTIA Secure Infrastructure Specialist (CSIS) — Stackable (lapsed)
   * Micro-Certification: Welcome to ServiceNow — ServiceNow (2026)
 * **Microsoft Technologies & Productivity**
   * MCSE — Microsoft Certified Systems Engineer
