@@ -35,7 +35,7 @@ Teaching & academic leadership experience
   * Serve as the campus Canvas LMS subject-matter expert, instructional coach, and mentor to new teachers, including guidance on Florida's CAPE industry certification program
   * Run documented coaching cycles with trades and technical instructors (classroom visits, written action plans, assessment-data reviews in Power BI); published the process as an open [instructional coaching toolkit](https://github.com/amymcmullin/instructional-coaching-toolkit)
   * Lead the campus professional learning community on credentials, certifications and licensure; campus industry certifications rose from 69 (2023–24) to 235 (2024–25)
-  * Act as liaison between campus leadership and instructors and district technology, vendors, facilities, administration, and sister campus Lorenzo Walker Technical High School
+  * Act as liaison between campus leadership and instructors and district technology, vendors, facilities, administration, and sister campus Lorenzo Walker Technical College
   * Design, deliver, and continuously improve two concurrent post-secondary CTE programs — Computer Systems & IT and Applied Cybersecurity — aligned with Florida DOE frameworks and live industry certification objectives
   * Operate a student-led technical repair and support business with up to 45 students, providing real-world client service experience in a structured lab environment
   * Established iTECH as an authorized testing center for Pearson VUE, Certiport, and Prometric; recruited, trained, and managed 8 proctors; administered 1,814 exams in the last year
