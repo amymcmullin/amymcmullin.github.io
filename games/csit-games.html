@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Play IT | Computer Systems &amp; Information Technology | iTECH</title>
+<meta name="description" content="Try four quick computer games from iTECH's Computer Systems & Information Technology program: wire a network, build a PC, flip binary bits, and solve help desk tickets.">
+<style>
+/* ===== BRAND: swap these for iTECH colors ===== */
+:root{
+  --brand:#0b3d91;      /* primary */
+  --brand2:#1fa3e0;     /* secondary */
+  --accent:#ffb81c;     /* Apply button / highlights */
+  --bg:#0a1120; --panel:#121b2d; --panel2:#18243b; --line:#2a3a58;
+  --text:#eaf0f9; --muted:#9fb0c8; --ok:#2ecc71; --bad:#ff5c5c;
+  --radius:14px;
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--bg);color:var(--text);font:16px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif}
+a{color:var(--brand2)}
+button{font:inherit;cursor:pointer}
+.wrap{max-width:980px;margin:0 auto;padding:0 16px}
+.top{background:var(--brand);}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 16px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:10px;font-weight:700}
+.logo{background:#fff;color:var(--brand);border-radius:8px;padding:2px 10px;font-weight:900;letter-spacing:.5px}
+.prog{font-size:.95rem;opacity:.95}
+.lang{display:flex;gap:4px;background:rgba(0,0,0,.2);padding:3px;border-radius:999px}
+.lang button{border:0;background:transparent;color:#fff;padding:5px 12px;border-radius:999px;font-size:.85rem;font-weight:600}
+.lang button[aria-pressed="true"]{background:#fff;color:var(--brand)}
+.hero{padding:34px 0 18px;text-align:center}
+.hero h1{font-size:clamp(1.7rem,4.5vw,2.6rem);line-height:1.15;margin:0 0 10px}
+.hero p{color:var(--muted);max-width:640px;margin:0 auto 18px;font-size:1.05rem}
+.btn{display:inline-block;border:0;border-radius:999px;padding:11px 22px;font-weight:700;text-decoration:none;background:var(--brand2);color:#fff}
+.btn.apply{background:var(--accent);color:#1a1300}
+.btn.ghost{background:transparent;border:2px solid var(--line);color:var(--text)}
+.btn:focus-visible,button:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.picker{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;margin:10px 0 16px}
+.pick{background:var(--panel);border:2px solid var(--line);border-radius:var(--radius);padding:14px;text-align:left;color:var(--text)}
+.pick .ic{font-size:1.6rem}
+.pick b{display:block;margin-top:4px}
+.pick span{color:var(--muted);font-size:.88rem}
+.pick[aria-pressed="true"]{border-color:var(--brand2);background:var(--panel2)}
+.stage{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:18px;min-height:420px}
+.stage h2{margin:0 0 4px}
+.sub{color:var(--muted);margin:0 0 14px}
+.bar{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-bottom:12px}
+.chip{background:var(--panel2);border:1px solid var(--line);border-radius:999px;padding:4px 12px;font-size:.9rem}
+.msg{min-height:1.6em;margin:12px 0;font-weight:600}
+.msg.ok{color:var(--ok)} .msg.bad{color:var(--bad)}
+.win{background:linear-gradient(135deg,var(--brand),var(--panel2));border-radius:var(--radius);padding:16px;margin-top:12px;text-align:center}
+.win p{margin:6px 0 12px}
+.cta{margin:26px 0;padding:26px 18px;text-align:center;border-radius:var(--radius);background:linear-gradient(135deg,var(--brand),#06213f)}
+.cta h2{margin:0 0 6px}
+.cta p{margin:0 auto 16px;max-width:620px;color:#d6e2f3}
+.cta .row{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+footer{color:var(--muted);font-size:.8rem;text-align:center;padding:10px 0 30px}
+.shake{animation:shake .35s}
+@keyframes shake{25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+
+/* Cable Connect */
+.grid{display:grid;gap:3px;margin:0 auto;max-width:440px;touch-action:manipulation}
+.tile{aspect-ratio:1;background:var(--panel2);border:0;border-radius:8px;padding:0}
+.tile svg{width:100%;height:100%;display:block}
+.tile g.pipe{transition:transform .15s ease;transform-origin:50px 50px}
+.tile .ln{stroke:#4b5d80;stroke-width:14;stroke-linecap:round}
+.tile.lit .ln{stroke:var(--ok)}
+.tile .dev{fill:#4b5d80}.tile.lit .dev{fill:var(--ok)}
+.tile .srv{fill:var(--accent)}
+.solved .tile{background:#123a2a}
+
+/* Build a PC */
+.pcwrap{display:grid;grid-template-columns:1fr 1.3fr;gap:16px}
+@media(max-width:700px){.pcwrap{grid-template-columns:1fr}}
+.tray{display:grid;gap:8px}
+.part{display:flex;gap:10px;align-items:center;background:var(--panel2);border:2px solid var(--line);border-radius:10px;padding:10px;color:var(--text);text-align:left}
+.part .ic{font-size:1.5rem}
+.part[aria-pressed="true"]{border-color:var(--accent)}
+.part.done{opacity:.35;pointer-events:none}
+.board{background:#0f3b2b;border:3px solid #1f6b4f;border-radius:12px;padding:10px;display:grid;gap:8px;
+  grid-template-columns:1fr 1fr 1fr;grid-template-areas:"cpu cpu ram" "cpu cpu ram" "m2 pcie pcie" "pwr pwr pwr"}
+.slot{border:2px dashed #6fd3a8;background:rgba(0,0,0,.25);color:#cfeee0;border-radius:8px;min-height:64px;padding:6px;font-size:.85rem;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center}
+.slot.filled{border-style:solid;background:#1d6b4c;color:#fff}
+.slot .ic{font-size:1.4rem}
+.post{font-family:ui-monospace,Consolas,monospace;background:#000;color:#7CFC00;border-radius:8px;padding:12px;white-space:pre-wrap;min-height:120px;margin-top:12px}
+
+/* Binary */
+.bits{display:grid;grid-template-columns:repeat(8,1fr);gap:6px;max-width:560px;margin:0 auto}
+.bit{background:var(--panel2);border:2px solid var(--line);border-radius:10px;color:var(--text);padding:10px 0}
+.bit b{display:block;font-size:1.6rem;font-family:ui-monospace,Consolas,monospace}
+.bit small{color:var(--muted)}
+.bit.on{background:var(--brand2);border-color:var(--brand2)}
+.bit.on small{color:#e6f6ff}
+.target{text-align:center;font-size:1.1rem;margin:10px 0}
+.target b{font-size:2.6rem;display:block;color:var(--accent)}
+.val{text-align:center;color:var(--muted);margin-top:10px}
+
+/* Help desk */
+.ticket{background:var(--panel2);border-left:5px solid var(--accent);border-radius:10px;padding:14px;margin-bottom:12px}
+.opts{display:grid;gap:8px}
+.opt{background:var(--panel2);border:2px solid var(--line);border-radius:10px;padding:12px;color:var(--text);text-align:left}
+.opt.right{border-color:var(--ok);background:#123a2a}
+.opt.wrong{border-color:var(--bad);background:#3a1717}
+.center{text-align:center}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <div class="brand"><span class="logo">iTECH</span><span class="prog" data-i="prog"></span></div>
+  <div class="lang" role="group" aria-label="Language / Idioma / Lang">
+    <button data-lang="en">EN</button><button data-lang="es">ES</button><button data-lang="ht">KREYÒL</button>
+  </div>
+</div></header>
+
+<div class="wrap">
+  <section class="hero">
+    <h1 data-i="h1"></h1>
+    <p data-i="tag"></p>
+    <a class="btn apply" data-apply data-i="apply"></a>
+  </section>
+
+  <nav class="picker" id="picker" aria-label="Games"></nav>
+  <main class="stage" id="stage" aria-live="polite"></main>
+
+  <section class="cta">
+    <h2 data-i="cta_h"></h2>
+    <p data-i="cta_p"></p>
+    <div class="row">
+      <a class="btn apply" data-apply data-i="apply"></a>
+      <a class="btn ghost" data-other data-i="cta_other"></a>
+    </div>
+  </section>
+  <footer data-i="foot"></footer>
+</div>
+
+<script>
+/* ===== SETTINGS: swap for the real links ===== */
+const CONFIG = {
+  applyUrl: "https://itc.collierschools.com/",   // iTECH application page
+  otherPage: "cybersecurity-games.html"           // the Cybersecurity games page
+};
+
+const T = {
+en:{
+  prog:"Computer Systems & Information Technology",
+  h1:"Can you think like an IT tech?",
+  tag:"Four quick games, each a taste of what you'll do hands-on in our program. No experience needed.",
+  apply:"Apply to iTECH",
+  cta_h:"This is what class feels like.",
+  cta_p:"In CSIT you build real computers, wire real networks, and earn the industry certifications employers look for.",
+  cta_other:"Try the Cybersecurity games →",
+  foot:"Immokalee Technical College (iTECH) · Computer Systems & Information Technology. Games built with AI assistance (Claude) for the iTECH CSIT program.",
+  play_again:"Play again", next:"Next", start:"Start", correct:"Correct!", nice:"Nice work!",
+  apply_nudge:"You'd fit right in. Ready to do this for real?",
+  g_cable:"Cable Connect", g_cable_d:"Rotate the cables so every computer reaches the server.",
+  cable_sub:"Tap a tile to rotate it. Light up every computer by connecting it to the gold server.",
+  level:"Level", moves:"Moves", new_puzzle:"New puzzle",
+  cable_win:"Network is up! Every computer can reach the server.",
+  next_level:"Next level",
+  g_pc:"Build-a-PC", g_pc_d:"Put each part in the right slot and boot it up.",
+  pc_sub:"Tap a part, then tap the slot where it goes on the motherboard.",
+  pc_pick:"Pick a part first.", pc_wrong:"That part doesn't go there. Try another slot.",
+  pc_power:"Power on", pc_done:"All parts installed. Press Power on!",
+  pc_boot:"It booted! You just built a computer.",
+  s_cpu:"CPU socket", s_ram:"RAM slots", s_m2:"M.2 slot", s_pcie:"PCIe x16 slot", s_pwr:"24-pin power",
+  p_cpu:"CPU (processor)", d_cpu:"The brain: does the calculations.",
+  p_ram:"RAM", d_ram:"Short-term memory for whatever is open right now.",
+  p_ssd:"M.2 SSD", d_ssd:"Long-term storage for your files and the operating system.",
+  p_gpu:"Graphics card", d_gpu:"Draws everything you see on the screen.",
+  p_psu:"Power supply", d_psu:"Turns wall power into power the parts can use.",
+  g_bin:"Binary Blitz", g_bin_d:"Flip the switches to make the number. Beat the clock.",
+  bin_sub:"Computers count with 1s and 0s. Each switch is worth double the one to its right. Make the target number before time runs out.",
+  target:"Make this number", value:"Your number", time:"Time", score:"Score",
+  bin_over:"Time! You converted {n} numbers to binary.",
+  g_help:"Help Desk Hero", g_help_d:"Pick the smartest first step to fix each problem.",
+  help_sub:"Tickets are coming in. Choose the best first step.",
+  ticket:"Ticket", help_over:"You solved {n} of {t} tickets the way a pro would.",
+  tickets:[
+   {q:"A user says their monitor is completely black, but the computer is on.",o:["Check that the monitor is turned on and the cable is plugged in","Reinstall Windows","Order a new computer"],a:0,e:"Start simple. Power and cables cause a lot of problems, and checking them takes ten seconds."},
+   {q:"Nobody in the office can open any websites, but Wi-Fi says it's connected.",o:["Buy everyone new laptops","Check the router and internet connection","Delete the web browser on every PC"],a:1,e:"When everyone has the same problem, look at what they share: the network."},
+   {q:"A laptop has become really slow.",o:["Open Task Manager to see what's using the CPU and memory","Tap it on the desk","Remove the hard drive"],a:0,e:"Gather information before you fix anything. Task Manager shows what's hogging resources."},
+   {q:"The printer is printing blank pages.",o:["Unplug the network switch","Reinstall the operating system","Check the ink or toner"],a:2,e:"Check the most likely cause first. Empty toner is a classic."},
+   {q:"Someone calls saying they forgot their password.",o:["Read their old password to them","Verify who they are, then reset it","Give them a new password of 1234"],a:1,e:"Security first. Confirm identity, then reset with a temporary password they must change."}
+  ]
+},
+es:{
+  prog:"Sistemas Informáticos y Tecnología de la Información",
+  h1:"¿Puedes pensar como un técnico de TI?",
+  tag:"Cuatro juegos rápidos. Cada uno es una muestra de lo que harás con tus propias manos en nuestro programa. No necesitas experiencia.",
+  apply:"Solicita en iTECH",
+  cta_h:"Así se siente la clase.",
+  cta_p:"En CSIT armas computadoras reales, cableas redes reales y obtienes las certificaciones que buscan los empleadores.",
+  cta_other:"Prueba los juegos de Ciberseguridad →",
+  foot:"Immokalee Technical College (iTECH) · Sistemas Informáticos y TI. Juegos creados con ayuda de IA (Claude) para el programa CSIT de iTECH.",
+  play_again:"Jugar otra vez", next:"Siguiente", start:"Empezar", correct:"¡Correcto!", nice:"¡Buen trabajo!",
+  apply_nudge:"Encajarías perfectamente. ¿Listo para hacerlo de verdad?",
+  g_cable:"Conecta los cables", g_cable_d:"Gira los cables para que cada computadora llegue al servidor.",
+  cable_sub:"Toca una pieza para girarla. Ilumina cada computadora conectándola al servidor dorado.",
+  level:"Nivel", moves:"Movimientos", new_puzzle:"Nuevo rompecabezas",
+  cable_win:"¡La red funciona! Todas las computadoras llegan al servidor.",
+  next_level:"Siguiente nivel",
+  g_pc:"Arma una PC", g_pc_d:"Pon cada pieza en su lugar y enciéndela.",
+  pc_sub:"Toca una pieza y luego toca el lugar de la placa base donde va.",
+  pc_pick:"Primero elige una pieza.", pc_wrong:"Esa pieza no va ahí. Prueba otro lugar.",
+  pc_power:"Encender", pc_done:"Todas las piezas instaladas. ¡Presiona Encender!",
+  pc_boot:"¡Arrancó! Acabas de armar una computadora.",
+  s_cpu:"Zócalo de CPU", s_ram:"Ranuras de RAM", s_m2:"Ranura M.2", s_pcie:"Ranura PCIe x16", s_pwr:"Conector de 24 pines",
+  p_cpu:"CPU (procesador)", d_cpu:"El cerebro: hace los cálculos.",
+  p_ram:"RAM", d_ram:"Memoria a corto plazo para lo que tienes abierto ahora.",
+  p_ssd:"SSD M.2", d_ssd:"Almacenamiento a largo plazo para tus archivos y el sistema operativo.",
+  p_gpu:"Tarjeta gráfica", d_gpu:"Dibuja todo lo que ves en la pantalla.",
+  p_psu:"Fuente de poder", d_psu:"Convierte la corriente de la pared en energía que las piezas pueden usar.",
+  g_bin:"Binario Relámpago", g_bin_d:"Activa los interruptores para formar el número. Gánale al reloj.",
+  bin_sub:"Las computadoras cuentan con 1 y 0. Cada interruptor vale el doble del que está a su derecha. Forma el número antes de que se acabe el tiempo.",
+  target:"Forma este número", value:"Tu número", time:"Tiempo", score:"Puntos",
+  bin_over:"¡Tiempo! Convertiste {n} números a binario.",
+  g_help:"Héroe de Soporte Técnico", g_help_d:"Elige el mejor primer paso para resolver cada problema.",
+  help_sub:"Están llegando solicitudes. Elige el mejor primer paso.",
+  ticket:"Solicitud", help_over:"Resolviste {n} de {t} solicitudes como un profesional.",
+  tickets:[
+   {q:"Un usuario dice que su monitor está completamente negro, pero la computadora está encendida.",o:["Revisar que el monitor esté encendido y el cable conectado","Reinstalar Windows","Pedir una computadora nueva"],a:0,e:"Empieza por lo simple. La corriente y los cables causan muchos problemas, y revisarlos toma diez segundos."},
+   {q:"Nadie en la oficina puede abrir páginas web, pero el Wi-Fi dice que está conectado.",o:["Comprarle a todos laptops nuevas","Revisar el router y la conexión a internet","Borrar el navegador en cada PC"],a:1,e:"Cuando todos tienen el mismo problema, revisa lo que comparten: la red."},
+   {q:"Una laptop se ha puesto muy lenta.",o:["Abrir el Administrador de tareas para ver qué usa la CPU y la memoria","Darle un golpecito en el escritorio","Quitar el disco duro"],a:0,e:"Reúne información antes de arreglar algo. El Administrador de tareas muestra qué está consumiendo recursos."},
+   {q:"La impresora imprime páginas en blanco.",o:["Desconectar el switch de red","Reinstalar el sistema operativo","Revisar la tinta o el tóner"],a:2,e:"Revisa primero la causa más probable. El tóner vacío es un clásico."},
+   {q:"Alguien llama diciendo que olvidó su contraseña.",o:["Leerle su contraseña anterior","Verificar quién es y luego restablecerla","Darle la contraseña 1234"],a:1,e:"La seguridad primero. Confirma la identidad y luego restablece con una contraseña temporal que deba cambiar."}
+  ]
+},
+ht:{
+  prog:"Sistèm Òdinatè ak Teknoloji Enfòmasyon",
+  h1:"Èske ou ka panse tankou yon teknisyen IT?",
+  tag:"Kat ti jwèt rapid. Chak jwèt se yon gou sa w ap fè ak pwòp men w nan pwogram nou an. Ou pa bezwen eksperyans.",
+  apply:"Aplike nan iTECH",
+  cta_h:"Se konsa klas la ye.",
+  cta_p:"Nan CSIT ou monte vrè òdinatè, ou konekte vrè rezo, epi ou jwenn sètifikasyon patwon yo ap chèche.",
+  cta_other:"Eseye jwèt Sibèsekirite yo →",
+  foot:"Immokalee Technical College (iTECH) · Sistèm Òdinatè ak IT. Jwèt sa yo fèt avèk èd entèlijans atifisyèl (Claude) pou pwogram CSIT iTECH la.",
+  play_again:"Jwe ankò", next:"Pwochen", start:"Kòmanse", correct:"Kòrèk!", nice:"Bon travay!",
+  apply_nudge:"Ou ta byen jwenn plas ou. Ou pare pou fè l pou tout bon?",
+  g_cable:"Konekte Kab yo", g_cable_d:"Vire kab yo pou chak òdinatè rive jwenn sèvè a.",
+  cable_sub:"Peze yon kare pou vire l. Limen chak òdinatè lè ou konekte l ak sèvè jòn nan.",
+  level:"Nivo", moves:"Mouvman", new_puzzle:"Nouvo pezèl",
+  cable_win:"Rezo a mache! Tout òdinatè yo rive jwenn sèvè a.",
+  next_level:"Pwochen nivo",
+  g_pc:"Monte yon Òdinatè", g_pc_d:"Mete chak pyès nan bon plas li epi limen l.",
+  pc_sub:"Peze yon pyès, apre sa peze plas li sou kat manman an (motherboard).",
+  pc_pick:"Chwazi yon pyès anvan.", pc_wrong:"Pyès sa a pa ale la. Eseye yon lòt plas.",
+  pc_power:"Limen", pc_done:"Tout pyès yo anplas. Peze Limen!",
+  pc_boot:"Li limen! Ou fèk monte yon òdinatè.",
+  s_cpu:"Plas CPU a", s_ram:"Plas RAM yo", s_m2:"Plas M.2 a", s_pcie:"Plas PCIe x16 la", s_pwr:"Priz kouran 24 pikan",
+  p_cpu:"CPU (pwosesè)", d_cpu:"Sèvo a: li fè tout kalkil yo.",
+  p_ram:"RAM", d_ram:"Memwa kout tèm pou sa ki louvri kounye a.",
+  p_ssd:"SSD M.2", d_ssd:"Depo alontèm pou fichye ou yo ak sistèm operasyon an.",
+  p_gpu:"Kat grafik", d_gpu:"Li desinen tout sa ou wè sou ekran an.",
+  p_psu:"Blòk alimantasyon", d_psu:"Li chanje kouran nan miray la an kouran pyès yo ka itilize.",
+  g_bin:"Binè Rapid", g_bin_d:"Limen bouton yo pou fè nimewo a. Bat revèy la.",
+  bin_sub:"Òdinatè konte ak 1 ak 0. Chak bouton vo de fwa sa bouton ki sou bò dwat li a vo. Fè nimewo a anvan tan an fini.",
+  target:"Fè nimewo sa a", value:"Nimewo pa w", time:"Tan", score:"Pwen",
+  bin_over:"Tan fini! Ou konvèti {n} nimewo an binè.",
+  g_help:"Ewo Sèvis Sipò", g_help_d:"Chwazi pi bon premye etap pou rezoud chak pwoblèm.",
+  help_sub:"Demann yo ap rantre. Chwazi pi bon premye etap la.",
+  ticket:"Demann", help_over:"Ou rezoud {n} sou {t} demann tankou yon pwofesyonèl.",
+  tickets:[
+   {q:"Yon itilizatè di ekran li nwa nèt, men òdinatè a limen.",o:["Tcheke si ekran an limen epi kab la byen branche","Reenstale Windows","Kòmande yon nouvo òdinatè"],a:0,e:"Kòmanse ak sa ki senp. Kouran ak kab lakòz anpil pwoblèm, epi tcheke yo pran dis segonn."},
+   {q:"Pèsonn nan biwo a pa ka louvri okenn sit entènèt, men Wi-Fi a di li konekte.",o:["Achte nouvo laptop pou tout moun","Tcheke routè a ak koneksyon entènèt la","Efase navigatè a sou chak òdinatè"],a:1,e:"Lè tout moun gen menm pwoblèm nan, gade sa yo pataje: rezo a."},
+   {q:"Yon laptop vin dousman anpil.",o:["Louvri Task Manager pou wè sa k ap itilize CPU a ak memwa a","Frape l sou biwo a","Retire disk di a"],a:0,e:"Ranmase enfòmasyon anvan ou repare anyen. Task Manager montre sa k ap manje resous yo."},
+   {q:"Enprimant lan ap enprime paj blan.",o:["Debranche switch rezo a","Reenstale sistèm operasyon an","Tcheke lank lan oswa toner a"],a:2,e:"Tcheke kòz ki pi pwobab la anvan. Toner ki fini se yon klasik."},
+   {q:"Yon moun rele pou di li bliye modpas li.",o:["Li ansyen modpas li ba li","Verifye kiyès li ye, epi chanje modpas la","Ba li modpas 1234"],a:1,e:"Sekirite anvan. Konfime idantite moun nan, epi bay yon modpas tanporè li dwe chanje."}
+  ]
+}};
+
+let lang = "en";
+try{ const s = localStorage.getItem("itech_lang"); if(T[s]) lang = s; }catch(e){}
+const t = k => T[lang][k] ?? T.en[k];
+const fmt = (s,o) => s.replace(/\{(\w+)\}/g,(_,k)=>o[k]);
+const $ = (s,el=document) => el.querySelector(s);
+const h = (html) => { const d=document.createElement("div"); d.innerHTML=html.trim(); return d.firstElementChild; };
+const nudge = () => `<div class="win"><p>${t("apply_nudge")}</p><a class="btn apply" href="${CONFIG.applyUrl}" target="_blank" rel="noopener">${t("apply")}</a></div>`;
+
+/* ===================== GAME 1: CABLE CONNECT ===================== */
+const DIRS=[[0,-1,1],[1,0,2],[0,1,4],[-1,0,8]];
+const OPP={1:4,2:8,4:1,8:2};
+const rot = m => ((m<<1)|(m>>3))&15;
+const rotN = (m,n) => { for(let i=0;i<(n%4);i++) m=rot(m); return m; };
+const cable = { level:0, sizes:[4,5,6,7] };
+function genCable(n){
+  const base=Array(n*n).fill(0), sx=n>>1, sy=n>>1, seen=new Set([sy*n+sx]), fr=[];
+  const add=(x,y)=>{for(const[dx,dy,b] of DIRS){const nx=x+dx,ny=y+dy;if(nx>=0&&ny>=0&&nx<n&&ny<n&&!seen.has(ny*n+nx))fr.push([x,y,nx,ny,b])}};
+  add(sx,sy);
+  while(seen.size<n*n){
+    const [x,y,nx,ny,b]=fr.splice(Math.floor(Math.random()*fr.length),1)[0];
+    const k=ny*n+nx; if(seen.has(k)) continue;
+    base[y*n+x]|=b; base[k]|=OPP[b]; seen.add(k); add(nx,ny);
+  }
+  const r=base.map(()=>Math.floor(Math.random()*4));
+  const p={n,sx,sy,base,r,moves:0};
+  if(checkCable(p).solved){ const i=base.findIndex(m=>m!==5&&m!==10&&m!==15); if(i>=0) r[i]++; }
+  return p;
+}
+function checkCable(p){
+  const {n}=p, cur=p.base.map((m,i)=>rotN(m,p.r[i])), s=p.sy*n+p.sx, vis=new Set([s]), q=[s]; let dang=false;
+  while(q.length){const k=q.shift(),x=k%n,y=(k/n)|0;
+    for(const[dx,dy,b] of DIRS){ if(!(cur[k]&b)) continue; const nx=x+dx,ny=y+dy;
+      if(nx<0||ny<0||nx>=n||ny>=n){dang=true;continue}
+      const nk=ny*n+nx; if(!(cur[nk]&OPP[b])){dang=true;continue}
+      if(!vis.has(nk)){vis.add(nk);q.push(nk)} } }
+  return {vis,solved:vis.size===n*n&&!dang};
+}
+function tileSVG(m,isSrv){
+  const deg=[1,2,4,8].filter(b=>m&b).length;
+  const ends={1:[50,0],2:[100,50],4:[50,100],8:[0,50]};
+  let s='<svg viewBox="0 0 100 100" aria-hidden="true"><g class="pipe">';
+  for(const b of [1,2,4,8]) if(m&b){const[x,y]=ends[b]; s+=`<line class="ln" x1="50" y1="50" x2="${x}" y2="${y}"/>`;}
+  s+='</g><g>';
+  if(isSrv) s+='<rect class="srv" x="28" y="24" width="44" height="52" rx="6"/><rect x="34" y="32" width="32" height="6" fill="#1a1300"/><rect x="34" y="44" width="32" height="6" fill="#1a1300"/><circle cx="60" cy="64" r="4" fill="#1a1300"/>';
+  else if(deg===1) s+='<rect class="dev" x="26" y="28" width="48" height="34" rx="4"/><rect x="31" y="33" width="38" height="24" fill="#0a1120"/><rect class="dev" x="40" y="62" width="20" height="10"/>';
+  else s+='<circle class="dev" cx="50" cy="50" r="9"/>';
+  return s+'</g></svg>';
+}
+function mountCable(el){
+  const p = cable.p || (cable.p = genCable(cable.sizes[cable.level]));
+  el.innerHTML = `<h2>🔌 ${t("g_cable")}</h2><p class="sub">${t("cable_sub")}</p>
+   <div class="bar"><span class="chip">${t("level")} <b>${cable.level+1}</b> / ${cable.sizes.length}</span>
+   <span class="chip">${t("moves")} <b id="cm">${p.moves}</b></span>
+   <button class="btn ghost" id="cnew">${t("new_puzzle")}</button></div>
+   <div class="grid" id="cg" style="grid-template-columns:repeat(${p.n},1fr)"></div><div id="cwin"></div>`;
+  const g=$("#cg",el), tiles=[];
+  p.base.forEach((m,i)=>{
+    const isSrv = i===p.sy*p.n+p.sx;
+    const b=h(`<button class="tile" aria-label="tile ${i+1}">${tileSVG(m,isSrv)}</button>`);
+    b.onclick=()=>{ if(g.classList.contains("solved")) return; p.r[i]++; p.moves++; $("#cm",el).textContent=p.moves; paint(); };
+    g.appendChild(b); tiles.push(b);
+  });
+  function paint(){
+    const {vis,solved}=checkCable(p);
+    tiles.forEach((b,i)=>{ $("g.pipe",b).style.transform=`rotate(${p.r[i]*90}deg)`; b.classList.toggle("lit",vis.has(i)); });
+    if(solved){ g.classList.add("solved");
+      const last = cable.level===cable.sizes.length-1;
+      $("#cwin",el).innerHTML = `<p class="msg ok center">✅ ${t("cable_win")}</p><div class="center"><button class="btn" id="cnext">${last?t("play_again"):t("next_level")}</button></div>${last?nudge():""}`;
+      $("#cnext",el).onclick=()=>{ cable.level = last?0:cable.level+1; cable.p=null; mountCable(el); };
+    }
+  }
+  $("#cnew",el).onclick=()=>{ cable.p=null; mountCable(el); };
+  paint();
+}
+
+/* ===================== GAME 2: BUILD-A-PC ===================== */
+const PARTS=[{id:"cpu",ic:"🧠",slot:"cpu"},{id:"ram",ic:"📏",slot:"ram"},{id:"ssd",ic:"💾",slot:"m2"},{id:"gpu",ic:"🎮",slot:"pcie"},{id:"psu",ic:"⚡",slot:"pwr"}];
+const pc = { placed:{} };
+function mountPC(el){
+  let sel=null;
+  el.innerHTML = `<h2>🖥️ ${t("g_pc")}</h2><p class="sub">${t("pc_sub")}</p>
+   <div class="pcwrap"><div class="tray" id="tray"></div>
+   <div><div class="board" id="board">
+     ${["cpu","ram","m2","pcie","pwr"].map(s=>`<button class="slot" data-s="${s}" style="grid-area:${s}"><span class="ic"></span><span>${t("s_"+s)}</span></button>`).join("")}
+   </div></div></div>
+   <p class="msg" id="pmsg"></p><div id="pend"></div>`;
+  const tray=$("#tray",el), msg=$("#pmsg",el);
+  PARTS.forEach(p=>{
+    const b=h(`<button class="part" data-p="${p.id}"><span class="ic">${p.ic}</span><span><b>${t("p_"+p.id)}</b><br><small>${t("d_"+p.id)}</small></span></button>`);
+    b.onclick=()=>{ sel=p; tray.querySelectorAll(".part").forEach(x=>x.setAttribute("aria-pressed",x===b)); msg.textContent=""; };
+    tray.appendChild(b);
+  });
+  const refresh=()=>{
+    PARTS.forEach(p=>{ if(pc.placed[p.id]){ tray.querySelector(`[data-p="${p.id}"]`).classList.add("done");
+      const s=el.querySelector(`[data-s="${p.slot}"]`); s.classList.add("filled"); $(".ic",s).textContent=p.ic; $("span:last-child",s).textContent=t("p_"+p.id); }});
+    if(Object.keys(pc.placed).length===PARTS.length && !$("#pwrbtn",el)){
+      msg.className="msg ok"; msg.textContent=t("pc_done");
+      $("#pend",el).innerHTML=`<div class="center"><button class="btn apply" id="pwrbtn">⏻ ${t("pc_power")}</button></div><div class="post" id="post" hidden></div>`;
+      $("#pwrbtn",el).onclick=boot;
+    }
+  };
+  el.querySelectorAll(".slot").forEach(s=>s.onclick=()=>{
+    if(s.classList.contains("filled")) return;
+    if(!sel){ msg.className="msg bad"; msg.textContent=t("pc_pick"); return; }
+    if(sel.slot===s.dataset.s){ pc.placed[sel.id]=1; sel=null; msg.className="msg ok"; msg.textContent=t("correct"); refresh(); }
+    else { msg.className="msg bad"; msg.textContent=t("pc_wrong"); s.classList.remove("shake"); void s.offsetWidth; s.classList.add("shake"); }
+  });
+  function boot(){
+    const post=$("#post",el); post.hidden=false; $("#pwrbtn",el).disabled=true;
+    const lines=["iTECH BIOS v1.0","CPU ............ OK","Memory 16 GB .... OK","M.2 SSD 1 TB .... OK","Graphics ........ OK","Power ........... OK","","Booting operating system..."];
+    let i=0; const iv=setInterval(()=>{ post.textContent+=lines[i++]+"\n"; if(i>=lines.length){ clearInterval(iv);
+      $("#pend",el).insertAdjacentHTML("beforeend",`<p class="msg ok center">🎉 ${t("pc_boot")}</p><div class="center"><button class="btn ghost" id="preset">${t("play_again")}</button></div>${nudge()}`);
+      $("#preset",el).onclick=()=>{ pc.placed={}; mountPC(el); }; } },260);
+  }
+  refresh();
+}
+
+/* ===================== GAME 3: BINARY BLITZ ===================== */
+const bin = {};
+function mountBin(el){
+  clearInterval(bin.iv);
+  el.innerHTML = `<h2>🔢 ${t("g_bin")}</h2><p class="sub">${t("bin_sub")}</p>
+   <div class="bar"><span class="chip">${t("time")} <b id="bt">60</b>s</span><span class="chip">${t("score")} <b id="bs">0</b></span></div>
+   <div class="target">${t("target")}<b id="btg">?</b></div>
+   <div class="bits" id="bits">${[128,64,32,16,8,4,2,1].map(v=>`<button class="bit" data-v="${v}" disabled><b>0</b><small>${v}</small></button>`).join("")}</div>
+   <div class="val">${t("value")}: <b id="bv">0</b></div>
+   <div class="center" style="margin-top:14px"><button class="btn apply" id="bstart">${t("start")}</button></div><div id="bend"></div>`;
+  const bits=[...el.querySelectorAll(".bit")];
+  let val=0,target=0,score=0,time=60,round=0;
+  const newT=()=>{ round++; const max = round<3?15:round<6?63:255; let n; do{n=1+Math.floor(Math.random()*max)}while(n===target); target=n; $("#btg",el).textContent=target; };
+  const setVal=()=>{ val=bits.reduce((a,b)=>a+(b.classList.contains("on")?+b.dataset.v:0),0); $("#bv",el).textContent=val; };
+  bits.forEach(b=>b.onclick=()=>{ b.classList.toggle("on"); $("b",b).textContent=b.classList.contains("on")?1:0; setVal();
+    if(val===target){ score++; $("#bs",el).textContent=score; bits.forEach(x=>{x.classList.remove("on");$("b",x).textContent=0}); setVal(); newT(); } });
+  $("#bstart",el).onclick=()=>{
+    $("#bstart",el).parentElement.hidden=true; bits.forEach(b=>b.disabled=false); newT();
+    bin.iv=setInterval(()=>{ time--; $("#bt",el).textContent=time; if(time<=0){ clearInterval(bin.iv); bits.forEach(b=>b.disabled=true);
+      $("#bend",el).innerHTML=`<p class="msg ok center">⏱️ ${fmt(t("bin_over"),{n:score})}</p><div class="center"><button class="btn ghost" id="bagain">${t("play_again")}</button></div>${nudge()}`;
+      $("#bagain",el).onclick=()=>mountBin(el); } },1000);
+  };
+}
+
+/* ===================== GAME 4: HELP DESK HERO ===================== */
+function mountHelp(el){
+  const list=t("tickets"); let i=0, score=0;
+  const show=()=>{
+    if(i>=list.length){ el.innerHTML=`<h2>🎧 ${t("g_help")}</h2><p class="msg ok center">🏆 ${fmt(t("help_over"),{n:score,t:list.length})}</p><div class="center"><button class="btn ghost" id="hagain">${t("play_again")}</button></div>${nudge()}`; $("#hagain",el).onclick=()=>mountHelp(el); return; }
+    const k=list[i];
+    el.innerHTML=`<h2>🎧 ${t("g_help")}</h2><p class="sub">${t("help_sub")}</p>
+      <div class="bar"><span class="chip">${t("ticket")} <b>${i+1}</b> / ${list.length}</span><span class="chip">${t("score")} <b>${score}</b></span></div>
+      <div class="ticket">🎫 ${k.q}</div><div class="opts">${k.o.map((o,j)=>`<button class="opt" data-j="${j}">${o}</button>`).join("")}</div>
+      <p class="msg" id="hmsg"></p><div id="hnext"></div>`;
+    el.querySelectorAll(".opt").forEach(b=>b.onclick=()=>{
+      const j=+b.dataset.j; el.querySelectorAll(".opt").forEach(x=>{x.disabled=true; if(+x.dataset.j===k.a) x.classList.add("right");});
+      const m=$("#hmsg",el);
+      if(j===k.a){ score++; m.className="msg ok"; m.textContent=t("correct")+" "+k.e; } else { b.classList.add("wrong"); m.className="msg bad"; m.textContent=k.e; }
+      $("#hnext",el).innerHTML=`<button class="btn">${t("next")} →</button>`; $("#hnext button",el).onclick=()=>{i++;show();};
+    });
+  };
+  show();
+}
+
+/* ===================== SHELL ===================== */
+const GAMES=[{id:"cable",ic:"🔌",mount:mountCable},{id:"pc",ic:"🖥️",mount:mountPC},{id:"bin",ic:"🔢",mount:mountBin},{id:"help",ic:"🎧",mount:mountHelp}];
+let current="cable";
+function renderPicker(){
+  $("#picker").innerHTML=GAMES.map(g=>`<button class="pick" data-g="${g.id}" aria-pressed="${g.id===current}"><span class="ic">${g.ic}</span><b>${t("g_"+g.id)}</b><span>${t("g_"+g.id+"_d")}</span></button>`).join("");
+  document.querySelectorAll(".pick").forEach(b=>b.onclick=()=>{ current=b.dataset.g; renderPicker(); mountGame(); $("#stage").scrollIntoView({behavior:"smooth",block:"start"}); });
+}
+function mountGame(){ clearInterval(bin.iv); GAMES.find(g=>g.id===current).mount($("#stage")); }
+function applyLang(){
+  document.documentElement.lang = lang==="ht"?"ht":lang;
+  document.querySelectorAll("[data-i]").forEach(e=>e.textContent=t(e.dataset.i));
+  document.querySelectorAll("[data-lang]").forEach(b=>b.setAttribute("aria-pressed",b.dataset.lang===lang));
+  renderPicker(); mountGame();
+}
+document.querySelectorAll("[data-apply]").forEach(a=>{a.href=CONFIG.applyUrl;a.target="_blank";a.rel="noopener"});
+document.querySelectorAll("[data-other]").forEach(a=>a.href=CONFIG.otherPage);
+document.querySelectorAll("[data-lang]").forEach(b=>b.onclick=()=>{ lang=b.dataset.lang; try{localStorage.setItem("itech_lang",lang)}catch(e){} applyLang(); });
+applyLang();
+</script>
+</body>
+</html>

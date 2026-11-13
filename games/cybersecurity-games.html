@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Play Cyber | Applied Cybersecurity | iTECH</title>
+<meta name="description" content="Try four quick cybersecurity games from iTECH's Applied Cybersecurity program: spot phishing, crack ciphers, build strong passwords, and run a firewall.">
+<style>
+
+/* ===== BRAND: swap these for iTECH colors ===== */
+:root{
+  --brand:#0b3d91;      /* primary */
+  --brand2:#1fa3e0;     /* secondary */
+  --accent:#ffb81c;     /* Apply button / highlights */
+  --bg:#0a1120; --panel:#121b2d; --panel2:#18243b; --line:#2a3a58;
+  --text:#eaf0f9; --muted:#9fb0c8; --ok:#2ecc71; --bad:#ff5c5c;
+  --radius:14px;
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--bg);color:var(--text);font:16px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif}
+a{color:var(--brand2)}
+button{font:inherit;cursor:pointer}
+.wrap{max-width:980px;margin:0 auto;padding:0 16px}
+.top{background:var(--brand);}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 16px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:10px;font-weight:700}
+.logo{background:#fff;color:var(--brand);border-radius:8px;padding:2px 10px;font-weight:900;letter-spacing:.5px}
+.prog{font-size:.95rem;opacity:.95}
+.lang{display:flex;gap:4px;background:rgba(0,0,0,.2);padding:3px;border-radius:999px}
+.lang button{border:0;background:transparent;color:#fff;padding:5px 12px;border-radius:999px;font-size:.85rem;font-weight:600}
+.lang button[aria-pressed="true"]{background:#fff;color:var(--brand)}
+.hero{padding:34px 0 18px;text-align:center}
+.hero h1{font-size:clamp(1.7rem,4.5vw,2.6rem);line-height:1.15;margin:0 0 10px}
+.hero p{color:var(--muted);max-width:640px;margin:0 auto 18px;font-size:1.05rem}
+.btn{display:inline-block;border:0;border-radius:999px;padding:11px 22px;font-weight:700;text-decoration:none;background:var(--brand2);color:#fff}
+.btn.apply{background:var(--accent);color:#1a1300}
+.btn.ghost{background:transparent;border:2px solid var(--line);color:var(--text)}
+.btn:focus-visible,button:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.picker{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;margin:10px 0 16px}
+.pick{background:var(--panel);border:2px solid var(--line);border-radius:var(--radius);padding:14px;text-align:left;color:var(--text)}
+.pick .ic{font-size:1.6rem}
+.pick b{display:block;margin-top:4px}
+.pick span{color:var(--muted);font-size:.88rem}
+.pick[aria-pressed="true"]{border-color:var(--brand2);background:var(--panel2)}
+.stage{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:18px;min-height:420px}
+.stage h2{margin:0 0 4px}
+.sub{color:var(--muted);margin:0 0 14px}
+.bar{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-bottom:12px}
+.chip{background:var(--panel2);border:1px solid var(--line);border-radius:999px;padding:4px 12px;font-size:.9rem}
+.msg{min-height:1.6em;margin:12px 0;font-weight:600}
+.msg.ok{color:var(--ok)} .msg.bad{color:var(--bad)}
+.win{background:linear-gradient(135deg,var(--brand),var(--panel2));border-radius:var(--radius);padding:16px;margin-top:12px;text-align:center}
+.win p{margin:6px 0 12px}
+.cta{margin:26px 0;padding:26px 18px;text-align:center;border-radius:var(--radius);background:linear-gradient(135deg,var(--brand),#06213f)}
+.cta h2{margin:0 0 6px}
+.cta p{margin:0 auto 16px;max-width:620px;color:#d6e2f3}
+.cta .row{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+footer{color:var(--muted);font-size:.8rem;text-align:center;padding:10px 0 30px}
+.shake{animation:shake .35s}
+@keyframes shake{25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+
+
+/* Phish */
+.mail{background:#f4f6fa;color:#1b2433;border-radius:10px;overflow:hidden;margin-bottom:12px}
+.mail .hd{background:#e3e8f1;padding:10px 14px;font-size:.92rem}
+.mail .hd div{overflow-wrap:anywhere}
+.mail .bd{padding:14px}
+.mail .fake-link{color:#1a5fd0;text-decoration:underline}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.btn.bad{background:var(--bad)} .btn.good{background:var(--ok);color:#062312}
+/* Password */
+.pw{width:100%;font:1.2rem ui-monospace,Consolas,monospace;padding:12px;border-radius:10px;border:2px solid var(--line);background:#0a1120;color:var(--text)}
+.meter{height:14px;background:var(--panel2);border-radius:999px;overflow:hidden;margin:12px 0}
+.meter i{display:block;height:100%;width:0;transition:width .25s,background .25s}
+.crack{font-size:1.15rem;text-align:center}
+.crack b{display:block;font-size:1.8rem;color:var(--accent)}
+.checks{list-style:none;padding:0;margin:12px 0;display:grid;gap:4px}
+.checks li::before{content:"✗ ";color:var(--bad)} .checks li.ok::before{content:"✓ ";color:var(--ok)}
+.note{font-size:.85rem;color:var(--muted)}
+/* Cipher */
+.cipher{font:1.5rem ui-monospace,Consolas,monospace;letter-spacing:3px;text-align:center;background:#000;color:#7CFC00;border-radius:10px;padding:16px;overflow-wrap:anywhere}
+.shiftrow{display:flex;align-items:center;justify-content:center;gap:12px;margin:14px 0}
+.shiftrow button{width:48px;height:48px;border-radius:50%;border:2px solid var(--line);background:var(--panel2);color:var(--text);font-size:1.4rem}
+.shiftrow b{font-size:1.6rem;min-width:3ch;text-align:center}
+.wheel{display:grid;grid-template-columns:repeat(13,1fr);gap:2px;font:.8rem ui-monospace,Consolas,monospace;text-align:center;max-width:520px;margin:0 auto}
+.wheel span{background:var(--panel2);border-radius:4px;padding:2px 0}
+.wheel span i{display:block;color:var(--accent);font-style:normal}
+.guess{display:flex;gap:8px;margin-top:12px}
+.guess input{flex:1;font:1rem ui-monospace,Consolas,monospace;padding:10px;border-radius:10px;border:2px solid var(--line);background:#0a1120;color:var(--text);text-transform:uppercase}
+/* Firewall */
+.rules{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px;font-size:.9rem}
+.rules div{background:var(--panel2);border-radius:10px;padding:10px}
+.rules ul{margin:4px 0 0;padding-left:18px}
+.lane{position:relative;height:120px;background:repeating-linear-gradient(90deg,var(--panel2) 0 20px,#152035 20px 40px);border-radius:10px;overflow:hidden;margin-bottom:12px}
+.srvbox{position:absolute;right:8px;top:50%;transform:translateY(-50%);font-size:2.4rem}
+.packet{position:absolute;top:50%;transform:translateY(-50%);background:var(--brand2);color:#fff;border-radius:10px;padding:8px 12px;font:.9rem ui-monospace,Consolas,monospace;white-space:nowrap;box-shadow:0 4px 14px rgba(0,0,0,.4)}
+.lives{letter-spacing:4px}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <div class="brand"><span class="logo">iTECH</span><span class="prog" data-i="prog"></span></div>
+  <div class="lang" role="group" aria-label="Language / Idioma / Lang">
+    <button data-lang="en">EN</button><button data-lang="es">ES</button><button data-lang="ht">KREYÒL</button>
+  </div>
+</div></header>
+
+<div class="wrap">
+  <section class="hero">
+    <h1 data-i="h1"></h1>
+    <p data-i="tag"></p>
+    <a class="btn apply" data-apply data-i="apply"></a>
+  </section>
+
+  <nav class="picker" id="picker" aria-label="Games"></nav>
+  <main class="stage" id="stage" aria-live="polite"></main>
+
+  <section class="cta">
+    <h2 data-i="cta_h"></h2>
+    <p data-i="cta_p"></p>
+    <div class="row">
+      <a class="btn apply" data-apply data-i="apply"></a>
+      <a class="btn ghost" data-other data-i="cta_other"></a>
+    </div>
+  </section>
+  <footer data-i="foot"></footer>
+</div>
+
+<script>
+/* ===== SETTINGS: swap for the real links ===== */
+const CONFIG = {
+  applyUrl: "https://itc.collierschools.com/",   // iTECH application page
+  otherPage: "csit-games.html"                    // the CSIT games page
+};
+
+const T = {
+en:{
+  prog:"Applied Cybersecurity",
+  h1:"Can you outsmart a hacker?",
+  tag:"Four quick games, each a taste of what you'll learn in our cybersecurity program. No experience needed.",
+  apply:"Apply to iTECH",
+  cta_h:"Defenders are in demand.",
+  cta_p:"Start with Computer Systems & IT to build your foundation, then move into Applied Cybersecurity, the order local employers asked us to teach it in.",
+  cta_other:"← Start with the CSIT games",
+  foot:"Immokalee Technical College (iTECH) · Applied Cybersecurity. Games built with AI assistance (Claude) for the iTECH Cybersecurity program. All emails, companies, and addresses in these games are made up.",
+  play_again:"Play again", next:"Next", start:"Start", correct:"Correct!", score:"Score",
+  apply_nudge:"You've got good instincts. Ready to train for real?",
+  g_phish:"Phish or Legit?", g_phish_d:"Spot the scam emails before someone clicks.",
+  phish_sub:"Read each email. Is it a phishing scam or a real message?",
+  phish:"🎣 Phish", legit:"✅ Legit", from:"From", subj:"Subject",
+  was_phish:"This one was PHISHING.", was_legit:"This one was LEGIT.",
+  email:"Email", phish_over:"You sorted {n} of {t} emails correctly.",
+  g_pass:"Password Cracker", g_pass_d:"Build a password a hacker can't crack.",
+  pass_sub:"Type a password and see how long a computer guessing 10 billion passwords a second would need to crack it. Goal: over 1,000 years.",
+  pass_ph:"Type a practice password", pass_warn:"Don't type a real password you use. This is practice only, and nothing is saved or sent.",
+  crack_in:"Time to crack", c_len:"12 or more characters", c_low:"Lowercase letters", c_up:"Uppercase letters", c_num:"Numbers", c_sym:"Symbols (! @ # $ …)", c_common:"No common words or patterns",
+  pass_tip:"Tip: a passphrase of four random words, like Mango-Tractor-Cloud-47, is long, strong, and easy to remember.",
+  pass_goal:"Uncrackable! That would take more than 1,000 years.",
+  u_instant:"Instantly", u_sec:"seconds", u_min:"minutes", u_hr:"hours", u_day:"days", u_yr:"years", u_ages:"Longer than the universe has existed",
+  g_cipher:"Code Breaker", g_cipher_d:"Crack a secret message by shifting the alphabet.",
+  cipher_sub:"Each letter was shifted down the alphabet by a secret number (a Caesar cipher). Turn the wheel until the message makes sense, then type it in.",
+  shift:"Shift", decoded:"Decoded with this shift:", type_ans:"Type the secret message", check:"Check", wrong:"Not yet. Keep turning the wheel.",
+  round:"Message", cipher_over:"You cracked every message! Real analysts use the same idea, with much stronger codes.",
+  msgs:["HACKERS LEAVE CLUES","CYBER IS A TEAM SPORT","YOU CAN LEARN THIS"],
+  g_fw:"Firewall Defender", g_fw_d:"Allow good traffic, block the attacks.",
+  fw_sub:"You are the firewall. Read the rules, then Allow or Block each packet before it reaches the server.",
+  allow_h:"✅ ALLOW", block_h:"⛔ BLOCK", allow:"Allow", block:"Block", lives:"Lives",
+  r_allow:["Port 443 (HTTPS websites)","Port 80 (HTTP websites)","Port 53 (DNS lookups)"],
+  r_block:["Port 23 (Telnet, insecure)","Port 3389 (Remote Desktop)","Port 445 (file sharing)","Anything from 203.0.113.66 (known attacker)"],
+  fw_ok:"Good call.", fw_bad:"Oops! That packet broke a rule.", fw_miss:"Too slow! The packet got through.",
+  fw_over:"Firewall down! You handled {n} packets correctly.",
+  emails:[
+   {f:"Amazon Security <support@amaz0n-secure-login.co>",s:"Your account is LOCKED! Verify within 24 hours",b:"We noticed unusual activity. Click below and enter your password and card number to unlock your account.",l:"Verify my account",p:1,e:"Misspelled address (amaz0n with a zero), a scary deadline, and a request for your password and card number."},
+   {f:"Sunshine Bank <alerts@sunshinebank.com>",s:"Your monthly statement is ready",b:"Your statement is available. Sign in through our app or by typing our web address yourself. We will never ask for your password by email.",l:"",p:0,e:"No urgency, no link to click, and it tells you to go to the site yourself. That's how real companies write."},
+   {f:"IT Help Desk <ithelpdesk.school@gmail.com>",s:"Mailbox full: reply with your password",b:"Your mailbox is over its limit. Reply with your username and password so we can upgrade it today.",l:"",p:1,e:"Real IT staff will never ask for your password, and they don't email from a free Gmail account."},
+   {f:"Coach Rivera <rivera@lakeview-sports.org>",s:"Practice moved to 4 PM Thursday",b:"Heads up, team: the field is booked earlier, so practice starts at 4 PM this Thursday. See you there!",l:"",p:0,e:"Expected sender, normal request, nothing to click or pay. Legit."},
+   {f:"Prize Center <winner@free-giftcards-now.biz>",s:"🎉 You WON a $500 gift card!!!",b:"Congratulations! Pay only $4.99 shipping to claim your prize. Offer ends in 1 hour!",l:"Claim my prize",p:1,e:"You can't win a contest you never entered. Paying a fee to get a prize is a classic scam."},
+   {f:"PackageGo <track@packagego-delivery-update.info>",s:"We couldn't deliver your package",b:"Your package is on hold. Click to reschedule and pay a $1.99 redelivery fee.",l:"Reschedule delivery",p:1,e:"Odd web address, a surprise fee, and pressure to click. Check tracking on the real carrier's site instead."}
+  ]
+},
+es:{
+  prog:"Ciberseguridad Aplicada",
+  h1:"¿Puedes ser más listo que un hacker?",
+  tag:"Cuatro juegos rápidos. Cada uno es una muestra de lo que aprenderás en nuestro programa de ciberseguridad. No necesitas experiencia.",
+  apply:"Solicita en iTECH",
+  cta_h:"Se necesitan defensores.",
+  cta_p:"Empieza con Sistemas Informáticos y TI para construir tu base y luego pasa a Ciberseguridad Aplicada, el orden que nos pidieron los empleadores locales.",
+  cta_other:"← Empieza con los juegos de CSIT",
+  foot:"Immokalee Technical College (iTECH) · Ciberseguridad Aplicada. Juegos creados con ayuda de IA (Claude) para el programa de Ciberseguridad de iTECH. Todos los correos, empresas y direcciones de estos juegos son inventados.",
+  play_again:"Jugar otra vez", next:"Siguiente", start:"Empezar", correct:"¡Correcto!", score:"Puntos",
+  apply_nudge:"Tienes buen instinto. ¿Listo para entrenar de verdad?",
+  g_phish:"¿Phishing o real?", g_phish_d:"Detecta los correos fraudulentos antes de que alguien haga clic.",
+  phish_sub:"Lee cada correo. ¿Es una estafa de phishing o un mensaje real?",
+  phish:"🎣 Phishing", legit:"✅ Real", from:"De", subj:"Asunto",
+  was_phish:"Este era PHISHING.", was_legit:"Este era REAL.",
+  email:"Correo", phish_over:"Clasificaste correctamente {n} de {t} correos.",
+  g_pass:"Descifra Contraseñas", g_pass_d:"Crea una contraseña que un hacker no pueda descifrar.",
+  pass_sub:"Escribe una contraseña y mira cuánto tardaría en descifrarla una computadora que prueba 10 mil millones de contraseñas por segundo. Meta: más de 1,000 años.",
+  pass_ph:"Escribe una contraseña de práctica", pass_warn:"No escribas una contraseña real que uses. Esto es solo práctica; nada se guarda ni se envía.",
+  crack_in:"Tiempo para descifrarla", c_len:"12 caracteres o más", c_low:"Letras minúsculas", c_up:"Letras mayúsculas", c_num:"Números", c_sym:"Símbolos (! @ # $ …)", c_common:"Sin palabras ni patrones comunes",
+  pass_tip:"Consejo: una frase de cuatro palabras al azar, como Mango-Tractor-Nube-47, es larga, fuerte y fácil de recordar.",
+  pass_goal:"¡Indescifrable! Tomaría más de 1,000 años.",
+  u_instant:"Al instante", u_sec:"segundos", u_min:"minutos", u_hr:"horas", u_day:"días", u_yr:"años", u_ages:"Más tiempo del que ha existido el universo",
+  g_cipher:"Rompecódigos", g_cipher_d:"Descifra un mensaje secreto moviendo el alfabeto.",
+  cipher_sub:"Cada letra se movió en el alfabeto un número secreto de lugares (cifrado César). Gira la rueda hasta que el mensaje tenga sentido y luego escríbelo.",
+  shift:"Desplazamiento", decoded:"Descifrado con este desplazamiento:", type_ans:"Escribe el mensaje secreto", check:"Comprobar", wrong:"Todavía no. Sigue girando la rueda.",
+  round:"Mensaje", cipher_over:"¡Descifraste todos los mensajes! Los analistas reales usan la misma idea, con códigos mucho más fuertes.",
+  msgs:["LOS HACKERS DEJAN PISTAS","LA SEGURIDAD ES TRABAJO EN EQUIPO","TU PUEDES APRENDER ESTO"],
+  g_fw:"Defensor del Firewall", g_fw_d:"Deja pasar el tráfico bueno y bloquea los ataques.",
+  fw_sub:"Tú eres el firewall. Lee las reglas y luego Permite o Bloquea cada paquete antes de que llegue al servidor.",
+  allow_h:"✅ PERMITIR", block_h:"⛔ BLOQUEAR", allow:"Permitir", block:"Bloquear", lives:"Vidas",
+  r_allow:["Puerto 443 (sitios web HTTPS)","Puerto 80 (sitios web HTTP)","Puerto 53 (consultas DNS)"],
+  r_block:["Puerto 23 (Telnet, inseguro)","Puerto 3389 (Escritorio remoto)","Puerto 445 (compartir archivos)","Todo lo que venga de 203.0.113.66 (atacante conocido)"],
+  fw_ok:"Bien hecho.", fw_bad:"¡Uy! Ese paquete rompió una regla.", fw_miss:"¡Muy lento! El paquete pasó.",
+  fw_over:"¡Firewall caído! Manejaste {n} paquetes correctamente.",
+  emails:[
+   {f:"Amazon Security <support@amaz0n-secure-login.co>",s:"¡Tu cuenta está BLOQUEADA! Verifica en 24 horas",b:"Notamos actividad inusual. Haz clic abajo e ingresa tu contraseña y número de tarjeta para desbloquear tu cuenta.",l:"Verificar mi cuenta",p:1,e:"Dirección mal escrita (amaz0n con un cero), una fecha límite que asusta y te piden contraseña y tarjeta."},
+   {f:"Sunshine Bank <alerts@sunshinebank.com>",s:"Tu estado de cuenta mensual está listo",b:"Tu estado de cuenta está disponible. Entra por nuestra app o escribiendo tú mismo nuestra dirección web. Nunca te pediremos tu contraseña por correo.",l:"",p:0,e:"Sin urgencia, sin enlace y te dice que vayas al sitio por tu cuenta. Así escriben las empresas reales."},
+   {f:"IT Help Desk <ithelpdesk.school@gmail.com>",s:"Buzón lleno: responde con tu contraseña",b:"Tu buzón superó el límite. Responde con tu usuario y contraseña para ampliarlo hoy.",l:"",p:1,e:"El personal de TI real nunca te pide tu contraseña, y no escribe desde una cuenta gratis de Gmail."},
+   {f:"Coach Rivera <rivera@lakeview-sports.org>",s:"La práctica se movió al jueves a las 4 PM",b:"Atención, equipo: el campo está reservado más temprano, así que la práctica empieza a las 4 PM este jueves. ¡Nos vemos!",l:"",p:0,e:"Remitente esperado, pedido normal, nada que hacer clic ni pagar. Es real."},
+   {f:"Prize Center <winner@free-giftcards-now.biz>",s:"🎉 ¡¡¡GANASTE una tarjeta de regalo de $500!!!",b:"¡Felicidades! Paga solo $4.99 de envío para reclamar tu premio. ¡La oferta termina en 1 hora!",l:"Reclamar mi premio",p:1,e:"No puedes ganar un concurso en el que no participaste. Pagar para recibir un premio es una estafa clásica."},
+   {f:"PackageGo <track@packagego-delivery-update.info>",s:"No pudimos entregar tu paquete",b:"Tu paquete está retenido. Haz clic para reprogramar y paga $1.99 por la nueva entrega.",l:"Reprogramar entrega",p:1,e:"Dirección web rara, un cargo sorpresa y presión para hacer clic. Revisa el rastreo en el sitio real de la compañía."}
+  ]
+},
+ht:{
+  prog:"Sibèsekirite Aplike",
+  h1:"Èske ou ka pi entelijan pase yon pirat (hacker)?",
+  tag:"Kat ti jwèt rapid. Chak jwèt se yon gou sa w ap aprann nan pwogram sibèsekirite nou an. Ou pa bezwen eksperyans.",
+  apply:"Aplike nan iTECH",
+  cta_h:"Yo bezwen defansè.",
+  cta_p:"Kòmanse ak Sistèm Òdinatè ak IT pou bati baz ou, epi pase nan Sibèsekirite Aplike. Se lòd sa a patwon lokal yo te mande nou.",
+  cta_other:"← Kòmanse ak jwèt CSIT yo",
+  foot:"Immokalee Technical College (iTECH) · Sibèsekirite Aplike. Jwèt sa yo fèt avèk èd entèlijans atifisyèl (Claude) pou pwogram Sibèsekirite iTECH la. Tout imèl, konpayi ak adrès nan jwèt sa yo se envante.",
+  play_again:"Jwe ankò", next:"Pwochen", start:"Kòmanse", correct:"Kòrèk!", score:"Pwen",
+  apply_nudge:"Ou gen bon flè. Ou pare pou antrene pou tout bon?",
+  g_phish:"Fo oswa Vre?", g_phish_d:"Jwenn imèl ki se riz anvan yon moun klike.",
+  phish_sub:"Li chak imèl. Èske se yon riz (phishing) oswa yon vrè mesaj?",
+  phish:"🎣 Riz", legit:"✅ Vre", from:"Moun ki voye", subj:"Sijè",
+  was_phish:"Sa a se te yon RIZ.", was_legit:"Sa a te VRE.",
+  email:"Imèl", phish_over:"Ou klase {n} sou {t} imèl kòrèkteman.",
+  g_pass:"Kraze Modpas", g_pass_d:"Fè yon modpas yon pirat pa ka kraze.",
+  pass_sub:"Tape yon modpas epi gade konbyen tan yon òdinatè ki eseye 10 milya modpas chak segonn ta pran pou jwenn li. Bi a: plis pase 1,000 ane.",
+  pass_ph:"Tape yon modpas pou pratike", pass_warn:"Pa tape yon vrè modpas ou itilize. Se pratik sèlman, anyen pa sove ni voye.",
+  crack_in:"Tan pou kraze l", c_len:"12 karaktè oswa plis", c_low:"Lèt miniskil", c_up:"Lèt majiskil", c_num:"Chif", c_sym:"Senbòl (! @ # $ …)", c_common:"Pa gen mo oswa modèl ki twò komen",
+  pass_tip:"Konsèy: yon fraz ak kat mo o aza, tankou Mango-Traktè-Nwaj-47, long, solid, epi fasil pou sonje.",
+  pass_goal:"Yo pa ka kraze l! Sa ta pran plis pase 1,000 ane.",
+  u_instant:"Touswit", u_sec:"segonn", u_min:"minit", u_hr:"èdtan", u_day:"jou", u_yr:"ane", u_ages:"Pi lontan pase laj linivè a",
+  g_cipher:"Kraze Kòd", g_cipher_d:"Dechifre yon mesaj sekrè lè ou deplase alfabè a.",
+  cipher_sub:"Chak lèt te deplase nan alfabè a yon kantite plas sekrè (chif Seza). Vire wou a jiskaske mesaj la gen sans, epi tape l.",
+  shift:"Deplasman", decoded:"Dechifre ak deplasman sa a:", type_ans:"Tape mesaj sekrè a", check:"Tcheke", wrong:"Poko. Kontinye vire wou a.",
+  round:"Mesaj", cipher_over:"Ou dechifre tout mesaj yo! Vrè analis yo itilize menm lide a, ak kòd ki pi solid anpil.",
+  msgs:["PIRAT YO KITE ENDIS","SEKIRITE SE TRAVAY EKIP","OU KAPAB APRANN SA"],
+  g_fw:"Defansè Firewall", g_fw_d:"Kite bon trafik pase, bloke atak yo.",
+  fw_sub:"Ou se firewall la. Li règ yo, epi Pèmèt oswa Bloke chak pake anvan li rive nan sèvè a.",
+  allow_h:"✅ PÈMÈT", block_h:"⛔ BLOKE", allow:"Pèmèt", block:"Bloke", lives:"Lavi",
+  r_allow:["Pò 443 (sit entènèt HTTPS)","Pò 80 (sit entènèt HTTP)","Pò 53 (rechèch DNS)"],
+  r_block:["Pò 23 (Telnet, pa an sekirite)","Pò 3389 (Remote Desktop)","Pò 445 (pataje fichye)","Nenpòt bagay ki soti nan 203.0.113.66 (atakè nou konnen)"],
+  fw_ok:"Bon desizyon.", fw_bad:"Oups! Pake sa a te kraze yon règ.", fw_miss:"Twò dousman! Pake a pase.",
+  fw_over:"Firewall la tonbe! Ou jere {n} pake kòrèkteman.",
+  emails:[
+   {f:"Amazon Security <support@amaz0n-secure-login.co>",s:"Kont ou BLOKE! Verifye nan 24 èdtan",b:"Nou remake aktivite ki pa nòmal. Klike anba a epi mete modpas ou ak nimewo kat ou pou debloke kont ou.",l:"Verifye kont mwen",p:1,e:"Adrès la mal ekri (amaz0n ak yon zewo), yon dat limit ki fè w pè, epi yo mande modpas ak kat ou."},
+   {f:"Sunshine Bank <alerts@sunshinebank.com>",s:"Rapò mansyèl ou pare",b:"Rapò kont ou disponib. Antre nan aplikasyon nou an oswa tape adrès sit nou an ou menm. Nou p ap janm mande modpas ou pa imèl.",l:"",p:0,e:"Pa gen prese, pa gen lyen pou klike, epi li di w ale sou sit la poukont ou. Se konsa vrè konpayi ekri."},
+   {f:"IT Help Desk <ithelpdesk.school@gmail.com>",s:"Bwat imèl plen: reponn ak modpas ou",b:"Bwat imèl ou depase limit li. Reponn ak non itilizatè ou ak modpas ou pou nou ka agrandi l jodi a.",l:"",p:1,e:"Vrè ekip IT p ap janm mande modpas ou, epi yo pa ekri sou yon kont Gmail gratis."},
+   {f:"Coach Rivera <rivera@lakeview-sports.org>",s:"Pratik la deplase pou jedi 4 PM",b:"Atansyon ekip la: teren an rezève pi bonè, kidonk pratik la ap kòmanse 4 PM jedi sa a. N a wè!",l:"",p:0,e:"Moun ou t ap tann, demann nòmal, anyen pou klike ni peye. Li vre."},
+   {f:"Prize Center <winner@free-giftcards-now.biz>",s:"🎉 Ou GENYEN yon kat kado $500!!!",b:"Konpliman! Peye sèlman $4.99 pou livrezon pou jwenn pri ou. Òf la fini nan 1 èdtan!",l:"Reklame pri mwen",p:1,e:"Ou pa ka genyen yon konkou ou pa t janm patisipe. Peye pou resevwa yon pri se yon riz klasik."},
+   {f:"PackageGo <track@packagego-delivery-update.info>",s:"Nou pa t ka livre pake ou",b:"Pake ou bloke. Klike pou chwazi yon lòt dat epi peye $1.99 pou nouvo livrezon an.",l:"Chwazi yon lòt dat",p:1,e:"Adrès sit la dwòl, yon frè sipriz, epi presyon pou klike. Tcheke swivi a sou vrè sit konpayi an pito."}
+  ]
+}};
+
+let lang = "en";
+try{ const s = localStorage.getItem("itech_lang"); if(T[s]) lang = s; }catch(e){}
+const t = k => T[lang][k] ?? T.en[k];
+const fmt = (s,o) => s.replace(/\{(\w+)\}/g,(_,k)=>o[k]);
+const $ = (s,el=document) => el.querySelector(s);
+const esc = s => s.replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const nudge = () => `<div class="win"><p>${t("apply_nudge")}</p><a class="btn apply" href="${CONFIG.applyUrl}" target="_blank" rel="noopener">${t("apply")}</a></div>`;
+const timers = [];
+const clearTimers = () => { while(timers.length) { const x=timers.pop(); clearInterval(x); clearTimeout(x); } cancelAnimationFrame(fw.raf); };
+
+/* ===================== GAME 1: PHISH OR LEGIT ===================== */
+function mountPhish(el){
+  const list=[...t("emails")].sort(()=>Math.random()-.5); let i=0, score=0;
+  const show=()=>{
+    if(i>=list.length){ el.innerHTML=`<h2>🎣 ${t("g_phish")}</h2><p class="msg ok center">🏆 ${fmt(t("phish_over"),{n:score,t:list.length})}</p><div class="center"><button class="btn ghost" id="again">${t("play_again")}</button></div>${nudge()}`; $("#again",el).onclick=()=>mountPhish(el); return; }
+    const m=list[i];
+    el.innerHTML=`<h2>🎣 ${t("g_phish")}</h2><p class="sub">${t("phish_sub")}</p>
+     <div class="bar"><span class="chip">${t("email")} <b>${i+1}</b> / ${list.length}</span><span class="chip">${t("score")} <b>${score}</b></span></div>
+     <div class="mail"><div class="hd"><div><b>${t("from")}:</b> ${esc(m.f)}</div><div><b>${t("subj")}:</b> ${esc(m.s)}</div></div>
+     <div class="bd"><p style="margin-top:0">${esc(m.b)}</p>${m.l?`<span class="fake-link">${esc(m.l)}</span>`:""}</div></div>
+     <div class="two"><button class="btn bad" data-a="1">${t("phish")}</button><button class="btn good" data-a="0">${t("legit")}</button></div>
+     <p class="msg" id="pm"></p><div id="pn"></div>`;
+    el.querySelectorAll(".two .btn").forEach(b=>b.onclick=()=>{
+      el.querySelectorAll(".two .btn").forEach(x=>x.disabled=true);
+      const ok = +b.dataset.a===m.p; if(ok) score++;
+      const pm=$("#pm",el); pm.className="msg "+(ok?"ok":"bad");
+      pm.textContent=(ok?t("correct")+" ":"")+(m.p?t("was_phish"):t("was_legit"))+" "+m.e;
+      $("#pn",el).innerHTML=`<button class="btn">${t("next")} →</button>`; $("#pn button",el).onclick=()=>{i++;show();};
+    });
+  };
+  show();
+}
+
+/* ===================== GAME 2: PASSWORD CRACKER ===================== */
+const COMMON=["password","passw0rd","123456","12345","qwerty","abc123","iloveyou","admin","welcome","letmein","monkey","dragon","football","baseball","sunshine","princess","master","login","itech","immokalee","florida","contraseña","contrasena","modpas","111111","000000"];
+function crackSeconds(pw){
+  if(!pw) return 0;
+  let pool=0; if(/[a-z]/.test(pw))pool+=26; if(/[A-Z]/.test(pw))pool+=26; if(/\d/.test(pw))pool+=10; if(/[^A-Za-z0-9]/.test(pw))pool+=33;
+  let len=pw.length; const low=pw.toLowerCase();
+  if(COMMON.some(w=>low.includes(w))) { for(const w of COMMON) if(low.includes(w)) len-= (w.length-1); }
+  if(/(.)\1\1/.test(pw)) len-=1;
+  if(/(0123|1234|2345|3456|4567|5678|6789|abcd|qwer|asdf)/i.test(pw)) len-=2;
+  len=Math.max(len,1);
+  return Math.pow(pool,len)/1e10/2;
+}
+function fmtTime(s){
+  if(s<1) return t("u_instant");
+  const u=[[31536000,"u_yr"],[86400,"u_day"],[3600,"u_hr"],[60,"u_min"],[1,"u_sec"]];
+  if(s/31536000>1.38e10) return t("u_ages");
+  for(const[d,k] of u) if(s>=d){ const v=s/d; return (v>=1e6? v.toExponential(1).replace("e+"," × 10^") : Math.round(v).toLocaleString(lang==="en"?"en-US":lang==="es"?"es-US":"fr-HT"))+" "+t(k); }
+}
+function mountPass(el){
+  el.innerHTML=`<h2>🔐 ${t("g_pass")}</h2><p class="sub">${t("pass_sub")}</p>
+   <input class="pw" id="pw" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="${t("pass_ph")}" aria-label="${t("pass_ph")}">
+   <p class="note">⚠️ ${t("pass_warn")}</p>
+   <div class="meter"><i id="mt"></i></div>
+   <div class="crack">${t("crack_in")}<b id="ct">—</b></div>
+   <ul class="checks" id="ck">${["len","low","up","num","sym","common"].map(k=>`<li data-k="${k}">${t("c_"+k)}</li>`).join("")}</ul>
+   <p class="note">💡 ${t("pass_tip")}</p><div id="pg"></div>`;
+  const inp=$("#pw",el); let won=false;
+  inp.oninput=()=>{
+    const pw=inp.value, s=crackSeconds(pw), low=pw.toLowerCase();
+    $("#ct",el).textContent = pw? fmtTime(s) : "—";
+    const pct=Math.min(100, pw? Math.log10(s+1)/Math.log10(31536000*1000)*100 : 0);
+    const mt=$("#mt",el); mt.style.width=pct+"%"; mt.style.background= pct<40?"var(--bad)":pct<80?"var(--accent)":"var(--ok)";
+    const c={len:pw.length>=12,low:/[a-z]/.test(pw),up:/[A-Z]/.test(pw),num:/\d/.test(pw),sym:/[^A-Za-z0-9]/.test(pw),common:pw.length>0&&!COMMON.some(w=>low.includes(w))};
+    el.querySelectorAll("#ck li").forEach(li=>li.classList.toggle("ok",c[li.dataset.k]));
+    if(s>31536000*1000 && !won){ won=true; $("#pg",el).innerHTML=`<p class="msg ok center">🛡️ ${t("pass_goal")}</p>${nudge()}`; }
+  };
+  inp.focus({preventScroll:true});
+}
+
+/* ===================== GAME 3: CODE BREAKER ===================== */
+const caesar=(s,k)=>s.replace(/[A-Z]/g,c=>String.fromCharCode((c.charCodeAt(0)-65+k+26)%26+65));
+function mountCipher(el){
+  const msgs=t("msgs"); let r=0;
+  const show=()=>{
+    if(r>=msgs.length){ el.innerHTML=`<h2>🗝️ ${t("g_cipher")}</h2><p class="msg ok center">🏆 ${t("cipher_over")}</p><div class="center"><button class="btn ghost" id="again">${t("play_again")}</button></div>${nudge()}`; $("#again",el).onclick=()=>mountCipher(el); return; }
+    const key=3+Math.floor(Math.random()*20), plain=msgs[r], enc=caesar(plain,key); let sh=0;
+    el.innerHTML=`<h2>🗝️ ${t("g_cipher")}</h2><p class="sub">${t("cipher_sub")}</p>
+     <div class="bar"><span class="chip">${t("round")} <b>${r+1}</b> / ${msgs.length}</span></div>
+     <div class="cipher" id="cx">${enc}</div>
+     <div class="shiftrow"><button id="dn" aria-label="-1">−</button><div class="center">${t("shift")}<br><b id="sv">0</b></div><button id="up" aria-label="+1">+</button></div>
+     <div class="wheel" id="wh"></div>
+     <form class="guess" id="gf"><input id="gi" placeholder="${t("type_ans")}" aria-label="${t("type_ans")}" autocomplete="off"><button class="btn" type="submit">${t("check")}</button></form>
+     <p class="msg" id="cm"></p>`;
+    const draw=()=>{ $("#sv",el).textContent=sh; $("#cx",el).textContent=caesar(enc,-sh);
+      $("#wh",el).innerHTML=[...Array(26)].map((_,i)=>`<span>${String.fromCharCode(65+i)}<i>${String.fromCharCode(65+(i-sh+26)%26)}</i></span>`).join(""); };
+    $("#up",el).onclick=()=>{sh=(sh+1)%26;draw()}; $("#dn",el).onclick=()=>{sh=(sh+25)%26;draw()};
+    $("#gf",el).onsubmit=e=>{ e.preventDefault(); const g=$("#gi",el).value.toUpperCase().replace(/\s+/g," ").trim();
+      const norm=s=>s.normalize("NFD").replace(/[̀-ͯ]/g,"");
+      const cm=$("#cm",el);
+      if(norm(g)===norm(plain)){ cm.className="msg ok"; cm.textContent="✅ "+t("correct")+" "+plain; $("#gf",el).querySelector("button").disabled=true; $("#cx",el).textContent=plain;
+        const nx=document.createElement("button"); nx.className="btn"; nx.textContent=t("next")+" →"; nx.onclick=()=>{r++;show()}; cm.after(nx); }
+      else { cm.className="msg bad"; cm.textContent=t("wrong"); } };
+    draw();
+  };
+  show();
+}
+
+/* ===================== GAME 4: FIREWALL DEFENDER ===================== */
+const fw={};
+const PKTS=[
+  {port:443,ok:1},{port:443,ok:1},{port:80,ok:1},{port:53,ok:1},{port:53,ok:1},
+  {port:23,ok:0},{port:3389,ok:0},{port:445,ok:0},{port:443,ok:0,bad:1},{port:80,ok:0,bad:1}
+];
+function mountFW(el){
+  el.innerHTML=`<h2>🧱 ${t("g_fw")}</h2><p class="sub">${t("fw_sub")}</p>
+   <div class="rules"><div><b>${t("allow_h")}</b><ul>${t("r_allow").map(x=>`<li>${x}</li>`).join("")}</ul></div>
+   <div><b>${t("block_h")}</b><ul>${t("r_block").map(x=>`<li>${x}</li>`).join("")}</ul></div></div>
+   <div class="bar"><span class="chip">${t("score")} <b id="fs">0</b></span><span class="chip">${t("lives")} <b class="lives" id="fl">❤️❤️❤️</b></span></div>
+   <div class="lane" id="lane"><div class="srvbox">🖥️</div></div>
+   <div class="two"><button class="btn good" id="fa" disabled>${t("allow")}</button><button class="btn bad" id="fb" disabled>${t("block")}</button></div>
+   <p class="msg" id="fm"></p>
+   <div class="center" id="fsw"><button class="btn apply" id="fgo">${t("start")}</button></div><div id="fend"></div>`;
+  let score=0, lives=3, pk=null, x=0, speed=0, last=0, busy=false;
+  const lane=$("#lane",el), fm=$("#fm",el);
+  const spawn=()=>{
+    const p=PKTS[Math.floor(Math.random()*PKTS.length)];
+    const src=p.bad?"203.0.113.66":`198.51.100.${10+Math.floor(Math.random()*200)}`;
+    pk={...p,src}; x=0; busy=false;
+    lane.querySelector(".packet")?.remove();
+    const d=document.createElement("div"); d.className="packet"; d.innerHTML=`${src} → :${p.port}`; d.style.left="0px"; lane.appendChild(d); pk.el=d;
+  };
+  const hearts=()=>$("#fl",el).textContent="❤️".repeat(lives)+"🖤".repeat(3-lives);
+  const resolve=(choice)=>{
+    if(!pk||busy) return; busy=true;
+    const right = choice===null ? false : (choice===!!pk.ok);
+    if(right){ score++; $("#fs",el).textContent=score; fm.className="msg ok"; fm.textContent=t("fw_ok"); speed+=6; }
+    else { lives--; hearts(); fm.className="msg bad"; fm.textContent= choice===null? t("fw_miss") : t("fw_bad"); lane.classList.remove("shake"); void lane.offsetWidth; lane.classList.add("shake"); }
+    pk.el.style.background = right? "var(--ok)":"var(--bad)";
+    if(lives<=0) return end();
+    timers.push(setTimeout(spawn,450));
+  };
+  const end=()=>{ cancelAnimationFrame(fw.raf); $("#fa",el).disabled=$("#fb",el).disabled=true;
+    $("#fend",el).innerHTML=`<p class="msg ok center">${fmt(t("fw_over"),{n:score})}</p><div class="center"><button class="btn ghost" id="again">${t("play_again")}</button></div>${nudge()}`;
+    $("#again",el).onclick=()=>mountFW(el); };
+  const loop=(ts)=>{ const dt=last?(ts-last)/1000:0; last=ts;
+    if(pk&&!busy){ x+=speed*dt; pk.el.style.left=x+"px"; if(x+pk.el.offsetWidth>lane.clientWidth-60) resolve(null); }
+    fw.raf=requestAnimationFrame(loop); };
+  $("#fa",el).onclick=()=>resolve(true); $("#fb",el).onclick=()=>resolve(false);
+  $("#fgo",el).onclick=()=>{ $("#fsw",el).hidden=true; $("#fa",el).disabled=$("#fb",el).disabled=false; speed=Math.max(70,lane.clientWidth/6); spawn(); last=0; fw.raf=requestAnimationFrame(loop); };
+}
+
+/* ===================== SHELL ===================== */
+const GAMES=[{id:"phish",ic:"🎣",mount:mountPhish},{id:"pass",ic:"🔐",mount:mountPass},{id:"cipher",ic:"🗝️",mount:mountCipher},{id:"fw",ic:"🧱",mount:mountFW}];
+let current="phish";
+function renderPicker(){
+  $("#picker").innerHTML=GAMES.map(g=>`<button class="pick" data-g="${g.id}" aria-pressed="${g.id===current}"><span class="ic">${g.ic}</span><b>${t("g_"+g.id)}</b><span>${t("g_"+g.id+"_d")}</span></button>`).join("");
+  document.querySelectorAll(".pick").forEach(b=>b.onclick=()=>{ current=b.dataset.g; renderPicker(); mountGame(); $("#stage").scrollIntoView({behavior:"smooth",block:"start"}); });
+}
+function mountGame(){ clearTimers(); GAMES.find(g=>g.id===current).mount($("#stage")); }
+function applyLang(){
+  document.documentElement.lang = lang;
+  document.querySelectorAll("[data-i]").forEach(e=>e.textContent=t(e.dataset.i));
+  document.querySelectorAll("[data-lang]").forEach(b=>b.setAttribute("aria-pressed",b.dataset.lang===lang));
+  renderPicker(); mountGame();
+}
+document.querySelectorAll("[data-apply]").forEach(a=>{a.href=CONFIG.applyUrl;a.target="_blank";a.rel="noopener"});
+document.querySelectorAll("[data-other]").forEach(a=>a.href=CONFIG.otherPage);
+document.querySelectorAll("[data-lang]").forEach(b=>b.onclick=()=>{ lang=b.dataset.lang; try{localStorage.setItem("itech_lang",lang)}catch(e){} applyLang(); });
+applyLang();
+</script>
+</body>
+</html>
