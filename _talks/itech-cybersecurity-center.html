@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Center for Cybersecurity | Immokalee Technical College (iTECH)</title>
+<meta name="description" content="iTECH's virtual Center for Cybersecurity: program guidance, cyber defense information, student activities, security awareness and outreach for Immokalee Technical College.">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=Barlow:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --itech-blue:#003087; --itech-blue2:#004db3; --itech-gold:#f5a623; --itech-gold2:#ffc84a;
+    --dark:#0b0f1a; --dark2:#121929; --dark3:#1a2540;
+    --text:#e8edf5; --muted:#8da0bc; --border:rgba(245,166,35,.18); --card:rgba(18,25,41,.85);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:'Barlow',sans-serif;background:var(--dark);color:var(--text);overflow-x:hidden;line-height:1.6}
+  body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;
+    background-image:radial-gradient(circle at 80% 10%,rgba(0,48,135,.18) 0%,transparent 55%),radial-gradient(circle at 10% 80%,rgba(245,166,35,.08) 0%,transparent 50%),linear-gradient(rgba(245,166,35,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(245,166,35,.025) 1px,transparent 1px);
+    background-size:auto,auto,72px 72px,72px 72px}
+  a{color:var(--itech-gold2)}
+  .mono{font-family:'IBM Plex Mono',monospace}
+  .top-banner{position:relative;z-index:10;background:var(--itech-blue);padding:6px 2rem;display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;font:.75rem 'IBM Plex Mono',monospace;border-bottom:2px solid var(--itech-gold)}
+  .top-banner a{color:var(--itech-gold);text-decoration:none}
+  .top-banner-links{display:flex;gap:1.5rem;flex-wrap:wrap}
+  nav{position:sticky;top:0;z-index:100;background:rgba(11,15,26,.94);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 2rem;display:flex;align-items:center;justify-content:space-between;min-height:64px;gap:1rem;flex-wrap:wrap}
+  .brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--text)}
+  .shield{width:38px;height:38px;background:linear-gradient(135deg,var(--itech-gold),#c47d00);clip-path:polygon(50% 0%,100% 25%,100% 75%,50% 100%,0% 75%,0% 25%);display:flex;align-items:center;justify-content:center;font:900 1.1rem 'Barlow Condensed',sans-serif;color:var(--itech-blue)}
+  .brand b{font:800 1.05rem/1.1 'Barlow Condensed',sans-serif;display:block;letter-spacing:.02em}
+  .brand small{font:.65rem 'IBM Plex Mono',monospace;color:var(--itech-gold);letter-spacing:.15em;text-transform:uppercase}
+  .nav-links{display:flex;gap:1.25rem;flex-wrap:wrap}
+  .nav-links a{color:var(--muted);text-decoration:none;font:.78rem 'IBM Plex Mono',monospace;text-transform:uppercase;letter-spacing:.05em}
+  .nav-links a:hover{color:var(--itech-gold)}
+  .hero{position:relative;z-index:1;padding:5rem 2rem 4rem;overflow:hidden}
+  .hero::after{content:'';position:absolute;right:-10%;top:0;width:55%;height:100%;background:repeating-linear-gradient(135deg,rgba(245,166,35,.05) 0 2px,transparent 2px 22px);pointer-events:none}
+  .hero-inner{max-width:1200px;margin:0 auto;position:relative;z-index:1}
+  .eyebrow{display:inline-flex;gap:8px;font:.72rem 'IBM Plex Mono',monospace;color:var(--itech-gold);letter-spacing:.2em;text-transform:uppercase;margin-bottom:.9rem}
+  .eyebrow::before{content:'//';color:var(--muted)}
+  h1{font:900 clamp(2.6rem,7vw,5rem)/.95 'Barlow Condensed',sans-serif;text-transform:uppercase;margin-bottom:1.25rem}
+  h1 span{color:var(--itech-gold)}
+  .lead{max-width:700px;color:#c9d4e6;font-size:1.12rem;margin-bottom:2rem}
+  .btns{display:flex;gap:1rem;flex-wrap:wrap}
+  .btn{display:inline-block;padding:.8rem 1.6rem;border-radius:6px;font:800 1rem 'Barlow Condensed',sans-serif;letter-spacing:.06em;text-transform:uppercase;text-decoration:none}
+  .btn-gold{background:var(--itech-gold);color:#1a1000}
+  .btn-ghost{border:1px solid var(--border);color:var(--text)}
+  .stats{position:relative;z-index:1;background:linear-gradient(90deg,var(--itech-blue),var(--itech-blue2));border-top:2px solid var(--itech-gold);border-bottom:2px solid var(--itech-gold);padding:2rem}
+  .stats-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1.5rem;text-align:center}
+  .stat-num{font:900 2.4rem/1 'Barlow Condensed',sans-serif;color:var(--itech-gold);margin-bottom:.3rem}
+  .stat-label{font:.72rem 'IBM Plex Mono',monospace;color:rgba(255,255,255,.8);text-transform:uppercase;letter-spacing:.1em}
+  section{position:relative;z-index:1;padding:4.5rem 2rem}
+  .inner{max-width:1200px;margin:0 auto}
+  .title{font:900 clamp(2rem,4vw,3rem)/1.05 'Barlow Condensed',sans-serif;margin-bottom:1rem}
+  .title span{color:var(--itech-gold)}
+  .desc{color:var(--muted);max-width:720px;margin-bottom:2.5rem}
+  .divider{position:relative;z-index:1;height:1px;background:linear-gradient(90deg,transparent,var(--border),transparent);margin:0 2rem}
+  .grid{display:grid;gap:1.5rem;grid-template-columns:repeat(auto-fill,minmax(300px,1fr))}
+  .grid.sm{grid-template-columns:repeat(auto-fill,minmax(240px,1fr))}
+  .card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:1.75rem;position:relative;overflow:hidden;transition:transform .3s,border-color .3s}
+  .card::after{content:'';position:absolute;top:0;left:0;width:100%;height:3px;background:linear-gradient(90deg,var(--itech-blue),var(--itech-gold))}
+  .card:hover{transform:translateY(-4px);border-color:rgba(245,166,35,.4)}
+  .tag{font:.68rem 'IBM Plex Mono',monospace;color:var(--itech-gold2);letter-spacing:.15em;text-transform:uppercase;margin-bottom:.6rem}
+  .card h3{font:800 1.35rem/1.15 'Barlow Condensed',sans-serif;margin-bottom:.6rem}
+  .card p,.card li{color:var(--muted);font-size:.92rem}
+  .card ul{padding-left:1.1rem;margin-top:.6rem}
+  .card .icon{font-size:1.8rem;margin-bottom:.5rem}
+  .card a.more{display:inline-block;margin-top:.8rem;font:.78rem 'IBM Plex Mono',monospace;color:var(--itech-gold);text-decoration:none}
+  .card a.more:hover{text-decoration:underline}
+  .pathway{display:flex;align-items:stretch;gap:1rem;flex-wrap:wrap}
+  .pathway .card{flex:1 1 320px}
+  .arrow{align-self:center;font:900 2.5rem 'Barlow Condensed',sans-serif;color:var(--itech-gold)}
+  .chips{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:.9rem}
+  .chip{font:.7rem 'IBM Plex Mono',monospace;border:1px solid var(--border);border-radius:999px;padding:3px 10px;color:#c9d4e6}
+  .news{display:grid;grid-template-columns:1fr 1fr;gap:2rem}
+  @media(max-width:800px){.news{grid-template-columns:1fr}.arrow{transform:rotate(90deg);margin:0 auto}}
+  .news h3{font:800 1.4rem 'Barlow Condensed',sans-serif;margin-bottom:1rem;color:var(--itech-gold)}
+  .news-item{border-left:3px solid var(--itech-gold);padding:.4rem 0 .4rem 1rem;margin-bottom:1.1rem}
+  .news-item .date{font:.7rem 'IBM Plex Mono',monospace;color:var(--muted);text-transform:uppercase;letter-spacing:.1em}
+  .news-item b{display:block;font-weight:600}
+  .news-item p{color:var(--muted);font-size:.9rem}
+  .callout{background:rgba(0,48,135,.25);border:1px solid var(--border-blue,rgba(0,77,179,.5));border-radius:12px;padding:1.5rem;color:#c9d4e6;margin-top:2rem}
+  .contact{display:grid;grid-template-columns:1fr 1fr;gap:2rem}
+  @media(max-width:800px){.contact{grid-template-columns:1fr}}
+  .row{display:flex;gap:.75rem;margin-bottom:.8rem}
+  .lbl{font:.72rem 'IBM Plex Mono',monospace;color:var(--itech-gold);min-width:90px;text-transform:uppercase;padding-top:2px}
+  footer{position:relative;z-index:1;background:var(--itech-blue);border-top:3px solid var(--itech-gold);padding:2.5rem 2rem;text-align:center}
+  footer p{color:rgba(255,255,255,.75);font:.8rem/1.9 'IBM Plex Mono',monospace}
+  footer a{color:var(--itech-gold);text-decoration:none}
+  .flogo{font:900 1.4rem 'Barlow Condensed',sans-serif;color:#fff}
+  .flogo span{color:var(--itech-gold)}
+  .flinks{display:flex;justify-content:center;gap:1.5rem;margin-top:1rem;flex-wrap:wrap}
+  .flinks a{color:rgba(255,255,255,.65);font:.75rem 'IBM Plex Mono',monospace}
+</style>
+</head>
+<body>
+
+<div class="top-banner">
+  <span>🏫 Immokalee Technical College · 508 N 9th Street, Immokalee, FL 34142 · (239) 377-9900</span>
+  <div class="top-banner-links">
+    <a href="https://itc.collierschools.com/" target="_blank" rel="noopener">iTECH Homepage</a>
+    <a href="https://itc.collierschools.com/programs" target="_blank" rel="noopener">All Programs</a>
+    <a href="https://itc.collierschools.com/" target="_blank" rel="noopener">Apply Now</a>
+  </div>
+</div>
+
+<nav>
+  <a class="brand" href="#top"><div class="shield">i</div><div><b>iTECH Center for Cybersecurity</b><small>Virtual Center · Est. at iTECH</small></div></a>
+  <div class="nav-links">
+    <a href="#programs">Programs</a><a href="#faculty">Faculty</a><a href="#advisory">Advisory</a><a href="#news">News</a><a href="#students">Students</a><a href="#awareness">Security</a><a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="hero-inner">
+    <div class="eyebrow">Immokalee Technical College · Collier County Public Schools</div>
+    <h1>Center for <span>Cybersecurity</span></h1>
+    <p class="lead">iTECH's virtual Center for Cybersecurity brings together program guidance, cyber defense information, student activities and community outreach in one place, for students, faculty, employers and the Immokalee community.</p>
+    <div class="btns">
+      <a class="btn btn-gold" href="#programs">Explore Programs</a>
+      <a class="btn btn-ghost" href="/games/cybersecurity-games.html">Try the Cyber Games</a>
+    </div>
+  </div>
+</header>
+
+<div class="stats"><div class="stats-inner">
+  <div><div class="stat-num">2</div><div class="stat-label">Career programs in the pathway</div></div>
+  <div><div class="stat-num">9</div><div class="stat-label">Industry academic partners</div></div>
+  <div><div class="stat-num">1,814</div><div class="stat-label">Exams at our testing center last year</div></div>
+  <div><div class="stat-num">3</div><div class="stat-label">Start dates: Aug · Jan · Jun</div></div>
+</div></div>
+
+<!-- MISSION -->
+<section id="about"><div class="inner">
+  <div class="eyebrow">About the Center</div>
+  <h2 class="title">What the <span>Center</span> Does</h2>
+  <p class="desc">The Center is a virtual home for cybersecurity at iTECH. It is led from the Computer Systems &amp; Information Technology department and shares an external advisory board with iTECH's IT programs.</p>
+  <div class="grid sm">
+    <div class="card"><div class="icon">🧭</div><h3>Program Guidance &amp; Oversight</h3><p>Keeps the cybersecurity pathway aligned to Florida DOE curriculum frameworks, current certification objectives and what local employers tell our advisory board they need.</p></div>
+    <div class="card"><div class="icon">🛡️</div><h3>Cyber Defense Information</h3><p>Curated, current guidance from CISA, NIST and other public sources for students, staff and the community.</p></div>
+    <div class="card"><div class="icon">🤝</div><h3>Collaboration &amp; Outreach</h3><p>Connects students, faculty, other iTECH programs, our sister campus Lorenzo Walker Technical College, and regional industry partners.</p></div>
+    <div class="card"><div class="icon">🎓</div><h3>Certification on Campus</h3><p>iTECH's authorized Pearson VUE and Certiport testing center lets students earn industry certifications without leaving campus.</p></div>
+  </div>
+</div></section>
+
+<div class="divider"></div>
+
+<!-- PROGRAMS -->
+<section id="programs"><div class="inner">
+  <div class="eyebrow">Programs of Study</div>
+  <h2 class="title">The Cybersecurity <span>Pathway</span></h2>
+  <p class="desc">Students build their foundation in Computer Systems &amp; IT before moving into Applied Cybersecurity. Local employers asked for this sequence: you can't defend a network you don't understand.</p>
+  <div class="pathway">
+    <div class="card">
+      <div class="tag">Step 1 · Foundation · FL DOE Y100200</div>
+      <h3>Computer Systems &amp; Information Technology</h3>
+      <p>Hardware, operating systems, networking, Linux, troubleshooting and help-desk practice on real equipment, including in-house network trainers and the AI Innovation Lab's stations.</p>
+      <div class="chips"><span class="chip">CompTIA Tech+</span><span class="chip">Cisco CCST IT Support</span><span class="chip">Cisco CCST Networking</span><span class="chip">AWS Cloud Practitioner</span></div>
+      <a class="more" href="https://itc.collierschools.com/programs" target="_blank" rel="noopener">Program details →</a>
+    </div>
+    <div class="arrow">→</div>
+    <div class="card">
+      <div class="tag">Step 2 · Specialization · Post-secondary certificate</div>
+      <h3>Applied Cybersecurity</h3>
+      <p>Network defense, vulnerability management, security operations and the AI-driven threat landscape. 750 hours, extendable to 1,350 with optional specializations.</p>
+      <div class="chips"><span class="chip">CompTIA Security+</span><span class="chip">CompTIA Network+</span><span class="chip">Cisco CCST Cybersecurity</span><span class="chip">Microsoft SC-900</span><span class="chip">AWS Security Specialty</span><span class="chip">AWS AI Practitioner</span></div>
+      <a class="more" href="https://itc.collierschools.com/programs/career-programs-at-itech/applied-cybersecurity" target="_blank" rel="noopener">Program details →</a>
+    </div>
+  </div>
+
+  <div class="grid" style="margin-top:2rem">
+    <div class="card"><div class="tag">Hands-on</div><h3>Shift Change at the SOC</h3><p>A half-day, tiered SOC-analyst simulation on the Huntress managed EDR/SIEM platform. New students work Tier 1, returning students work Tier 2, through detection, response and containment.</p><a class="more" href="/portfolio/soc-simulation/">Read more →</a></div>
+    <div class="card"><div class="tag">Hands-on</div><h3>CyberRange</h3><p>Attack-and-defense practice in an isolated range, funded by a Champions for Learning grant.</p></div>
+    <div class="card"><div class="tag">Hands-on</div><h3>AI &amp; Security</h3><p>Students red-team language models for prompt injection, audit what data leaves the building, and run privacy audits on voice-activated devices in the AI Innovation Lab.</p><a class="more" href="/talks/itech-ai-innovation-lab.html">AI Innovation Lab →</a></div>
+  </div>
+
+  <div class="callout"><b>Academic partners:</b> Cisco Networking Academy · AWS Academy · Palo Alto Networks Cybersecurity Academy · VMware IT Academy · Microsoft IT Academy · Oracle Academy · EC-Council Academia · Splunk Academic Alliance · CompTIA Academic Partner</div>
+</div></section>
+
+<div class="divider"></div>
+
+<!-- FACULTY -->
+<section id="faculty"><div class="inner">
+  <div class="eyebrow">Faculty</div>
+  <h2 class="title">Center <span>Faculty</span></h2>
+  <div class="grid">
+    <div class="card">
+      <div class="tag">Center Lead · Department Chair</div>
+      <h3>Amy McMullin, M.S. IT</h3>
+      <p>Instructor, Computer Systems &amp; IT and Applied Cybersecurity, at iTECH since 2012. Before teaching, she spent a decade as a network engineer and administrator in Southwest Florida. She also runs iTECH's testing center.</p>
+      <ul><li>M.S. Information Technology, Florida State University</li><li>B.A. Technical Education &amp; Industry Training, UCF</li><li>Cisco NetAcad Instructor · AWS Academy Certified Educator · Microsoft Certified Trainer</li></ul>
+    </div>
+  </div>
+</div></section>
+
+<div class="divider"></div>
+
+<!-- ADVISORY -->
+<section id="advisory"><div class="inner">
+  <div class="eyebrow">External Board of Advisors</div>
+  <h2 class="title">Advisory <span>Board</span></h2>
+  <p class="desc">The Center shares an external advisory board with iTECH's IT programs. Members come from regional employers and industry groups. They review curriculum, identify workforce needs and help connect students with jobs.</p>
+  <div class="card" style="max-width:720px">
+    <div class="tag">Members</div>
+    <h3>Member list coming soon</h3>
+    <p>Board members and their organizations will be listed here.</p>
+  </div>
+</div></section>
+
+<div class="divider"></div>
+
+<!-- NEWS -->
+<section id="news"><div class="inner">
+  <div class="eyebrow">Updated November 2026</div>
+  <h2 class="title">News &amp; <span>Updates</span></h2>
+  <div class="news">
+    <div>
+      <h3>At iTECH</h3>
+      <div class="news-item"><div class="date">Nov 2026</div><b>Voice-assistant privacy labs funded</b><p>A DonorsChoose project funded two Miko Mini conversational AI robots. Cybersecurity and CSIT students will use them to study how voice assistants process speech and to audit voice-activated devices for privacy.</p></div>
+      <div class="news-item"><div class="date">Nov 2026</div><b>Cybersecurity games for future students</b><p>Phishing, password, cipher and firewall mini-games in English, Spanish and Haitian Creole. <a href="/games/cybersecurity-games.html">Play them</a>.</p></div>
+      <div class="news-item"><div class="date">Fall 2026</div><b>OmniTech Arena capture-the-flag games</b><p>Open-source CTF games for the whole IT curriculum, starting with 153 challenges on the Cisco IT Support path. <a href="https://github.com/amymcmullin/OmniTech-Arena" target="_blank" rel="noopener">See the project</a>.</p></div>
+      <div class="news-item"><div class="date">2024–25</div><b>Industry certifications up across campus</b><p>iTECH students earned 235 industry certifications in 2024–25, up from 69 the year before.</p></div>
+    </div>
+    <div>
+      <h3>Cybersecurity Watch</h3>
+      <div class="news-item"><div class="date">Live source</div><b>CISA Known Exploited Vulnerabilities</b><p>The federal list of vulnerabilities attackers are using right now. <a href="https://www.cisa.gov/known-exploited-vulnerabilities-catalog" target="_blank" rel="noopener">View the catalog</a>.</p></div>
+      <div class="news-item"><div class="date">Live source</div><b>CISA Cybersecurity Advisories</b><p>Current alerts and advisories from the Cybersecurity and Infrastructure Security Agency. <a href="https://www.cisa.gov/news-events/cybersecurity-advisories" target="_blank" rel="noopener">Read the advisories</a>.</p></div>
+      <div class="news-item"><div class="date">Live source</div><b>NIST National Vulnerability Database</b><p>Look up any CVE and its severity score. <a href="https://nvd.nist.gov/" target="_blank" rel="noopener">Search the NVD</a>.</p></div>
+      <div class="news-item"><div class="date">Live source</div><b>FBI Internet Crime Complaint Center</b><p>Public alerts on current scams and fraud. <a href="https://www.ic3.gov/" target="_blank" rel="noopener">Visit IC3</a>.</p></div>
+    </div>
+  </div>
+</div></section>
+
+<div class="divider"></div>
+
+<!-- STUDENTS -->
+<section id="students"><div class="inner">
+  <div class="eyebrow">Student Activities</div>
+  <h2 class="title">Compete, Connect, <span>Build</span></h2>
+  <div class="grid sm">
+    <div class="card"><div class="icon">🏁</div><h3>National Cyber League</h3><p>Seasonal capture-the-flag games with individual and team rounds and a personal scouting report.</p><a class="more" href="https://nationalcyberleague.org/" target="_blank" rel="noopener">nationalcyberleague.org →</a></div>
+    <div class="card"><div class="icon">🎯</div><h3>NCAE Cyber Games</h3><p>Beginner-friendly team competitions built for students new to cybersecurity.</p><a class="more" href="https://www.ncaecybergames.org/" target="_blank" rel="noopener">ncaecybergames.org →</a></div>
+    <div class="card"><div class="icon">🔐</div><h3>NSA Codebreaker Challenge</h3><p>A realistic, self-paced reverse-engineering and analysis challenge from the NSA.</p><a class="more" href="https://nsa-codebreaker.org/" target="_blank" rel="noopener">nsa-codebreaker.org →</a></div>
+    <div class="card"><div class="icon">🧩</div><h3>OmniTech Arena</h3><p>iTECH's own CTF games, built for our curriculum.</p><a class="more" href="/portfolio/omnitech-arena/">Learn more →</a></div>
+    <div class="card"><div class="icon">💼</div><h3>SWFL Tech TechMatch</h3><p>iTECH students have met regional tech employers at TechMatch for over a decade.</p></div>
+    <div class="card"><div class="icon">👩‍💻</div><h3>NCWIT Aspirations in Computing</h3><p>Recognition and community for women and nonbinary students in computing. We help students apply.</p><a class="more" href="https://www.aspirations.org/" target="_blank" rel="noopener">aspirations.org →</a></div>
+  </div>
+</div></section>
+
+<div class="divider"></div>
+
+<!-- AWARENESS -->
+<section id="awareness"><div class="inner">
+  <div class="eyebrow">Security Awareness</div>
+  <h2 class="title">Stay <span>Safe</span> Online</h2>
+  <p class="desc">For students, staff, families and community members.</p>
+  <div class="grid sm">
+    <div class="card"><div class="icon">🎣</div><h3>Spot Phishing</h3><p>Check the sender's address, slow down when a message is urgent, and never send a password by email.</p><a class="more" href="/games/cybersecurity-games.html">Practice with Phish or Legit →</a></div>
+    <div class="card"><div class="icon">🔑</div><h3>Use Strong Passphrases</h3><p>Long, unique passphrases and a password manager beat short, complex passwords.</p><a class="more" href="https://www.cisa.gov/secure-our-world/use-strong-passwords" target="_blank" rel="noopener">CISA guidance →</a></div>
+    <div class="card"><div class="icon">📱</div><h3>Turn On MFA</h3><p>Multifactor authentication stops most account takeovers.</p><a class="more" href="https://www.cisa.gov/secure-our-world/turn-mfa" target="_blank" rel="noopener">CISA guidance →</a></div>
+    <div class="card"><div class="icon">🔄</div><h3>Update Your Software</h3><p>Turn on automatic updates for your devices and apps.</p><a class="more" href="https://www.cisa.gov/secure-our-world/update-software" target="_blank" rel="noopener">CISA guidance →</a></div>
+    <div class="card"><div class="icon">🚨</div><h3>Report a Problem</h3><p>Students and staff: report suspicious messages or a possible compromise to your instructor or district technology. Everyone: report scams to the FBI.</p><a class="more" href="https://www.ic3.gov/" target="_blank" rel="noopener">Report to IC3 →</a></div>
+    <div class="card"><div class="icon">🌐</div><h3>Secure Our World</h3><p>CISA's public campaign with simple steps for individuals and small businesses.</p><a class="more" href="https://www.cisa.gov/secure-our-world" target="_blank" rel="noopener">cisa.gov →</a></div>
+  </div>
+</div></section>
+
+<div class="divider"></div>
+
+<!-- OUTREACH -->
+<section id="outreach"><div class="inner">
+  <div class="eyebrow">Collaboration &amp; Outreach</div>
+  <h2 class="title">Beyond the <span>Classroom</span></h2>
+  <div class="grid">
+    <div class="card"><div class="tag">Across iTECH</div><h3>AI Innovation Lab</h3><p>A station-based lab open to every iTECH program, where cybersecurity students secure and audit edge AI devices running on local hardware.</p><a class="more" href="/talks/itech-ai-innovation-lab.html">Visit the Lab →</a></div>
+    <div class="card"><div class="tag">Sister campus</div><h3>Lorenzo Walker Technical College</h3><p>Shared certification reporting systems, coaching and curriculum resources with our sister campus in Naples.</p></div>
+    <div class="card"><div class="tag">Planned</div><h3>Student-Staffed Community IT Support</h3><p>A concept for an online help platform where iTECH students support Immokalee residents and small businesses, giving them real tickets as real-world practice.</p></div>
+  </div>
+</div></section>
+
+<div class="divider"></div>
+
+<!-- CONTACT -->
+<section id="contact"><div class="inner">
+  <div class="eyebrow">Get in Touch</div>
+  <h2 class="title">Contact the <span>Center</span></h2>
+  <div class="contact">
+    <div class="card">
+      <h3>Center Lead</h3>
+      <div class="row"><span class="lbl">Name</span><span>Amy McMullin, M.S. IT</span></div>
+      <div class="row"><span class="lbl">Title</span><span>Department Chair · Computer Systems &amp; IT and Applied Cybersecurity Instructor</span></div>
+      <div class="row"><span class="lbl">Email</span><span><a href="mailto:mcmula@collierschools.com">Amy.McMullin@collierschools.com</a></span></div>
+      <div class="row"><span class="lbl">Phone</span><span>(239) 377-9900</span></div>
+    </div>
+    <div class="card">
+      <h3>Center Information</h3>
+      <div class="row"><span class="lbl">Institution</span><span>Immokalee Technical College (iTECH), Collier County Public Schools</span></div>
+      <div class="row"><span class="lbl">Center type</span><span>Virtual center</span></div>
+      <div class="row"><span class="lbl">Address</span><span>508 N 9th Street, Immokalee, FL 34142</span></div>
+      <div class="row"><span class="lbl">Hours</span><span>Mon–Fri · 8:00 AM – 2:30 PM</span></div>
+      <div class="row"><span class="lbl">Accredited</span><span>Council on Occupational Education (COE) · Cognia</span></div>
+    </div>
+  </div>
+</div></section>
+
+<footer>
+  <div class="flogo">i<span>TECH</span> Center for Cybersecurity</div>
+  <p>Immokalee Technical College · Part of Collier County Public Schools<br>
+  508 N 9th Street, Immokalee, FL 34142 · (239) 377-9900 · Accredited by COE and Cognia<br>
+  Page built with AI assistance (Claude) for the iTECH Cybersecurity program · Updated November 2026</p>
+  <div class="flinks">
+    <a href="#programs">Programs</a><a href="#faculty">Faculty</a><a href="#advisory">Advisory Board</a><a href="#news">News</a><a href="#students">Students</a><a href="#awareness">Security</a>
+    <a href="https://itc.collierschools.com/" target="_blank" rel="noopener">iTECH Homepage</a>
+    <a href="/talks/itech-ai-innovation-lab.html">AI Innovation Lab</a>
+  </div>
+</footer>
+</body>
+</html>
