@@ -133,19 +133,19 @@ Professional certifications
   * AI Fundamentals with IBM SkillsBuild — Cisco / IBM
   * Artificial Intelligence Fundamentals — IBM SkillsBuild
 * **Cybersecurity — Advanced & Expert Level**
-  * CompTIA SecurityX (CASP+) ce — CompTIA (2019)
+  * CompTIA SecurityX (CASP+) ce — CompTIA (2019, lapsed)
   * CompTIA Security Analytics Expert (CSAE) — Stackable
-  * CompTIA CySA+ ce (Cybersecurity Analyst) — CompTIA (2019)
+  * CompTIA CySA+ ce (Cybersecurity Analyst) — CompTIA (2019, lapsed)
   * CompTIA Security Analytics Professional (CSAP) — Stackable
   * TestOut Ethical Hacker Pro / Security Pro — TestOut
 * **Networking & Infrastructure**
-  * CompTIA Network+ ce — CompTIA (2017)
+  * CompTIA Network+ ce — CompTIA (2017, lapsed)
   * Cisco CCST Networking — Lifetime — Cisco (2024)
   * Cisco CCST Cybersecurity — Lifetime — Cisco (2024)
   * CompTIA Network Infrastructure Professional (CNIP) — Stackable
   * CompTIA Server+ — CompTIA
 * **Cloud Computing**
-  * CompTIA Cloud+ ce — CompTIA (2019)
+  * CompTIA Cloud+ ce — CompTIA (2019, lapsed)
   * CompTIA Cloud Admin Professional (CCAP) — Stackable
   * CompTIA Secure Cloud Professional (CSCP) — Stackable
   * CompTIA Cloud Essentials+ — CompTIA (2024)
