@@ -56,7 +56,7 @@ Teachers also choose how much students see afterward: the full key, right/wrong 
 The engine is built around question packs, so a new subject is new data, not new code. Next up:
 
 - **Networking**, now built: see the [Networking Certification Diagnostic](/portfolio/networking-certification-diagnostic/).
-- **IT support**, now built: see the [IT Support Certification Diagnostic](/portfolio/it-support-certification-diagnostic/). Cloud is next.
+- **IT support and Tech+**, now built: see the [IT Foundations Certification Diagnostic](/portfolio/it-support-certification-diagnostic/). Cloud is next.
 - **Single exams with many domains, like CompTIA A+ and Tech+**, where the question becomes which domains are holding a student back.
 
 The plan is to compare each student's diagnostic readiness with their real exam result. After a term or two, that will show whether the readiness score predicts passing, and give me real data for tuning the 75% line and the topic weights.
