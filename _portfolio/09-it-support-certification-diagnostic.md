@@ -1,11 +1,13 @@
 ---
 permalink: /portfolio/it-support-certification-diagnostic/
-title: "IT Support Certification Diagnostic"
-excerpt: "One practice test for the two IT support exams my students take early in the program, Cisco's CCST IT Support and IT Specialist: Device Configuration and Management. It shows how ready a student is for each, which to take first, and what to study.<br/><img src='/images/it-support-diagnostic-report.png'>"
+title: "IT Foundations Certification Diagnostic"
+excerpt: "One practice test for the foundations exams in my program: Cisco's CCST IT Support, IT Specialist: Device Configuration and Management, and CompTIA Tech+ as the end goal they build toward. It shows how ready a student is for each, which to take first, and what to study.<br/><img src='/images/it-foundations-diagnostic-report.png'>"
 collection: portfolio
 ---
 
-*[Take the diagnostic »](https://amymcmullin.github.io/AI-Certification-Diagnostic/it-support/) · [Source on GitHub](https://github.com/amymcmullin/AI-Certification-Diagnostic) · [Scoring method and weights](https://github.com/amymcmullin/AI-Certification-Diagnostic/blob/main/docs/SCORING.md#it-support-diagnostic-weights)*
+*[Take the diagnostic »](https://amymcmullin.github.io/AI-Certification-Diagnostic/it-foundations/) · [Source on GitHub](https://github.com/amymcmullin/AI-Certification-Diagnostic) · [Scoring method and weights](https://github.com/amymcmullin/AI-Certification-Diagnostic/blob/main/docs/SCORING.md#it-foundations-diagnostic-weights)*
+
+*The first version covered only the two IT support exams. It's still [online](https://amymcmullin.github.io/AI-Certification-Diagnostic/it-support/) for students who already took it.*
 
 ## The problem
 
@@ -22,7 +24,7 @@ Most of my students will take both. The question is which one a particular stude
 
 A 50-question diagnostic on the same engine as my [AI](/portfolio/ai-certification-diagnostic/) and [Networking](/portfolio/networking-certification-diagnostic/) diagnostics. The two exams' objectives are mapped onto eleven topics. Shared topics count toward both readiness scores, and the topics only one exam tests are what decide the recommendation. A student gets a readiness score for each exam, the one to take first, and a study plan ordered by how many points each weak topic is worth.
 
-![Score report recommending CCST IT Support first, with readiness for both exams and a study plan](/images/it-support-diagnostic-report.png)
+![Score report recommending CCST IT Support first, with Tech+ shown as the end goal and readiness for all three exams](/images/it-foundations-diagnostic-report.png)
 
 Neither vendor publishes domain percentages, so the weights are estimates from the breadth of each exam's objectives. Every topic lists the objective numbers it covers, so the study plan points students straight back to the official objectives.
 
@@ -38,21 +40,29 @@ The Device Configuration group is small, but it points the same way: troubleshoo
 
 So the diagnostic gives fewer questions to security and more to directory groups and permissions, hardware and peripherals, and Windows troubleshooting. I also adjusted the CCST weights to match how the GMetrix bank spreads its questions, with about a quarter on hardware and peripherals.
 
+## Adding Tech+ as the end goal
+
+CompTIA Tech+ is the multi-domain exam my foundations stage builds toward. A month after the first version, I added it, which raised two problems.
+
+The first was content. Tech+ covers ground the other two exams barely touch: software development, data and databases, and IT concepts such as number systems and units of measure. The test grew to 60 questions, with three new topics for that material. Unlike Cisco and Certiport, CompTIA publishes how much of the exam each domain is worth, so the Tech+ weights come from those published percentages. My campus's GMetrix results for IT Fundamentals+, the exam Tech+ replaced, showed databases (50%) and software development (51%) as the weakest areas, so those topics got the most new questions.
+
+The second was what the test should recommend. The engine recommended whichever exam a student was most ready for. But Tech+ isn't just another option; it's where the smaller exams lead. So I had the engine changed to support an end-goal exam. Tech+ is recommended first only when a student reaches the 75% line on it. Until then, the report recommends the stronger of the two smaller exams and shows Tech+ in its own panel, with its readiness score and the topics to work on next. The Teacher view also counts how many students are ready for the end goal.
+
 ## How I use it
 
 - **Placement:** given at the start of the foundations stage, it shows which adult students already have enough Windows or help desk experience to move faster.
 - **Sequencing:** it tells each student which exam to schedule first, and the study plan says what to review before they spend money on a voucher.
 - **Planning my teaching:** the Teacher view shows class topic averages and the most-missed questions, so I know which shared topics to reteach for everyone and which belong in the help desk or Windows-administration branch.
 
-![Teacher view with a class of example students](/images/it-support-diagnostic-teacher.png)
+![Teacher view with a class of example students](/images/it-foundations-diagnostic-teacher.png)
 *The Teacher view, filled with built-in example data.*
 
 As with the other diagnostics, the engine and documentation are open source. The question bank lives in a private repository, and the published test keeps its answer keys encoded. Graded attempts go through the Canvas version.
 
 ## What's next
 
-Comparing students' diagnostic results with their real exam scores, to tune the weights and the 75% "likely ready" line. After that comes a version for single exams with many domains, like CompTIA Tech+.
+Comparing students' diagnostic results with their real exam scores, to tune the weights and the 75% "likely ready" line, and replacing the IT Fundamentals+ stand-in with GMetrix results for Tech+ itself once my students have them. The end-goal setting also makes room for an A+ version later.
 
-*Built with AI assistance against my specification. The choice of exams, the goal of using it to decide which exam each student takes first, using my class's GMetrix results to decide where the questions lean, and the decisions about format and keeping the bank private are mine. The comparison of the two exams' objectives, the questions, explanations, weights draft, software and this write-up were produced with AI assistance from the vendors' published objectives.*
+*Built with AI assistance against my specification. The choice of exams, the goal of using it to decide which exam each student takes first, treating Tech+ as the end goal, the 60-question length, using my GMetrix results to decide where the questions lean, and the decisions about format and keeping the bank private are mine. The comparison of the two exams' objectives, the questions, explanations, weights draft, software and this write-up were produced with AI assistance from the vendors' published objectives.*
 
-<small>Not affiliated with or endorsed by Cisco, Pearson, or Certiport. Exam names are trademarks of their owners.</small>
+<small>Not affiliated with or endorsed by Cisco, CompTIA, Pearson, or Certiport. Exam names are trademarks of their owners.</small>
