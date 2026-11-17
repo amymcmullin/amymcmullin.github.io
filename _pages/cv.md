@@ -229,6 +229,10 @@ Publications, media & community
 * Cub Scout Pack 165 — Webelos I/II Den Leader, 2013–2015
 * Boy Scout Troop 165 — Committee Member, 2013–2020
 
+Talks
+======
+* **"Silicon Glades: Teaching Rural Students to Build, Break, and Secure Physical AI,"** BSides St. Pete 2027, St. Petersburg, FL, February 6, 2027 (accepted)
+
 Professional memberships
 ======
 * SWFL Tech (formerly Southwest Florida Regional Technology Partnership)

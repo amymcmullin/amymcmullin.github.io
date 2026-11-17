@@ -14,6 +14,9 @@ main:
   - title: "Portfolio"
     url: /portfolio/
 
+  - title: "Talks"
+    url: /talks/
+
   - title: "Certifications"
     url: /certifications/
 
@@ -21,8 +24,6 @@ main:
     url: /cv/
 
   # Add these back once there is content for them:
-  # - title: "Talks"
-  #   url: /talks/
   # - title: "Publications"
   #   url: /publications/
   # - title: "Blog Posts"
