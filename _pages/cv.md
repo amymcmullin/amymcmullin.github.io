@@ -232,6 +232,7 @@ Publications, media & community
 Talks
 ======
 * **"Silicon Glades: Teaching Rural Students to Build, Break, and Secure Physical AI,"** BSides St. Pete 2027, St. Petersburg, FL, February 6, 2027 (accepted)
+* **"From Farm Town to SOC: Teaching Students to Build, Break and Secure Physical AI,"** WiCyS 2027 (Women in CyberSecurity) Conference, Denver, CO, March 17–19, 2027 (accepted)
 
 Professional memberships
 ======
