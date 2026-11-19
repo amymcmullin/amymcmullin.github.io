@@ -1,16 +1,16 @@
 ---
 permalink: /portfolio/pima-diabetes-data-exploration/
 title: "Exploring a Diabetes Dataset in Python"
-excerpt: "A graduate data-exploration notebook: cleaning, visualizing and correlating 768 patient records with pandas and seaborn in Google Colab. Glucose stood out; the cleaning I skipped is the more useful lesson.<br/><img src='/images/pima-correlation-heatmap.png'>"
+excerpt: "An early assignment from a graduate data mining course: cleaning, visualizing and correlating 768 patient records with pandas and seaborn in Google Colab. Glucose stood out; the cleaning I skipped is the more useful lesson.<br/><img src='/images/pima-correlation-heatmap.png'>"
 collection: portfolio
 ---
 
-*LIS 4761/5765, M.S. Information Technology, Florida State University — Fall 2021*
+*LIS 4761/5765 Data Mining and Analytics, M.S. Information Technology, Florida State University — Fall 2021*
 *Notebook: [view on GitHub](https://github.com/AJMFSU/AJMFSU/blob/main/LIS4761_5765_Data_Exploration_Amy_McMullin.ipynb) · [open in Colab](https://colab.research.google.com/github/AJMFSU/AJMFSU/blob/main/LIS4761_5765_Data_Exploration_Amy_McMullin.ipynb) · [download a copy](/files/LIS4761_5765_Data_Exploration_Amy_McMullin.ipynb)*
 
 ## The assignment
 
-Take a real dataset and explore it before modeling anything: look at its shape, find the problems in it, clean what needs cleaning, and use charts to find the relationships worth investigating. I worked in a Google Colab notebook with pandas, matplotlib and seaborn.
+This was an early assignment, before the course moved on to machine learning. Take a real dataset and explore it before modeling anything: look at its shape, find the problems in it, clean what needs cleaning, and use charts to find the relationships worth investigating. I worked in a Google Colab notebook with pandas, matplotlib and seaborn.
 
 The data is the Pima Indians Diabetes dataset, originally from the National Institute of Diabetes and Digestive and Kidney Diseases: 768 patient records with eight measurements each (pregnancies, glucose, blood pressure, skin thickness, insulin, BMI, a diabetes pedigree score and age) and an outcome column recording whether the patient was diagnosed with diabetes.
 
